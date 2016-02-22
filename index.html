@@ -21,6 +21,7 @@
     </div>
     <div id="debug">
         <span id="message"></span>
+        <span id="info"></span>
         <form class="form-inline">
             <label>Geometry type &nbsp;</label>
             <select id="type">
@@ -43,8 +44,10 @@
 
     var projection = new ol.proj.Projection({
         code: 'xkcd-image',
+        // code: 'EPSG:4326',
         units: 'pixels',
-        extent: extent
+        extent: extent,
+        axisOrientation: 'ne'
     });
 
     var vector = new ol.layer.Vector({
@@ -52,15 +55,27 @@
             url: 'assets/data.geojson',
             format: new ol.format.GeoJSON(),
             wrapX: true
+        }),
+        style: new ol.style.Style({
+            fill: new ol.style.Fill({
+                color: 'rgba(255, 255, 255, 0.6)'
+            }),
+            stroke: new ol.style.Stroke({
+                color: '#319FD3',
+                width: 1
+            })
         })
     });
 
-	var select = new ol.interaction.Select({
-		wrapX: false
-	});
+    var select = new ol.interaction.Select({
+        wrapX: false
+    });
+    select.on('select', function(e) {
+        console.log(e)
+    })
 
     var map = new ol.Map({
-    	interactions: ol.interaction.defaults().extend([select]),
+        interactions: ol.interaction.defaults().extend([select]),
         layers: [
             new ol.layer.Image({
                 source: new ol.source.ImageStatic({
@@ -95,6 +110,58 @@
         // prompt('(x, y) = ', e.coordinate)
         console.log('Click point => (' + e.coordinate.toString() + ')')
         document.getElementById('message').innerHTML = e.coordinate.toString();
+    });
+
+    var featureOverlay = new ol.layer.Vector({
+        source: new ol.source.Vector(),
+        map: map,
+        style: new ol.style.Style({
+            stroke: new ol.style.Stroke({
+                color: '#f00',
+                width: 1
+            }),
+            fill: new ol.style.Fill({
+                color: 'rgba(255,0,0,0.1)'
+            })
+        })
+    });
+
+    var highlight;
+    var displayFeatureInfo = function(pixel) {
+
+        var feature = map.forEachFeatureAtPixel(pixel, function(feature) {
+            return feature;
+        });
+
+        var info = document.getElementById('info');
+        if (feature) {
+            info.innerHTML = feature.getId() + ': ' + feature.get('name');
+        } else {
+            info.innerHTML = '&nbsp;';
+        }
+
+        if (feature !== highlight) {
+            if (highlight) {
+                featureOverlay.getSource().removeFeature(highlight);
+            }
+            if (feature) {
+                featureOverlay.getSource().addFeature(feature);
+            }
+            highlight = feature;
+        }
+
+    };
+
+    map.on('pointermove', function(evt) {
+        if (evt.dragging) {
+            return;
+        }
+        var pixel = map.getEventPixel(evt.originalEvent);
+        displayFeatureInfo(pixel);
+    });
+
+    map.on('click', function(evt) {
+        displayFeatureInfo(evt.pixel);
     });
 
     // ===========================
