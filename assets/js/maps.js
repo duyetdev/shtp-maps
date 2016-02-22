@@ -87,38 +87,119 @@ app.getDirection = function(input) {
     console.log('Gateway is: ', form_point, ' => ', start_point_in_route);
 
     var results = [];
+    getRoute([], form_point);
+    var result = getBestResult(results);
+    console.error(' ===> ', result);
 
-    getRoute([], start_point_in_route);
+    // TODO: Fix here
+    // result = getFullPath(result);
 
-    function getRoute(route, point) {
-        var nexts = getNext(point);
+    return result;
+
+    function getRoute(route, point, ignore) {
+        var nexts = getNext(point, ignore);
+        console.log('get nexts from ', route ,' => ', nexts)
 
         for (var i in nexts) {
             var next = nexts[i];
 
-            if (app.isNear(to_point, next)) {
+            // var d = app.distance(to_point, next);
+            // console.error(' ===> ', d)
+
+            if (app.isNear(to_point, next, 20)) {
                 route.push(next);
                 results.push(route);
+
+                console.log('results: ', results);
             } else {
-                route.push(next);
-                getRoute(route, next);
+                route_new = JSON.parse(JSON.stringify(route));
+                route_new.push(next);
+                getRoute(route_new, next, [point]);
             }
         }
     }
 
-    function getNext(point) {
+    function getNext(point, ignore) {
         var nexts = [];
+        ignore = ignore || [];
         for (var i in app.route) {
-            if (app.isNear(app.route[i].start, point)) 
+            if (app.isNear(app.route[i].start, point) 
+                && app.checkIgnore(app.route[i].next, ignore)) 
                 nexts.push(app.route[i].next);
         }
 
         return nexts;
     }
+
+    function getBestResult(results) {
+        if (!results) return [];
+        var result = results[0];
+        var best_distance = getDistanceOfRoute(result);
+        var l = results.length;
+
+        for (var i = 1; i < l; i++) {
+            var d = getDistanceOfRoute(results[i]);
+            if (d < best_distance) {
+                best_distance = d;
+                var result = results[i];
+            }
+        }
+
+        return result;
+    }
+
+    function getFullPath (route) {
+        var full = [];
+        if (!route) return []; 
+
+        var l = route.length;
+        for (var i = 0; i < l - 1; i++) {
+            if (route[i] && route[i + 1])
+                full = merge(full, getChildPathOf(route[i], route[i + 1]));
+        }
+
+        return full;
+    }
+
+    function merge(arr1, arr2) {
+        var arr = arr1 || [];
+        
+        for (var i in arr) {
+            for (var j in arr2) {
+                if (arr[i] == arr2[j]) arr[i] = arr2[j];
+                else arr.push(arr2[j]);
+            }
+        }
+
+        return arr;
+    }
+
+    function getChildPathOf(from, to) {
+        for (var i in this.route) {
+            if (this.isNear(this.route[i].start, from) && this.isNear(this.route[i].next, to)) {
+                return this.route[i].points;
+            }
+        }
+
+        return [];
+    }
+
+    function getDistanceOfRoute(route) {
+        var distance = 0;
+        if (!route) return distance;
+
+        var l = route.length;
+        for (var i = 0; i < l; i++) {
+            if (route[i] && route[i + 1])
+                distance += app.distance(route[i], route[i + 1]);
+        }
+
+        return distance;
+    }
 }
 
 app.getGeoLoc = function(point) {
-    var min_value = 30.0;
+    var min_value = 10.0;
     var nearest_point = null;
 
     point = point || [];
@@ -144,11 +225,18 @@ app.distance = function(a, b) {
     return Math.sqrt(Math.pow(a[0] - b[0], 2) + Math.pow(a[1] - b[1], 2));
 }
 
-app.isNear = function(a, b) {
-    var d = this.distance(a, b);
-
-    return d < 10;
+app.isNear = function(a, b, distance) {
+    distance = distance || 10.0;
+    return this.distance(a, b) < distance;
 }
+
+app.checkIgnore = function (a, ignore_list) {
+    for (var i in ignore_list) {
+        if (this.isNear(ignore_list[i], a)) return false;
+    }
+
+    return true;
+}   
 
 /**
  * Array point to router tools 

@@ -36,7 +36,8 @@
     <script type="text/javascript" src="./assets/js/maps.js"></script>
     <script type="text/javascript">
     var app = window.app;
-    app.default_routing_start = [141.375,789.125];
+    app.default_routing_start = [794.875,448.75]; // [141.375,789.125];
+    app.vector_direction = null;
 
     var extent = [0, 0, 1024, 968];
     var router = [];
@@ -106,7 +107,7 @@
         view: new ol.View({
             projection: projection,
             center: ol.extent.getCenter(extent),
-            zoom: 2,
+            zoom: 2.5,
             maxZoom: 4,
             rotation: 0
         })
@@ -156,7 +157,29 @@
         if (app.debug) document.getElementById('info').innerHTML = JSON.stringify(app.direction_input);
 
         if (app.direction_input.from != null && app.direction_input.to != null) {
-            app.getDirection(app.direction_input);
+            var direction = app.getDirection(app.direction_input);
+
+            console.log('  ~> ', JSON.stringify( [direction]))
+
+            // Start draw
+            map.removeLayer(app.vector_direction); // Remove old 
+            var vectorSource = new ol.source.Vector();
+            vectorSource.addFeature(new ol.Feature(
+                new ol.geom.MultiLineString([ direction ])
+            ));
+            app.vector_direction = new ol.layer.Vector({
+                source: vectorSource,
+                style: new ol.style.Style({
+                    stroke: new ol.style.Stroke({
+                        color: '#f00',
+                        width: 3
+                    }),
+                    fill: new ol.style.Fill({
+                        color: 'rgba(255,0,0,1)'
+                    })
+                })
+            });
+            map.addLayer(app.vector_direction);
         }
     }
 
