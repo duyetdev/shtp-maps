@@ -14,7 +14,7 @@
         <div class="tools">
             <div id="search">
                 <div class="col-md-6 col-md-offset-3">
-                    <input type="text" name="" id="input" class="form-control" value="" required="required" pattern="" title="">
+                    <input type="text" name="" id="place" class="form-control" value="" required="required" pattern="" title="">
                 </div>
             </div>
         </div>
@@ -31,12 +31,12 @@
             </select>
         </form>
     </div>
-    <script type="text/javascript" src="./assets/js/ol.js"></script>
+    <script type="text/javascript" src="./assets/js/islab-maps.js"></script>
+    <script type="text/javascript" src="./assets/js/route.js"></script>
     <script type="text/javascript" src="./assets/js/maps.js"></script>
     <script type="text/javascript">
     var app = window.app;
-
-    console.log(app)
+    app.default_routing_start = [141.375,789.125];
 
     var extent = [0, 0, 1024, 968];
     var router = [];
@@ -58,21 +58,27 @@
         }),
         style: new ol.style.Style({
             fill: new ol.style.Fill({
-                color: 'rgba(255, 255, 255, 0.6)'
+                color: 'rgba(255, 255, 255, 0.1)'
             }),
             stroke: new ol.style.Stroke({
                 color: '#319FD3',
-                width: 1
+                width: 0.5
             })
         })
     });
 
     var select = new ol.interaction.Select({
-        wrapX: false
+        wrapX: false,
+        style: new ol.style.Style({
+          stroke: new ol.style.Stroke({
+            color: '#f00',
+            width: 1
+          }),
+          fill: new ol.style.Fill({
+            color: 'rgba(255,0,0,0.1)'
+          })
+        })
     });
-    select.on('select', function(e) {
-        console.log(e)
-    })
 
     var map = new ol.Map({
         interactions: ol.interaction.defaults().extend([select]),
@@ -108,9 +114,9 @@
 
     map.on('click', function(e) {
         // prompt('(x, y) = ', e.coordinate)
-        console.log('Click point => (' + e.coordinate.toString() + ')')
-        document.getElementById('message').innerHTML = e.coordinate.toString();
-        console.log(map.getInteractions().getArray())
+        //console.log('Click point => (' + e.coordinate.toString() + ')')
+        document.getElementById('message').innerHTML = '(x, y) = ' + e.coordinate.toString();
+        // console.log(map.getInteractions().getArray())
     });
 
     var featureOverlay = new ol.layer.Vector({
@@ -128,17 +134,49 @@
     });
 
     var highlight;
-    var displayFeatureInfo = function(pixel) {
+    app.direction_input = {
+        from: {
+            id: 'start_point',
+            geoloc: app.default_routing_start
+        },
+        to: null
+    };
+    var addDirectionInput = function(point) {
+        if (!app.direction_input) app.direction_input = {};
+        
+        if (app.direction_input.from == null) app.direction_input.from = point;
+        else if (app.direction_input.to == null) app.direction_input.to = point;
+        else {
+            app.direction_input = {
+                from: point,
+                to: null
+            }
+        }
 
+        if (app.debug) document.getElementById('info').innerHTML = JSON.stringify(app.direction_input);
+
+        if (app.direction_input.from != null && app.direction_input.to != null) {
+            app.getDirection(app.direction_input);
+        }
+    }
+
+    // Get block information    
+    var displayFeatureInfo = function(pixel) {
         var feature = map.forEachFeatureAtPixel(pixel, function(feature) {
             return feature;
         });
 
-        var info = document.getElementById('info');
+        var info = document.getElementById('place');
         if (feature) {
-            info.innerHTML = feature.getId() + ': ' + feature.get('name');
+            var point = feature.getId() + ': (' + feature.get('gateway') + ')';
+            info.value = point;
+            addDirectionInput({
+                id: feature.getId(),
+                geoloc: feature.get('gateway'),
+                information: feature.get('information')
+            });
         } else {
-            info.innerHTML = '&nbsp;';
+            info.value = '&nbsp;';
         }
 
         if (feature !== highlight) {
@@ -153,20 +191,26 @@
 
     };
 
+    /**
+     * Hover to building block
+     */
     map.on('pointermove', function(evt) {
         if (evt.dragging) {
             return;
         }
-        var pixel = map.getEventPixel(evt.originalEvent);
-        displayFeatureInfo(pixel);
+        // var pixel = map.getEventPixel(evt.originalEvent);
+        // displayFeatureInfo(pixel);
     });
 
+    /**
+     * Click to building block
+     */
     map.on('click', function(evt) {
         displayFeatureInfo(evt.pixel);
     });
 
     // ===========================
-    // Draw
+    // Debug tools
 
     var features = new ol.Collection();
     var featureOverlay = new ol.layer.Vector({
@@ -202,24 +246,33 @@
 
     var draw; // global so we can remove it later
     var typeSelect = document.getElementById('type');
-
     function addInteraction() {
         draw = new ol.interaction.Draw({
             features: features,
             type: /** @type {ol.geom.GeometryType} */ (typeSelect.value)
         });
+
         draw.on('drawend', function(e) {
             var data = app.getBlockPoint(e);
-            // var name = prompt('Block name: ');
 
             var result = {
                 name: name,
                 points: data
             };
 
-            console.info(JSON.stringify(result));
-            prompt('data:', JSON.stringify(data));
-        })
+            // Tools to get router 
+            if (typeSelect.value == 'LineString') {
+                if (data && data.length >= 2) {
+                    // Generator path 
+                    app.arrayPointToRouterGeneratorTools(data);
+                }
+            }
+
+            if (typeSelect.value == 'Polygon') {
+                console.info(JSON.stringify(data));
+            }
+        });
+
         map.addInteraction(draw);
     }
 
