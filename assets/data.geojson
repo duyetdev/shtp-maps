@@ -1,35 +1,87 @@
 {
     "type": "FeatureCollection",
-    "features": [{
-        "type": "Feature",
-        "id": "AFG",
-        "properties": {
-            "name": "Afghanistan"
-        },
-        "geometry": {
-            "type": "Polygon",
-            "coordinates": [
-                [
-                    [
-                        280,827.25
-                    ],
-                    [
-                        301.25,803.75
-                    ],
-                    [
-                        341.25,822.5
-                    ],
-                    [
-                        323.5,836
-                    ],
-                    [
-                        304.75,839.5
-                    ],
-                    [
-                        280,827.25
-                    ]
-                ]
-            ]
-        }
-    }]
+    "features": [
+    	{
+	        "type": "Feature",
+	        "id": "SANKYO",
+	        "properties": {
+	            "name": "SANKYO"
+	        },
+	        "geometry": {
+	            "type": "Polygon",
+	            "coordinates": [
+	                [
+	                    [
+	                        280,827.25
+	                    ],
+	                    [
+	                        301.25,803.75
+	                    ],
+	                    [
+	                        341.25,822.5
+	                    ],
+	                    [
+	                        323.5,836
+	                    ],
+	                    [
+	                        304.75,839.5
+	                    ],
+	                    [
+	                        280,827.25
+	                    ]
+	                ]
+	            ]
+	        },
+	        "root": [
+	        	280, 827.25
+	        ]
+	    },
+
+	    {
+	        "type": "Feature",
+	        "id": "COPAL",
+	        "properties": {
+	            "name": "COPAL"
+	        },
+	        "geometry": {
+	            "type": "Polygon",
+	            "coordinates": [
+	                [[301.5,803.75],[341.75,822.5],[369.5,807.25],[325.25,762],[313.75,768.25],[313.75,780]]
+	            ]
+	        },
+	        "root": [
+	        	312.125,787.75
+	        ]
+	    },
+
+	    {
+	        "type": "Feature",
+	        "id": "COPAL-2",
+	        "properties": {
+	            "name": "COPAL-2"
+	        },
+	        "geometry": {
+	            "type": "Polygon",
+	            "coordinates": [
+	                [[302,739],[324.75,762.5],[313.25,769]]
+	            ]
+	        }
+	    },
+
+	    {
+	        "type": "Feature",
+	        "id": "COPAL-3",
+	        "properties": {
+	            "name": "COPAL-2"
+	        },
+	        "geometry": {
+	            "type": "Polygon",
+	            "coordinates": [
+	                [[432.125,658],[457.625,641.25],[471.875,652],[447.125,669.5]]
+	            ]
+	        }
+	    }
+
+
+    ]
 }

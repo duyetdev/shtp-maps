@@ -59,7 +59,9 @@ app.getBlockPoint = function(e) {
 
     var raw = e.feature.G.geometry.A;
     for (var i = 0; i < raw.length / 2 + 2; i+=2) {
-        result.push({x: raw[i], y: raw[i+1]});        
+        var c = [];
+        c.push(raw[i], raw[i + 1]);
+        result.push(c);        
     }
 
     return result;

@@ -51,7 +51,7 @@
         source: new ol.source.Vector({
             url: 'assets/data.geojson',
             format: new ol.format.GeoJSON(),
-            wrapX: true
+            wrapX: false
         })
     });
 
@@ -95,7 +95,12 @@
         // prompt('(x, y) = ', e.coordinate)
         console.log('Click point => (' + e.coordinate.toString() + ')')
         document.getElementById('message').innerHTML = e.coordinate.toString();
+        console.log(map.getInteractions().getArray())
     });
+
+    map.getInteractions().on('active', function(e) {
+    	console.log('active interactions ', e);
+    })
 
     // ===========================
     // Draw
@@ -150,6 +155,7 @@
             };
 
             console.info(JSON.stringify(result));
+            prompt('data:', JSON.stringify(data));
         })
         map.addInteraction(draw);
     }
