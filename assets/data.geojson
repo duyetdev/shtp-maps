@@ -1,0 +1,35 @@
+{
+    "type": "FeatureCollection",
+    "features": [{
+        "type": "Feature",
+        "id": "AFG",
+        "properties": {
+            "name": "Afghanistan"
+        },
+        "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        280,827.25
+                    ],
+                    [
+                        301.25,803.75
+                    ],
+                    [
+                        341.25,822.5
+                    ],
+                    [
+                        323.5,836
+                    ],
+                    [
+                        304.75,839.5
+                    ],
+                    [
+                        280,827.25
+                    ]
+                ]
+            ]
+        }
+    }]
+}

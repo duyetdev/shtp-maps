@@ -2,54 +2,36 @@
 <html>
 
 <head>
-    <title>ISMap</title>
-    <link rel="stylesheet" type="text/css" href="./assets/ol.css" />
-    <style type="text/css">
-    body {
-        padding: 0;
-        margin: 0;
-    }
-    
-    .rotate-center {
-        top: 65px;
-        left: .5em;
-    }
-    
-    .ol-touch .center-north {
-        top: 80px;
-    }
-    
-    #debug {
-        width: 150px;
-        height: 50px;
-        opacity: 0.5;
-        position: fixed;
-        top: 0;
-        right: 0;
-        color: #fff;
-        background: #000;
-    }
-    </style>
-    <script type="text/javascript" src="./assets/ol.js"></script>
-    <script type="text/javascript" src="./assets/maps.js"></script>
-    <script type="text/javascript">
-    </script>
+    <title>IS-Map</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./assets/css/ol.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/main.css" />
 </head>
 
 <body>
-    <div id="map" class="map"></div>
-    <div id="debug">
-    	<span id="message"></span>
-    	<form class="form-inline">
-	        <label>Geometry type &nbsp;</label>
-	        <select id="type">
-	            <option value="Polygon">Polygon</option>
-	            <option value="Point">Point</option>
-	            <option value="LineString">LineString</option>
-	        </select>
-	    </form>
+    <div id="map-container">
+        <div id="map" class="map"></div>
+        <div class="tools">
+            <div id="search">
+                <div class="col-md-6 col-md-offset-3">
+                    <input type="text" name="" id="input" class="form-control" value="" required="required" pattern="" title="">
+                </div>
+            </div>
+        </div>
     </div>
-    
+    <div id="debug">
+        <span id="message"></span>
+        <form class="form-inline">
+            <label>Geometry type &nbsp;</label>
+            <select id="type">
+                <option value="Polygon">Polygon</option>
+                <option value="Point">Point</option>
+                <option value="LineString">LineString</option>
+            </select>
+        </form>
+    </div>
+    <script type="text/javascript" src="./assets/js/ol.js"></script>
+    <script type="text/javascript" src="./assets/js/maps.js"></script>
     <script type="text/javascript">
     var app = window.app;
 
@@ -62,11 +44,23 @@
     var projection = new ol.proj.Projection({
         code: 'xkcd-image',
         units: 'pixels',
-        extent: extent,
-        // coordinate: new ol.Coordinate(16,48)
+        extent: extent
     });
 
+    var vector = new ol.layer.Vector({
+        source: new ol.source.Vector({
+            url: 'assets/data.geojson',
+            format: new ol.format.GeoJSON(),
+            wrapX: true
+        })
+    });
+
+	var select = new ol.interaction.Select({
+		wrapX: false
+	});
+
     var map = new ol.Map({
+    	interactions: ol.interaction.defaults().extend([select]),
         layers: [
             new ol.layer.Image({
                 source: new ol.source.ImageStatic({
@@ -75,19 +69,18 @@
                             html: 'ISLab '
                         })
                     ],
-                    url: './assets/kcnc_bandoquyhoach.jpg',
+                    url: './assets/images/kcnc_bando.jpg',
                     projection: projection,
                     imageExtent: extent
                 })
-            })
+            }),
+            vector
         ],
         controls: ol.control.defaults({
             attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
                 collapsible: false
             })
-        }).extend([
-            new app.RotateNorthControl()
-        ]),
+        }),
         target: 'map',
         view: new ol.View({
             projection: projection,
@@ -148,7 +141,15 @@
             type: /** @type {ol.geom.GeometryType} */ (typeSelect.value)
         });
         draw.on('drawend', function(e) {
-        	console.info('Polygon: ', e);
+            var data = app.getBlockPoint(e);
+            // var name = prompt('Block name: ');
+
+            var result = {
+                name: name,
+                points: data
+            };
+
+            console.info(JSON.stringify(result));
         })
         map.addInteraction(draw);
     }
@@ -161,7 +162,7 @@
         addInteraction();
     };
 
-    addInteraction();
+    // addInteraction();
     </script>
 </body>
 

@@ -1,0 +1,40 @@
+.map {
+    margin: 0;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.rotate-center {
+    top: 65px;
+    left: .5em;
+}
+
+.ol-touch .center-north {
+    top: 80px;
+}
+
+#debug {
+    width: 150px;
+    height: 50px;
+    opacity: 0.5;
+    position: fixed;
+    top: 0;
+    right: 0;
+    color: #fff;
+    background: #000;
+}
+
+.tools {
+    height: 55px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    padding-top: 15px;
+}
+
+#search {}

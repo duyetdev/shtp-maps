@@ -1,7 +1,18 @@
 var Point = function(x, y) {
 }
 
-var Path = function(a, b, length) {
+var Block = function(array_points, root_point, information) {
+	var block_info =  {
+		points: array_points, 
+		root_point: root_point,
+		information
+	};
+
+	function getPoints() {
+		return block_info.points;
+	}
+
+	return block_info;
 }
 
 /**
@@ -9,6 +20,7 @@ var Path = function(a, b, length) {
  */
 window.app = {};
 var app = window.app;
+
 /**
  * @constructor
  * @extends {ol.control.Control}
@@ -40,3 +52,15 @@ app.RotateNorthControl = function(opt_options) {
 
 };
 ol.inherits(app.RotateNorthControl, ol.control.Control);
+
+app.getBlockPoint = function(e) {
+    if (!e) return false;
+    var result = [];
+
+    var raw = e.feature.G.geometry.A;
+    for (var i = 0; i < raw.length / 2 + 2; i+=2) {
+        result.push({x: raw[i], y: raw[i+1]});        
+    }
+
+    return result;
+}
