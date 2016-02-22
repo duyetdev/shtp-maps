@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ISMap</title>
+    <link rel="stylesheet" type="text/css" href="./assets/ol.css" />
+    <style type="text/css">
+    body {
+        padding: 0;
+        margin: 0;
+    }
+    
+    .rotate-center {
+        top: 65px;
+        left: .5em;
+    }
+    
+    .ol-touch .center-north {
+        top: 80px;
+    }
+    
+    #debug {
+        width: 150px;
+        height: 50px;
+        opacity: 0.5;
+        position: fixed;
+        top: 0;
+        right: 0;
+        color: #fff;
+        background: #000;
+    }
+    </style>
+    <script type="text/javascript" src="./assets/ol.js"></script>
+    <script type="text/javascript" src="./assets/maps.js"></script>
+    <script type="text/javascript">
+    </script>
+</head>
+
+<body>
+    <div id="map" class="map"></div>
+    <div id="debug">
+    	<span id="message"></span>
+    	<form class="form-inline">
+	        <label>Geometry type &nbsp;</label>
+	        <select id="type">
+	            <option value="Polygon">Polygon</option>
+	            <option value="Point">Point</option>
+	            <option value="LineString">LineString</option>
+	        </select>
+	    </form>
+    </div>
+    
+    <script type="text/javascript">
+    var app = window.app;
+
+    console.log(app)
+
+    var extent = [0, 0, 1024, 968];
+    var router = [];
+    var path = [];
+
+    var projection = new ol.proj.Projection({
+        code: 'xkcd-image',
+        units: 'pixels',
+        extent: extent,
+        // coordinate: new ol.Coordinate(16,48)
+    });
+
+    var map = new ol.Map({
+        layers: [
+            new ol.layer.Image({
+                source: new ol.source.ImageStatic({
+                    attributions: [
+                        new ol.Attribution({
+                            html: 'ISLab '
+                        })
+                    ],
+                    url: './assets/kcnc_bandoquyhoach.jpg',
+                    projection: projection,
+                    imageExtent: extent
+                })
+            })
+        ],
+        controls: ol.control.defaults({
+            attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
+                collapsible: false
+            })
+        }).extend([
+            new app.RotateNorthControl()
+        ]),
+        target: 'map',
+        view: new ol.View({
+            projection: projection,
+            center: ol.extent.getCenter(extent),
+            zoom: 2,
+            maxZoom: 4,
+            rotation: 0
+        })
+    });
+
+    map.on('click', function(e) {
+        // prompt('(x, y) = ', e.coordinate)
+        console.log('Click point => (' + e.coordinate.toString() + ')')
+        document.getElementById('message').innerHTML = e.coordinate.toString();
+    });
+
+    // ===========================
+    // Draw
+
+    var features = new ol.Collection();
+    var featureOverlay = new ol.layer.Vector({
+        source: new ol.source.Vector({
+            features: features
+        }),
+        style: new ol.style.Style({
+            fill: new ol.style.Fill({
+                color: 'rgba(255, 255, 255, 0.2)'
+            }),
+            stroke: new ol.style.Stroke({
+                color: '#ffcc33',
+                width: 2
+            }),
+            image: new ol.style.Circle({
+                radius: 7,
+                fill: new ol.style.Fill({
+                    color: '#ffcc33'
+                })
+            })
+        })
+    });
+    featureOverlay.setMap(map);
+
+    var modify = new ol.interaction.Modify({
+        features: features,
+        deleteCondition: function(event) {
+            return ol.events.condition.shiftKeyOnly(event) &&
+                ol.events.condition.singleClick(event);
+        }
+    });
+    map.addInteraction(modify);
+
+    var draw; // global so we can remove it later
+    var typeSelect = document.getElementById('type');
+
+    function addInteraction() {
+        draw = new ol.interaction.Draw({
+            features: features,
+            type: /** @type {ol.geom.GeometryType} */ (typeSelect.value)
+        });
+        draw.on('drawend', function(e) {
+        	console.info('Polygon: ', e);
+        })
+        map.addInteraction(draw);
+    }
+
+    /**
+     * Handle change event.
+     */
+    typeSelect.onchange = function() {
+        map.removeInteraction(draw);
+        addInteraction();
+    };
+
+    addInteraction();
+    </script>
+</body>
+
+</html>
