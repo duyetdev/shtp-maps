@@ -20,9 +20,6 @@ var Block = function(id, gateway_point, information) {
 window.app = window.app || {};
 var app = window.app;
 
-// Active debug
-app.debug = true;
-
 /**
  * @constructor
  * @extends {ol.control.Control}

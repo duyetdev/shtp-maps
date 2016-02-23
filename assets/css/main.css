@@ -38,3 +38,32 @@ body {
 }
 
 #search {}
+
+.map:-moz-full-screen {
+    height: 100%;
+}
+
+.map:-webkit-full-screen {
+    height: 100%;
+}
+
+.map:-ms-fullscreen {
+    height: 100%;
+}
+
+.map:fullscreen {
+    height: 100%;
+}
+
+.ol-rotate {
+    top: 3em;
+}
+
+
+/* Tools */
+/*
+.ol-zoom {
+    bottom: .5em;
+    right: .5em;
+}
+*/

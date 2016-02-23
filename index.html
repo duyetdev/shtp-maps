@@ -3,7 +3,6 @@
 
 <head>
     <title>IS-Map</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./assets/css/ol.css" />
     <link rel="stylesheet" type="text/css" href="./assets/css/main.css" />
 </head>
@@ -11,13 +10,13 @@
 <body>
     <div id="map-container">
         <div id="map" class="map"></div>
-        <div class="tools">
+        <!-- <div class="tools">
             <div id="search">
                 <div class="col-md-6 col-md-offset-3">
                     <input type="text" name="" id="place" class="form-control" value="" required="required" pattern="" title="">
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <div id="debug">
         <span id="message"></span>
@@ -36,8 +35,16 @@
     <script type="text/javascript" src="./assets/js/maps.js"></script>
     <script type="text/javascript">
     var app = window.app;
+
+    // Active debug
+    app.debug = false;
+
     app.default_routing_start = [794.875,448.75]; // [141.375,789.125];
     app.vector_direction = null;
+
+    if (!app.debug) {
+        document.getElementById('debug').style.display = 'none';
+    }
 
     var extent = [0, 0, 1024, 968];
     var router = [];
@@ -82,6 +89,7 @@
     });
 
     var map = new ol.Map({
+        target: 'map',
         interactions: ol.interaction.defaults().extend([select]),
         layers: [
             new ol.layer.Image({
@@ -100,10 +108,10 @@
         ],
         controls: ol.control.defaults({
             attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
-                collapsible: false
-            })
+                collapsible: true
+            }),
+            rotate: false
         }),
-        target: 'map',
         view: new ol.View({
             projection: projection,
             center: ol.extent.getCenter(extent),
@@ -120,7 +128,14 @@
         // console.log(map.getInteractions().getArray())
     });
 
-    map.addControl(new app.RotateNorthControl())
+    // map.addControl(new app.RotateNorthControl())
+    map.addControl(new ol.control.FullScreen())
+    map.addControl(new ol.control.ZoomToExtent({
+        extent: [0,0,1024,760],
+        tipLabel: 'Zoom to extent'
+    }))
+    // map.addControl(new ol.control.ZoomSlider())
+    // map.addControl(new ol.control.MousePosition())
 
     var featureOverlay = new ol.layer.Vector({
         source: new ol.source.Vector(),
