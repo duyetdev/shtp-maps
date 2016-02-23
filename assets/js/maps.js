@@ -87,7 +87,7 @@ app.getDirection = function(input) {
     console.log('Gateway is: ', form_point, ' => ', start_point_in_route);
 
     var results = [];
-    getRoute([], form_point);
+    getRoute([form_point], form_point);
     var result = getBestResult(results);
     console.error(' ===> ', result);
 
@@ -108,6 +108,10 @@ app.getDirection = function(input) {
 
             if (app.isNear(to_point, next, 20)) {
                 route.push(next);
+
+                // Get finish point 
+                route.push(to_point);
+
                 results.push(route);
 
                 console.log('results: ', results);
