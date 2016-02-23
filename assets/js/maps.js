@@ -44,7 +44,7 @@ app.RotateNorthControl = function(opt_options) {
     button.addEventListener('touchstart', handleRotateNorth, false);
 
     var element = document.createElement('div');
-    element.className = 'rotate-north ol-unselectable ol-control';
+    element.className = 'rotate-north ol-control';
     element.appendChild(button);
 
     ol.control.Control.call(this, {
@@ -148,6 +148,8 @@ app.getDirection = function(input) {
                 var result = results[i];
             }
         }
+
+        console.log(' => ', best_distance * 5 , 'm');
 
         return result;
     }

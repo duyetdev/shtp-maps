@@ -120,6 +120,8 @@
         // console.log(map.getInteractions().getArray())
     });
 
+    map.addControl(new app.RotateNorthControl())
+
     var featureOverlay = new ol.layer.Vector({
         source: new ol.source.Vector(),
         map: map,
@@ -171,8 +173,9 @@
                 source: vectorSource,
                 style: new ol.style.Style({
                     stroke: new ol.style.Stroke({
-                        color: '#f00',
-                        width: 3
+                        color: '#000',
+                        width: 6,
+                        lineCap: 'round'
                     }),
                     fill: new ol.style.Fill({
                         color: 'rgba(255,0,0,1)'
