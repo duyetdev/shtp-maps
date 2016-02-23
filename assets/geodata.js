@@ -1,3 +1,8 @@
+window.app = window.app || {};
+window.app.enterprise_geodata = 
+
+
+
 {
     "type": "FeatureCollection",
     "features": [
@@ -175,7 +180,7 @@
 	        "properties": {
 	            "name": "INTEL-PRODUCTS-VN",
                 "gateway": [
-                	345.0625,716.9375
+                	365.75,703.875
                 ]
 	        },
 	        "geometry": {
@@ -205,7 +210,7 @@
 	        "properties": {
 	            "name": "I1.3-N1",
                 "gateway": [
-                	308.25,776.875
+                	307.875,775.875
                 ]
 	        },
 	        "geometry": {
