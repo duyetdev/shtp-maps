@@ -25,8 +25,8 @@
         <form class="form-inline">
             <label>Geometry type &nbsp;</label>
             <select id="type">
-                <option value="Polygon">Polygon</option>
                 <option value="Point">Point</option>
+                <option value="Polygon">Polygon</option>
                 <option value="LineString">LineString</option>
             </select>
         </form>
@@ -108,7 +108,7 @@
             projection: projection,
             center: ol.extent.getCenter(extent),
             zoom: 2.5,
-            maxZoom: 4,
+            maxZoom: 8,
             rotation: 0
         })
     });
@@ -307,7 +307,7 @@
         addInteraction();
     };
 
-    // addInteraction();
+     // addInteraction();
     </script>
 </body>
 
