@@ -1,8 +1,18 @@
+<!--
+
+Setup current postion: http://maps.com/?long=123.145&lat=423.123
+Debug:  http://maps.com/?__debug=0
+
+-->
+
+
 <!DOCTYPE html>
 <html>
 
 <head>
+    <meta charset=utf-8> <meta http-equiv=X-UA-Compatible content="IE=edge"> <meta name=viewport content="width=device-width,initial-scale=1">
     <title>IS-Map</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./assets/css/ol.css" />
     <link rel="stylesheet" type="text/css" href="./assets/css/main.css" />
 </head>
@@ -10,16 +20,29 @@
 <body>
     <div id="map-container">
         <div id="map" class="map"></div>
-        <!-- <div class="tools">
-            <div id="search">
-                <div class="col-md-6 col-md-offset-3">
-                    <input type="text" name="" id="place" class="form-control" value="" required="required" pattern="" title="">
-                </div>
+        <div id="popup"></div>
+
+        <div style="display:none">
+            <div id="current_position" title="Current position"></div>
+            <a href="#" onClick="moveToCurrent()" id="current_position_message">vị trí hiện tại</a>
+
+            
+        </div>
+        
+        <div class="tools">
+        <div id="search">
+            <div>
+                <input type="text" name="" id="place" class="clearable" placeholder="Search ...">
             </div>
-        </div> -->
+        </div>
+        </div>
+        
     </div>
     <div id="debug">
-        <span id="message"></span>
+        <span id="message"></span> 
+        <span id="pointer_pos"></span>
+
+        
         <span id="info"></span>
         <form class="form-inline">
             <label>Geometry type &nbsp;</label>
@@ -30,16 +53,62 @@
             </select>
         </form>
     </div>
+
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Thông tin doanh nghiệp</h4>
+          </div>
+          <div class="modal-body">
+                <div class="enterprise_nodata">Đang cập nhật</div>
+                <div class="enterprise_info">
+                    <p>Tên doanh nghiệp: <span id="TenDoanhNghiep"></span></p> 
+                    <p>Lĩnh vực hoạt động: <span id="LinhVucHoatDong"></span></p>
+                    <p>Dự án đầu tư: <span id="TenDuAnDauTu"></span></p>
+                    
+                    
+                    <p>Địa chỉ: <span id="DiaChiTrongKhu"></span></p>
+                    <p>Điện thoại: <span id="DienThoai"></span></p>
+                    <p>Website: <span id="Website"></span></p>
+
+                </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="./assets/js/bootstrap3-typeahead.min.js"></script>
     <script type="text/javascript" src="./assets/js/islab-maps.js"></script>
     <script type="text/javascript" src="./assets/js/route.js"></script>
+    <script type="text/javascript" src="./assets/geodata.js"></script>
+    <script type="text/javascript" src="./assets/enterprise.js"></script>
     <script type="text/javascript" src="./assets/js/maps.js"></script>
     <script type="text/javascript">
     var app = window.app;
 
     // Active debug
-    app.debug = false;
+    app.debug = true;
 
-    app.default_routing_start = [794.875,448.75]; // [141.375,789.125];
+    app.default_routing_start = [604.75,431.875]; // [141.375,789.125];
+
+    if (QueryString && QueryString.long && QueryString.lat) {
+        var long = parseFloat(QueryString.long);
+        var lat = parseFloat(QueryString.lat);
+        if (long && lat) app.default_routing_start = [long, lat];
+    }
+    if (QueryString && QueryString.__debug) {
+        if (QueryString.__debug == '1') app.debug = true;
+        else app.debug = false;
+    }
+
     app.vector_direction = null;
 
     if (!app.debug) {
@@ -50,6 +119,19 @@
     var router = [];
     var path = [];
 
+    // Search box typeahead
+    $("#place").typeahead({
+        source: app.enterprise.enterprise,
+        autoSelect: true,
+        displayText: function(item) {
+          return typeof item !== 'undefined' && typeof item.TenDoanhNghiep != 'undefined' && item.TenDoanhNghiep || item;
+        },
+        afterSelect: function(item) {
+            if (!item) return;
+            app.getAndMoveTo(item);
+        }
+    });
+
     var projection = new ol.proj.Projection({
         code: 'xkcd-image',
         // code: 'EPSG:4326',
@@ -58,7 +140,7 @@
         axisOrientation: 'ne'
     });
 
-    var vector = new ol.layer.Vector({
+    var vectorLayer = new ol.layer.Vector({
         source: new ol.source.Vector({
             url: 'assets/data.geojson',
             format: new ol.format.GeoJSON(),
@@ -77,6 +159,7 @@
 
     var select = new ol.interaction.Select({
         wrapX: false,
+        /*
         style: new ol.style.Style({
           stroke: new ol.style.Stroke({
             color: '#f00',
@@ -86,11 +169,20 @@
             color: 'rgba(255,0,0,0.1)'
           })
         })
+        */
+    });
+
+    var view = new ol.View({
+        projection: projection,
+        center: ol.extent.getCenter(extent),
+        zoom: 2.5,
+        maxZoom: 8,
+        rotation: 0
     });
 
     var map = new ol.Map({
         target: 'map',
-        interactions: ol.interaction.defaults().extend([select]),
+        interactions: ol.interaction.defaults() , // .extend([select]),
         layers: [
             new ol.layer.Image({
                 source: new ol.source.ImageStatic({
@@ -104,7 +196,7 @@
                     imageExtent: extent
                 })
             }),
-            vector
+            vectorLayer
         ],
         controls: ol.control.defaults({
             attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
@@ -112,34 +204,24 @@
             }),
             rotate: false
         }),
-        view: new ol.View({
-            projection: projection,
-            center: ol.extent.getCenter(extent),
-            zoom: 2.5,
-            maxZoom: 8,
-            rotation: 0
-        })
+        view: view
     });
 
-    map.on('click', function(e) {
-        // prompt('(x, y) = ', e.coordinate)
-        //console.log('Click point => (' + e.coordinate.toString() + ')')
-        document.getElementById('message').innerHTML = '(x, y) = ' + e.coordinate.toString();
-        // console.log(map.getInteractions().getArray())
-    });
-
-    // map.addControl(new app.RotateNorthControl())
+    map.addControl(new app.RotateNorthControl())
     map.addControl(new ol.control.FullScreen())
     map.addControl(new ol.control.ZoomToExtent({
         extent: [0,0,1024,760],
+        zoom: 4,
         tipLabel: 'Zoom to extent'
     }))
     // map.addControl(new ol.control.ZoomSlider())
     // map.addControl(new ol.control.MousePosition())
+    map.addControl(new ol.control.ScaleLine());
 
     var featureOverlay = new ol.layer.Vector({
         source: new ol.source.Vector(),
         map: map,
+        /*
         style: new ol.style.Style({
             stroke: new ol.style.Stroke({
                 color: '#f00',
@@ -149,6 +231,7 @@
                 color: 'rgba(255,0,0,0.1)'
             })
         })
+        */
     });
 
     var highlight;
@@ -174,11 +257,11 @@
         if (app.debug) document.getElementById('info').innerHTML = JSON.stringify(app.direction_input);
 
         if (app.direction_input.from != null && app.direction_input.to != null) {
-            var direction = app.getDirection(app.direction_input);
+            var direction = app.getDirection({from: app.direction_input.from.geoloc, to: app.direction_input.to.geoloc});
 
             console.log('  ~> ', JSON.stringify( [direction]))
 
-            // Start draw
+            // Start draw direction
             map.removeLayer(app.vector_direction); // Remove old 
             var vectorSource = new ol.source.Vector();
             vectorSource.addFeature(new ol.Feature(
@@ -188,27 +271,46 @@
                 source: vectorSource,
                 style: new ol.style.Style({
                     stroke: new ol.style.Stroke({
-                        color: '#000',
+                        color: '#679DF6',
                         width: 6,
                         lineCap: 'round'
                     }),
                     fill: new ol.style.Fill({
-                        color: 'rgba(255,0,0,1)'
+                        color: '#679DF6'
                     })
-                })
+                }) 
             });
             map.addLayer(app.vector_direction);
         }
     }
 
-    // Get block information    
+    // Current position 
+    var current_position = new ol.Overlay({
+        position: app.default_routing_start,
+        positioning: 'center-center',
+        element: document.getElementById('current_position'),
+        stopEvent: false
+    });
+    map.addOverlay(current_position);
+    var current_position_message = new ol.Overlay({
+        position: [app.default_routing_start[0], app.default_routing_start[1]],
+        element: document.getElementById('current_position_message')
+    });
+    map.addOverlay(current_position_message);
+
+    // Get block information   
+    var gateway_position = null; 
     var displayFeatureInfo = function(pixel) {
         var feature = map.forEachFeatureAtPixel(pixel, function(feature) {
             return feature;
         });
 
         var info = document.getElementById('place');
-        if (feature) {
+        if (feature) info.value = feature.getId() + ': (' + feature.get('gateway') + ')';
+
+
+
+        if (feature && 1 == 3) {
             var point = feature.getId() + ': (' + feature.get('gateway') + ')';
             info.value = point;
             addDirectionInput({
@@ -217,7 +319,7 @@
                 information: feature.get('information')
             });
         } else {
-            info.value = '&nbsp;';
+            // info.value = '&nbsp;';
         }
 
         if (feature !== highlight) {
@@ -239,15 +341,69 @@
         if (evt.dragging) {
             return;
         }
-        // var pixel = map.getEventPixel(evt.originalEvent);
+        var pixel = map.getEventPixel(evt.originalEvent);
         // displayFeatureInfo(pixel);
+        document.getElementById('pointer_pos').innerHTML = 'pointer_pos (x, y) = ' + evt.coordinate.toString();
     });
+
+    /**
+     * Click to shop proper
+     */
+      // Popup showing the position the user clicked
+      var popup = new ol.Overlay({
+        element: document.getElementById('popup')
+      });
+      map.addOverlay(popup);
 
     /**
      * Click to building block
      */
     map.on('click', function(evt) {
+        // Debug
+        document.getElementById('message').innerHTML = '(x, y) = ' + evt.coordinate.toString();
+
+        // Gateway position 
+        map.removeOverlay(gateway_position);
+        gateway_position = new ol.Overlay({
+            position: evt.coordinate,
+            positioning: 'center-center',
+            element: document.getElementById('gateway_position'),
+            stopEvent: false
+        });
+        map.addOverlay(gateway_position);
+
+        // Get postion at block
         displayFeatureInfo(evt.pixel);
+
+        var element = popup.getElement();
+        var coordinate = evt.coordinate;
+        $(element).popover('destroy');
+
+        var feature = map.forEachFeatureAtPixel(evt.pixel, function(feature) {
+            return feature;
+        });
+
+        if (feature) {
+            var point = feature.getId() + ': (' + feature.get('gateway') + ')';
+            info.value = point;
+            /*
+            addDirectionInput({
+                id: feature.getId(),
+                geoloc: feature.get('gateway'),
+                information: feature.get('information')
+            });
+            */
+
+            popup.setPosition(coordinate);
+            $(element).popover({
+              'placement': 'top',
+              'animation': true,
+              'html': true,
+              'content': '<div class="popup-button"><a href="#" class="btn btn-custom" id="view_info" onClick="modalView(\''+ feature.getId() +'\', event)">Thông tin</a>\
+                <a href="#" id="get_direction" class="btn btn-custom" onClick="getDirectionTo('+ feature.get('gateway') +', event)">Chỉ đường đến đây</a></div>'
+            });
+            $(element).popover('show');
+        }
     });
 
     // ===========================
@@ -283,7 +439,7 @@
                 ol.events.condition.singleClick(event);
         }
     });
-    map.addInteraction(modify);
+    // map.addInteraction(modify);
 
     var draw; // global so we can remove it later
     var typeSelect = document.getElementById('type');

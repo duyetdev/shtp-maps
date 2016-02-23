@@ -14,6 +14,43 @@ var Block = function(id, gateway_point, information) {
     return block_info;
 }
 
+var QueryString = function () {
+  // This function is anonymous, is executed immediately and 
+  // the return value is assigned to QueryString!
+  var query_string = {};
+  var query = window.location.search.substring(1);
+  var vars = query.split("&");
+  for (var i=0;i<vars.length;i++) {
+    var pair = vars[i].split("=");
+        // If first entry with this name
+    if (typeof query_string[pair[0]] === "undefined") {
+      query_string[pair[0]] = decodeURIComponent(pair[1]);
+        // If second entry with this name
+    } else if (typeof query_string[pair[0]] === "string") {
+      var arr = [ query_string[pair[0]],decodeURIComponent(pair[1]) ];
+      query_string[pair[0]] = arr;
+        // If third or later entry with this name
+    } else {
+      query_string[pair[0]].push(decodeURIComponent(pair[1]));
+    }
+  } 
+    return query_string;
+}();
+window.QueryString = QueryString;
+
+// Form input clearable
+function tog(v){return v?'addClass':'removeClass';} 
+$(document).on('input', '.clearable', function(){
+    $(this)[tog(this.value)]('x');
+}).on('mousemove', '.x', function( e ){
+    $(this)[tog(this.offsetWidth-18 < e.clientX-this.getBoundingClientRect().left)]('onX');
+}).on('touchstart click', '.onX', function( ev ){
+    ev.preventDefault();
+    $(this).removeClass('x onX').val('').change();
+});
+
+// ==========================
+
 /**
  * Define a namespace for the application.
  */
@@ -72,8 +109,8 @@ app.getBlockPoint = function(e) {
 app.getDirection = function(input) {
     if (!input) return false;
 
-    var form_point = input.from.geoloc;
-    var to_point = input.to.geoloc;
+    var form_point = input.from;
+    var to_point = input.to;
     var result = [];
 
     if (!form_point || !to_point) return result;
@@ -81,12 +118,17 @@ app.getDirection = function(input) {
     console.log('start search ...');
 
     var start_point_in_route = app.getGeoLoc(form_point);   
-    console.log('Gateway is: ', form_point, ' => ', start_point_in_route);
+    console.log('Start route from: ', form_point, ' => ', start_point_in_route);
+
+    // Fix <to> point not near any route 
+    var end_point_in_route = app.getGeoLoc(to_point);   
+    console.log('========================================== End route: => ', end_point_in_route);
+    if (!end_point_in_route) return;
 
     var results = [];
     getRoute([form_point], form_point);
     var result = getBestResult(results);
-    console.error(' ===> ', result);
+    console.info(' ===> ', result);
 
     // TODO: Fix here
     // result = getFullPath(result);
@@ -95,7 +137,7 @@ app.getDirection = function(input) {
 
     function getRoute(route, point, ignore) {
         var nexts = getNext(point, ignore);
-        console.log('get nexts from ', route ,' => ', nexts)
+//         console.log('get nexts from ', route ,' => ', nexts)
 
         for (var i in nexts) {
             var next = nexts[i];
@@ -272,4 +314,180 @@ app.arrayPointToRouterGeneratorTools = function(data, is_reverse) {
         if (data[i]) t2_data.push(data[i]);
     }
     app.arrayPointToRouterGeneratorTools(t2_data, true);   
+}
+
+/**/
+
+      app.buildingBlockStyle = new ol.style.Style({
+        fill: new ol.style.Fill({
+          color: 'rgba(255, 255, 255, 0.6)'
+        }),
+        stroke: new ol.style.Stroke({
+          color: '#319FD3',
+          width: 1
+        }),
+        text: new ol.style.Text({
+          font: '12px Calibri,sans-serif',
+          fill: new ol.style.Fill({
+            color: '#000'
+          }),
+          stroke: new ol.style.Stroke({
+            color: '#fff',
+            width: 3
+          })
+        })
+      });
+
+/* Get direction to point */
+window.getDirectionTo = app.getDirectionTo = function(long, lat, e ) {
+    e.preventDefault();
+    $('#popup').popover('hide');
+
+    if (!app.default_routing_start || !long || !lat) return false;
+    var point = [];
+    point.push(long); 
+    point.push(lat);
+
+    console.log({from: app.default_routing_start, to: point});
+    var direction = app.getDirection({from: app.default_routing_start, to: point});
+
+    console.log('  ~> ', JSON.stringify( [direction]))
+
+    // Start draw direction
+    map.removeLayer(app.vector_direction); // Remove old 
+    var vectorSource = new ol.source.Vector();
+    vectorSource.addFeature(new ol.Feature(
+        new ol.geom.MultiLineString([ direction ])
+    ));
+    app.vector_direction = new ol.layer.Vector({
+        source: vectorSource,
+        style: new ol.style.Style({
+            stroke: new ol.style.Stroke({
+                color: '#679DF6',
+                width: 6,
+                lineCap: 'round'
+            }),
+            fill: new ol.style.Fill({
+                color: '#FFF'
+            })
+        }) 
+    });
+    map.addLayer(app.vector_direction);
+}
+
+/* View information  */
+
+window.modalView = app.modalView = function(id, e) {
+    e.preventDefault();
+    $('#popup').popover('hide');
+    $('#modal').modal('show');
+
+    var enterprise = searchEnterprise(id);
+    if (enterprise) {
+        $('.enterprise_nodata').hide();
+        $('.enterprise_info').show();
+
+        $('#TenDoanhNghiep').html(enterprise.TenDoanhNghiep || '');
+        $('#TenDuAnDauTu').html(enterprise.TenDuAnDauTu || '');
+        $('#LinhVucHoatDong').html(enterprise.LinhVucHoatDong || '');
+        $('#DiaChiTrongKhu').html(enterprise.DiaChiTrongKhu || '');
+        $('#DienThoai').html(enterprise.DienThoai || '');
+        $('#Website').html(enterprise.Website || '');
+    } else {
+        $('.enterprise_nodata').show();
+        $('.enterprise_info').hide();
+    }
+}
+
+/**
+ * Search enterprise from ID in address
+ */
+window.searchEnterprise = function(id_or_something) {
+    if (!window.app.enterprise) return false;
+    for (var i in window.app.enterprise.enterprise) {
+        var item = window.app.enterprise.enterprise[i];
+
+        if (item && item.DiaChiTrongKhu && item.DiaChiTrongKhu.indexOf(id_or_something) > -1) return item;
+    }
+    return false;
+}
+
+/**
+ * Get geodata from ID
+ */
+app.getGeoDataFromBlockID = function(id) {
+    for (var i in window.app.enterprise_geodata.features) {
+        var item = window.app.enterprise_geodata.features[i];
+        if (item.id == id) return item;
+    }
+
+    return false;
+}
+
+/**
+ * Get postion and move to center 
+ */
+app.getAndMoveTo = function(enterprise ) {
+    if (!enterprise || typeof enterprise.DiaChiTrongKhu == 'undefined') return false;
+
+    console.log('Step 1: ', enterprise)
+
+    var block_id = app.getBlockIdFromAddress(enterprise.DiaChiTrongKhu);
+    if(!block_id) return false;
+    console.log('Step 2: ', block_id)
+
+    var geodata = app.getGeoDataFromBlockID(block_id);
+    if (!geodata) return false;
+    console.log('Step 3: ', geodata);
+
+    var coordinates = geodata.geometry.coordinates;
+    var center = app.getCenterPointOfBlock(coordinates[0]);
+    console.log('Step 4: ', center);
+
+    function elastic(t) {
+      return Math.pow(2, -25 * t) * Math.sin((t - 0.075) * (2 * Math.PI) / 0.3) + 1;
+    }
+      var pan = ol.animation.pan({
+        duration: 2000,
+        easing: elastic,
+        source: /** @type {ol.Coordinate} */ (view.getCenter())
+      });
+      map.beforeRender(pan);
+    map.beforeRender(pan);
+    
+    view.setCenter(center);
+}
+
+app.getBlockIdFromAddress = function(address) {
+    if (!address) return '';
+    var block_id = null;
+
+    if (!block_id) block_id = address.match(/([A-z]-[0-9]{1,2}[a-z]-[0-9]{1,2}[a-z]?)\s?/i);  // I-1d-2
+    if (!block_id) block_id = address.match(/([A-z]-[A-z]?[0-9]{1,2})\s?/i); // I-10
+    if (!block_id) block_id = address.match(/([A-z][0-9]{1,2}(\.[0-9])?-[A-z][0-9]{1,2})\s?/i);
+    if (!block_id) block_id = address.match(/([A-z][0-9]{1,2}-[A-z][0-9]{1,2})\s?/i);
+    if (!block_id) block_id = address.match(/[A-z][0-9]{1,2}[a-z]?(-)?\s?/i);
+    if (!block_id) block_id = address.match(/([A-z][0-9]{1,2}[a-z]?-[A-z]-[0-9])\s?/i);
+    if (!block_id) block_id = address.match(/([A-z][0-9]{1,2}[a-z]?-[0-9\.a-z]{1,4})\s?/i);
+    if (!block_id) block_id = address.match(/([A-z][0-9]{1,2})\s?/i);
+
+    if (block_id) return block_id[0];
+
+    return '';
+}
+
+app.getCenterPointOfBlock = function(points) {
+    var x = 0, nx = 0;
+    var y = 0, ny = 0;
+
+    for (var i in points) {
+        var point = points[i];
+        if (point[0] && point[1]) {
+            x += point[0]; nx++;
+            y += point[1]; ny++;
+        }
+    }
+
+    if (nx > 0) return [x / nx, y / ny]
+    return [0, 0];
 }
