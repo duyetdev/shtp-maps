@@ -2,6 +2,7 @@
 
 Setup current postion: http://maps.com/?long=123.145&lat=423.123
 Debug:  http://maps.com/?__debug=0
+Draw mode:  http://maps.com/?__draw=1
 
 -->
 
@@ -108,6 +109,10 @@ Debug:  http://maps.com/?__debug=0
     if (QueryString && QueryString.__debug) {
         if (QueryString.__debug == '1') app.debug = true;
         else app.debug = false;
+    }
+    if (QueryString && QueryString.__draw) {
+        if (QueryString.__draw == '1') app.show_draw_line = true;
+        else app.show_draw_line = false;
     }
 
     app.vector_direction = null;
@@ -493,7 +498,7 @@ Debug:  http://maps.com/?__debug=0
             for (var i in item.points) router.push(item.points[i]);
             router.push(item.next);
 
-        console.log(router)
+            console.log(router)
 
             var draw_line = null;
             var vectorSource = new ol.source.Vector();
@@ -505,8 +510,8 @@ Debug:  http://maps.com/?__debug=0
                 source: vectorSource,
                 style: new ol.style.Style({
                     stroke: new ol.style.Stroke({
-                        color: '#679DF6',
-                        width: 6,
+                        color: '#F00',
+                        width: 1,
                         lineCap: 'round'
                     }),
                     fill: new ol.style.Fill({
@@ -517,6 +522,38 @@ Debug:  http://maps.com/?__debug=0
 
             map.addLayer(app.vector_direction);
         }
+
+        // Draw gateway
+        $.get('./assets/data.geojson', function(data) {
+            try {
+                var data = JSON.parse(data);    
+                console.log(data)
+                var features = data.features;
+
+                for (var i in features) {
+                    var gateway = features[i].properties.gateway;
+                    if (!gateway) continue;
+
+                    var vectorSource = new ol.source.Vector();
+                    vectorSource.addFeature(new ol.Feature(
+                        new ol.geom.Point(gateway)
+                    ));
+
+                    console.log(gateway)
+
+                    app.vector_direction = new ol.layer.Vector({
+                        source: vectorSource,
+                        style: new ol.style.Style({
+                            
+                        }) 
+                    });
+                }
+            }
+            catch (e) {
+                console.log('data error')
+            }  
+
+        });
     }
 
     </script>
