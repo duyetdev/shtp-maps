@@ -456,6 +456,18 @@ app.getAndMoveTo = function(enterprise ) {
     map.beforeRender(pan);
     
     view.setCenter(center);
+    var element = popup.getElement();
+    var coordinate = center;
+    $(element).popover('destroy');
+    popup.setPosition(coordinate);
+    $(element).popover({
+      'placement': 'top',
+      'animation': true,
+      'html': true,
+      'content': '<div class="popup-button"><a href="#" class="btn btn-custom" id="view_info" onClick="modalView(\''+ block_id +'\', event)">Thông tin</a>\
+        <a href="#" id="get_direction" class="btn btn-custom" onClick="getDirectionTo('+ geodata.properties.gateway +', event)">Chỉ đường đến đây</a></div>'
+    });
+    $(element).popover('show');
 }
 
 app.getBlockIdFromAddress = function(address) {
