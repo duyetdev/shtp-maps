@@ -485,8 +485,7 @@ Debug:  http://maps.com/?__debug=0
      // addInteraction();
      
     if (app.show_draw_line) {
-
-        for (var i  in window.app.route) {
+        for (var i in window.app.route) {
             var item = window.app.route[i];
             var route = [];
 
@@ -494,8 +493,10 @@ Debug:  http://maps.com/?__debug=0
             for (var i in item.points) router.push(item.points[i]);
             router.push(item.next);
 
-            var draw_line = null;
+        console.log(router)
 
+            var draw_line = null;
+            var vectorSource = new ol.source.Vector();
             vectorSource.addFeature(new ol.Feature(
                 new ol.geom.MultiLineString([ router ])
             ));
