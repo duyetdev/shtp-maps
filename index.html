@@ -48,6 +48,7 @@ Draw mode:  http://maps.com/?__draw=1
         <form class="form-inline">
             <label>Geometry type &nbsp;</label>
             <select id="type">
+                <option value="">None</option>
                 <option value="Point">Point</option>
                 <option value="Polygon">Polygon</option>
                 <option value="LineString">LineString</option>
@@ -450,6 +451,7 @@ Draw mode:  http://maps.com/?__draw=1
     var draw; // global so we can remove it later
     var typeSelect = document.getElementById('type');
     function addInteraction() {
+        if (!typeSelect.value) return;
         draw = new ol.interaction.Draw({
             features: features,
             type: /** @type {ol.geom.GeometryType} */ (typeSelect.value)
