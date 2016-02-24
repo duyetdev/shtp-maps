@@ -126,7 +126,21 @@ app.getDirection = function(input) {
     if (!end_point_in_route) return;
 
     var results = [];
-    getRoute([form_point], form_point);
+    var point = start_point_in_route;
+
+    var shortest = 0;
+    while (true) {
+        if (!results.length) {
+            var nexts = getNext(point);
+            for (var i in nexts) results.push(nexts[i]);
+            continue;
+        }
+
+        
+        // =====================
+    }
+
+    // getRoute([form_point], form_point);
     var result = getBestResult(results);
     console.info(' ===> ', result);
 

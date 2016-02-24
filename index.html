@@ -96,6 +96,7 @@ Debug:  http://maps.com/?__debug=0
 
     // Active debug
     app.debug = true;
+    app.show_draw_line = true;
 
     app.default_routing_start = [604.75,431.875]; // [141.375,789.125];
 
@@ -482,6 +483,41 @@ Debug:  http://maps.com/?__debug=0
     };
 
      // addInteraction();
+     
+    if (app.show_draw_line) {
+
+        for (var i  in window.app.route) {
+            var item = window.app.route[i];
+            var route = [];
+
+            router.push(item.start);
+            for (var i in item.points) router.push(item.points[i]);
+            router.push(item.next);
+
+            var draw_line = null;
+
+            vectorSource.addFeature(new ol.Feature(
+                new ol.geom.MultiLineString([ router ])
+            ));
+
+            app.vector_direction = new ol.layer.Vector({
+                source: vectorSource,
+                style: new ol.style.Style({
+                    stroke: new ol.style.Stroke({
+                        color: '#679DF6',
+                        width: 6,
+                        lineCap: 'round'
+                    }),
+                    fill: new ol.style.Fill({
+                        color: '#FFF'
+                    })
+                }) 
+            });
+
+            map.addLayer(app.vector_direction);
+        }
+    }
+
     </script>
 </body>
 
