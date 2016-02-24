@@ -3,11 +3,47 @@
     "features": [
     	{
 	        "type": "Feature",
+	        "id": "start_point",
+	        "properties": {
+	            "name": "start_point",
+                "gateway": [
+                	604.75,431.875
+                ],
+                "data": {
+		            "ID": 65,
+		            "TenDoanhNghiep": "Start point",
+		            "GoiTat": "UVP R&D Co., Ltd",
+		            "QuocGia": "Việt - Mỹ",
+		            "DaiDienPhapLuat": "Bà Nguyễn Thị Kim Trâm - Giám đốc",
+		            "LinhVucHoatDong": "Vi điện tử-CNTT- viễn thông",
+		            "TenDuAnDauTu": "Nhà máy sản xuất và ứng dụng công nghệ LED​​",
+		            "MucTieuQuyMoDuAn": [
+		                "- Giai đoạn I (2012-2014): ​SX thử tại KCNC với quy mô là 200.000 sản phẩm mẫu.",
+		                "- Giai đoạn II (2014 trở đi): Xây dựng nhà máy SX & ứng dụng CN LED trên quy mô SX là 5 triệu sản phẩm/tháng.​​"
+		            ],
+		            "DiaChiTrongKhu": "Lô I3 đường N2 - Trung tâm R&D",
+		            "DienThoai": "37361942",
+		            "Fax": "37360714",
+		            "Website": "http://uvt-diodes.com",
+		            "TaiLieuDinhKem": ""
+		        }
+	        },
+	        "geometry": {
+	            "type": "Polygon",
+	            "coordinates": [
+	               [[118.375,770.3125],[128.625,774.4375],[137,764.9375],[126.875,760.5625],[118.375,770.3125]]
+	            ]
+	        }
+	    },
+    	{
+	        "type": "Feature",
 	        "id": "SANKYO",
 	        "properties": {
 	            "name": "SANKYO",
                 "gateway": [ 280, 827.25 ],
-                "information": {}
+                "information": {
+
+                }
 	        },
 	        "geometry": {
 	            "type": "Polygon",
@@ -84,7 +120,8 @@
             "id": "E6",
             "properties": {
                 "name": "E6",
-                "gateway": [748,471.125]
+                "gateway": [747.5,439.25]
+
             },
             "geometry": {
                 "type": "Polygon",
@@ -98,7 +135,7 @@
             "id": "E5",
             "properties": {
                 "name": "E5",
-                "gateway": [722.75,459.375 ]
+                "gateway": [ 699.3125,471.125 ]
             },
             "geometry": {
                 "type": "Polygon",
@@ -771,7 +808,35 @@
 	            "name": "E3",
                 "gateway": [
                 	622.25,459.375
-                ]
+                ],
+                "data": {
+		            "ID": 63,
+		            "TenDoanhNghiep": "Viện Kỹ thuật Công nghệ cao NTT-Đại học Nguyễn Tất Thành-Chi nhánh Khu Công nghệ cao TP.HCM",
+		            "GoiTat": "",
+		            "QuocGia": "Việt Nam",
+		            "DaiDienPhapLuat": "Nguyễn Mạnh Hùng - Giám đốc chi nhánh",
+		            "LinhVucHoatDong": "Nghiên cứu, triển khai, đào tạo",
+		            "TenDuAnDauTu": "Trung tâm phát triển công nghệ cao Đại Học Nguyễn Tất Thành​​",
+		            "MucTieuQuyMoDuAn": [
+		                "- Xây dựng viện kỹ thuật cao NTT là một viện nghiên cứu và phát triển có tầm ở khu vực Đông Nam Á. Làm nền tản dịch chuyển Đại học Nguyễn Tất Thành từ Đại học ứng dụng sang Đại học ứng dụng và nghiên cứu, góp phần vào công cuộc đổi mới căn bản và toàn diện nền giáo dục của đất nước, đặc biệt là lĩnh vực giáo dục Đại học.",
+		                "- Xây dựng Viện thành một cơ sở khoa học - công nghệ luôn đồng hành với các nhà khoa học trong các hoạt động nghiên cứu ứng dụng và chuyển giao công nghệ. Tập hợp đội ngũ chuyên gia đủ khả năng thực hiện nhiệm vụ nghiên cứu ứng dụng, giải mã công nghệ, hoàn thiện các công nghệ thúc đẩy việc nội địa hóa sản phẩm, tạo lập các doanh nghiệp khoa học-công nghệ.",
+		                "- Hỗ trợ nhà khoa học, doanh nghiệp, cá nhân trong việc chế thử, ươm tạo, ​đến quy mô công nghiệp và phát triển sản phẩm.",
+		                "- Tư vấn doanh nghiệp tiếp cận, sử dụng công nghệ tiên tiến.",
+		                "- Ươm tạo doanh nghiệp trẻ, tạo ra một hệ thống các doanh nghiệp khoa học công nghệ.",
+		                "- Đào tạo kiến thức quản lý, đồng hành với các doanh nghiệp khoa học-công nghệ trong giai đọan đầu thành lập.",
+		                "- Nâng cao năng lực đào tạo và nghiên cứu khoa học cho trường Đại học Nguyễn Tất Thành.",
+		                "- Quy mô: 01 trung tâm chính và 04 phòng thí nghiệm trên tổng diện tích 45.419 m2, gồm:",
+		                "(1) Phòng TN CNSH - Y - Dược",
+		                "(2) Phòng TN CNTT - Viễn thông",
+		                "(3) Phòng TN CN Tự động hóa & Robot",
+		                "(4) Phòng TN Năng lượng & Môi trường"
+		            ],
+		            "DiaChiTrongKhu": "Lô E3-I.1, E3-I.2, E3-I.3, đường D1",
+		            "DienThoai": "62619423",
+		            "Fax": "",
+		            "Website": "http://ntt.edu.vn/ntt_trangchu/",
+		            "TaiLieuDinhKem": ""
+		        }
 	        },
 	        "geometry": {
 	            "type": "Polygon",
@@ -801,7 +866,28 @@
 	            "name": "E4",
                 "gateway": [
                 	604.75,431.875
-                ]
+                ],
+                "data": {
+		            "ID": 64,
+		            "TenDoanhNghiep": "Trung tâm công nghệ và quản lý môi trường",
+		            "GoiTat": "ETM",
+		            "QuocGia": "Việt Nam",
+		            "DaiDienPhapLuat": "Bà Huỳnh Ngọc Phương Mai - Giám đốc",
+		            "LinhVucHoatDong": "Nghiên cứu & Triển khai",
+		            "TenDuAnDauTu": "Trung tâm công nghệ và quản lý môi trường​",
+		            "MucTieuQuyMoDuAn": [
+		                "Xây dựng CSHT phục vụ hoạt động NCKH, đào tạo nguồn nhân lực trong lĩnh vực CN môi trường, bao gồm các hạng mục sau:",
+		                "- Hệ thống PTN nghiên cứu ứng dụng về CN môi trường, trang thiết bị hiện đại với các mô hình nghiên cứu về CN xử lý chất thải phục vụ cho công tác nghiên cứu và đào tạo về CN.",
+		                "- Hệ thống PTN nghiên cứu ứng dụng về CN môi trường.",
+		                "- Hệ thống PTN phân tích và đánh giá ô nhiễm môi trường​.",
+		                "- Hệ thống phòng họp phục vụ các khóa đào tạo ngắn hạn."
+		            ],
+		            "DiaChiTrongKhu": "Lô T2-6, Đường D1",
+		            "DienThoai": "38981501",
+		            "Fax": "38981505",
+		            "Website": "http://www.etmcenter.com.vn/",
+		            "TaiLieuDinhKem": ""
+		        }
 	        },
 	        "geometry": {
 	            "type": "Polygon",
@@ -861,7 +947,25 @@
 	            "name": "I6",
                 "gateway": [
                 	854,383.25
-                ]
+                ],
+                "data": {
+		            "ID": 4,
+		            "TenDoanhNghiep": "Công ty Cổ phần Công Viên Sài Gòn Silicon",
+		            "GoiTat": "Sài Gòn Silicon",
+		            "QuocGia": "Việt Nam",
+		            "DaiDienPhapLuat": "Nguyễn Minh Hiếu",
+		            "LinhVucHoatDong": "Dịch vụ thương mại",
+		            "TenDuAnDauTu": "Xây dựng và Phát triển Khu Công viên Sài Gòn Silicon",
+		            "MucTieuQuyMoDuAn": [
+		                "Quy tụ chuyên gia, nhà khoa học, doanh nghiệp Việt Kiều về đầu tư sản xuất lĩnh vực công nghệ cao và công nghiệp hỗ trợ công nghệ cao",
+		                "Thu hút và tiếp cận 11 doanh nghiệp ngành vi mạch bán dẫn của Việt Kiều tại Silicon Valley về đầu tư tại Saigon Silicon City - Khu Công nghệ cao."
+		            ],
+		            "DiaChiTrongKhu": "Lô I6, Lô I7, Đường D1",
+		            "DienThoai": "",
+		            "Fax": "",
+		            "Website": "",
+		            "TaiLieuDinhKem": ""
+		        }
 	        },
 	        "geometry": {
 	            "type": "Polygon",
@@ -890,7 +994,7 @@
 	        "properties": {
 	            "name": "I8-1",
                 "gateway": [
-                	 708.75,441.25 
+                	705.3125,440.875
                 ]
 	        },
 	        "geometry": {
@@ -905,7 +1009,7 @@
 	        "properties": {
 	            "name": "I-8-2",
                 "gateway": [
-                	 680,416.875
+                	676.65625,418.34375
                 ]
 	        },
 	        "geometry": {
@@ -920,7 +1024,7 @@
 	        "properties": {
 	            "name": "I8-3",
                 "gateway": [
-                	642.5,390.125
+                	639.3125,390.78125
                 ]
 	        },
 	        "geometry": {
@@ -936,7 +1040,25 @@
 	            "name": "I-9",
                 "gateway": [
                 	 542.25,363.25
-                ]
+                ],
+                "data": {
+		            "ID": 1,
+		            "TenDoanhNghiep": "Công ty Cổ phần Tập đoàn Công nghệ CMC",
+		            "GoiTat": "CMC",
+		            "QuocGia": "Việt Nam",
+		            "DaiDienPhapLuat": "Ông Nguyễn Trung Chính - Tổng Giám đốc",
+		            "LinhVucHoatDong": "Vi điện tử-CNTT- viễn thông",
+		            "TenDuAnDauTu": "Xây dựng mạng Hạ tầng Viễn thông – Internet Khu Công nghệ cao TPHCM - Giai đoạn 1​",
+		            "MucTieuQuyMoDuAn": [
+		                "- Đầu tư xây dựng hoàn chỉnh hệ thống mạng hạ tầng viễn thông - Internet tiên tiến, đạt các chuẩn cao nhất của quốc tế theo thiết kế cơ sở đã được phê duyệt của BQLKCNC, nhằm cung cấp các dịch vụ viễn thông - Internet từ cơ bản đến nâng cao cho các khách hàng là các nhà đầu tư, doanh nghiệp, cá nhân hoạt động trong nội bộ KCNC​.",
+		                "- Đầu tư xây dựng cơ sở dữ liệu (Data Center) nhằm cung cấp dịch vụ Datacenter cho các khách hàng trong KCNC.​​"
+		            ],
+		            "DiaChiTrongKhu": "Lô C1-1, đường D1",
+		            "DienThoai": "22264777",
+		            "Fax": "",
+		            "Website": "http://www.cmc.com.vn/",
+		            "TaiLieuDinhKem": ""
+		        }
 	        },
 	        "geometry": {
 	            "type": "Polygon",
@@ -1137,7 +1259,7 @@
 	        }
 	    },{
 	        "type": "Feature",
-	        "id": "I-11",
+	        "id": "I-11-",
 	        "properties": {
 	            "name": "SAMSUNG",
                 "gateway": [

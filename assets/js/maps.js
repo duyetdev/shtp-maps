@@ -121,37 +121,120 @@ app.getDirection = function(input) {
     console.log('Start route from: ', form_point, ' => ', start_point_in_route);
 
     // Fix <to> point not near any route 
-    var end_point_in_route = app.getGeoLoc(to_point);   
-    console.log('========================================== End route: => ', end_point_in_route);
-    if (!end_point_in_route) return;
+    var end_point_in_route = app.getGeoLoc(to_point);
 
-    var results = [];
+    console.info('Target: ', end_point_in_route);
+
+    // if (!end_point_in_route) return;
+
+    var results = [[form_point]];
     var point = start_point_in_route;
 
     var shortest = 0;
+    var is_finish = false;
+    var lasted_result = null;
+    var loop_count = 0;
+    var result_index = -1;
+
     while (true) {
-        if (!results.length) {
-            var nexts = getNext(point);
-            for (var i in nexts) results.push(nexts[i]);
-            continue;
+        console.info(' >>>>>>> loop ', loop_count++, '');
+        var is_change = false;
+        var new_results = [];
+
+
+        var shortest_index = 0;
+        var shortest_l = getLengthOfRoute(results[0]);
+        // console.log("results here", JSON.stringify(results));
+        for (var i in results) {
+            var p = results[i];
+            var length = getLengthOfRoute(p); // int 
+
+            if (length < shortest_l) {
+                shortest_l = length;
+                shortest_index = i;
+            }
         }
 
+        var p = results[shortest_index];
+        var last_point = p[p.length - 1]; console.info("last point: ", last_point);
+        var nexts = getNext(last_point); console.info('Next:::', nexts);
         
-        // =====================
+        if (!app.isNear(last_point, to_point) && nexts) {
+            for (var j in nexts) { 
+                if (!isExists(p, nexts[j])) {
+                    is_change = true;
+                    var new_current_path = JSON.parse(JSON.stringify(p));
+                    new_current_path.push(nexts[j]);
+                    console.error(' ~~~~~~~~~~~> ', new_current_path);
+                    new_results.push(new_current_path);
+                        
+                }
+            }
+        }
+
+        if (new_results.length == 0 && !app.isNear(last_point, to_point)) {
+            console.log(' !! nexts', nexts, last_point);
+           is_change = true;
+        }
+
+        for (var i in results) {
+            if (is_change)
+            {
+                if(i!=shortest_index) new_results.push(results[i])
+            }
+            else {
+                new_results.push(results[i])
+            }
+
+        }
+
+        console.log('2. Result >>>', results);
+        results = new_results;
+
+        if (!is_change) {
+            result_index = -1;
+
+            var shortest_index = 0;
+            var shortest_l = getLengthOfRoute(results[0]);
+            // console.log("results here", JSON.stringify(results));
+            for (var i in results) {
+                var p = results[i];
+                var last_point = p[p.length - 1];
+                var length = getLengthOfRoute(p); // int 
+
+                if ((length < shortest_l || result_index == -1) && app.isNear(last_point, to_point)) {
+                    shortest_l = length;
+                    shortest_index = i;
+                    result_index = i;
+                }
+            }
+
+            break;
+        }
     }
 
+    console.log('result: shortest_index', result_index, results)
+
     // getRoute([form_point], form_point);
-    var result = getBestResult(results);
-    console.info(' ===> ', result);
+    var result = results[result_index];
+    // result.push(to_point);
+    console.info(' Last result : =================> ', result);
 
     // TODO: Fix here
     // result = getFullPath(result);
 
     return result;
 
+    function isExists(route, point) {
+        for (var i in route) {
+            if (app.isNear(point, route[i])) return true;
+        }
+
+        return false;
+    }
+
     function getRoute(route, point, ignore) {
         var nexts = getNext(point, ignore);
-//         console.log('get nexts from ', route ,' => ', nexts)
 
         for (var i in nexts) {
             var next = nexts[i];
@@ -243,13 +326,13 @@ app.getDirection = function(input) {
         return [];
     }
 
-    function getDistanceOfRoute(route) {
+    function getLengthOfRoute(route) {
         var distance = 0;
         if (!route) return distance;
 
         var l = route.length;
         for (var i = 0; i < l; i++) {
-            if (route[i] && route[i + 1])
+            if (typeof route[i] != 'undefined' && typeof route[i + 1] != 'undefined')
                 distance += app.distance(route[i], route[i + 1]);
         }
 
@@ -281,6 +364,7 @@ app.getGeoLoc = function(point) {
 }
 
 app.distance = function(a, b) {
+    if (!a || !b) return 0;
     return Math.sqrt(Math.pow(a[0] - b[0], 2) + Math.pow(a[1] - b[1], 2));
 }
 
@@ -291,7 +375,7 @@ app.isNear = function(a, b, distance) {
 
 app.checkIgnore = function (a, ignore_list) {
     for (var i in ignore_list) {
-        if (this.isNear(ignore_list[i], a)) return false;
+        if (this.isNear(ignore_list[i], a,20)) return false;
     }
 
     return true;
@@ -357,13 +441,23 @@ window.getDirectionTo = app.getDirectionTo = function(long, lat, e ) {
     e.preventDefault();
     $('#popup').popover('hide');
 
-    if (!app.default_routing_start || !long || !lat) return false;
-    var point = [];
-    point.push(long); 
-    point.push(lat);
+    if (!app.direction_input.from || !app.direction_input.to) {
 
-    console.log({from: app.default_routing_start, to: point});
-    var direction = app.getDirection({from: app.default_routing_start, to: point});
+        return;
+    }
+
+    // app.direction_data
+
+    // if (!app.default_routing_start || !long || !lat) return false;
+    // var point = [];
+    // point.push(long); 
+    // point.push(lat);
+
+    // console.log({from: app.default_routing_start, to: point});
+
+
+
+    var direction = app.getDirection({from: app.direction_input.from.geoloc, to: app.direction_input.to.geoloc});
 
     console.log('  ~> ', JSON.stringify( [direction]))
 
@@ -479,9 +573,14 @@ app.getAndMoveTo = function(enterprise ) {
       'animation': true,
       'html': true,
       'content': '<div class="popup-button"><a href="#" class="btn btn-custom" id="view_info" onClick="modalView(\''+ block_id +'\', event)">Thông tin</a>\
-        <a href="#" id="get_direction" class="btn btn-custom" onClick="getDirectionTo('+ geodata.properties.gateway +', event)">Chỉ đường đến đây</a></div>'
+        <a href="#" id="get_direction" class="btn btn-custom" onClick="addSearchPlace(\''+ block_id +'\', '+ geodata.properties.gateway +', event)">Chỉ đường đến đây</a></div>'
     });
     $(element).popover('show');
+}
+
+function addSearchPlace(block_id, long, lat, e) {
+    // document.getElementById('to_place').value = block_id;
+    getDirectionTo(long, lat, e);
 }
 
 app.getBlockIdFromAddress = function(address) {
