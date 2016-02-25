@@ -217,6 +217,7 @@ app.getDirection = function(input) {
 
     // getRoute([form_point], form_point);
     var result = results[result_index];
+    // var result = getFullPath(result);
     // result.push(to_point);
     console.info(' Last result : =================> ', result);
 
@@ -292,12 +293,13 @@ app.getDirection = function(input) {
 
     function getFullPath (route) {
         var full = [];
-        if (!route) return []; 
-
-        var l = route.length;
-        for (var i = 0; i < l - 1; i++) {
+        var l = route.length; console.log('route', route)
+        for (var i = 0; i < l; i++) {
             if (route[i] && route[i + 1])
+                full = merge(full, [route[i]]);
                 full = merge(full, getChildPathOf(route[i], route[i + 1]));
+                console.log('getChildPathOf(route[i], route[i + 1])', getChildPathOf(route[i], route[i + 1]))
+                full = merge(full, [route[i + 1]]);
         }
 
         return full;
@@ -308,8 +310,7 @@ app.getDirection = function(input) {
         
         for (var i in arr) {
             for (var j in arr2) {
-                if (arr[i] == arr2[j]) arr[i] = arr2[j];
-                else arr.push(arr2[j]);
+                arr.push(arr2[j]);
             }
         }
 
