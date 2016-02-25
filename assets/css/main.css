@@ -158,3 +158,15 @@ body {
 .enterprise_info span {
   font-weight: 300;
 }
+
+.dotdot {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #088;
+    border-radius: 10px;
+    background-color: #0FF;
+    width: 10px;
+    height: 10px;
+    display: block;
+    background: #000;
+}

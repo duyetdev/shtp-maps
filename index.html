@@ -2,6 +2,7 @@
 
 Setup current postion: http://maps.com/?long=123.145&lat=423.123
 Debug:  http://maps.com/?__debug=0
+Draw mode:  http://maps.com/?__draw=1
 
 -->
 
@@ -32,7 +33,10 @@ Debug:  http://maps.com/?__debug=0
         <div class="tools">
         <div id="search">
             <div>
-                <input type="text" name="" id="place" class="clearable" placeholder="Search ...">
+                <input type="text" name="" id="from_place" class="clearable" placeholder="Điểm đi">
+            </div>
+            <div>
+                <input type="text" name="" id="to_place" class="clearable" placeholder="Điểm đến">
             </div>
         </div>
         </div>
@@ -47,6 +51,7 @@ Debug:  http://maps.com/?__debug=0
         <form class="form-inline">
             <label>Geometry type &nbsp;</label>
             <select id="type">
+                <option value="">None</option>
                 <option value="Point">Point</option>
                 <option value="Polygon">Polygon</option>
                 <option value="LineString">LineString</option>
@@ -87,7 +92,7 @@ Debug:  http://maps.com/?__debug=0
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="./assets/js/bootstrap3-typeahead.min.js"></script>
     <script type="text/javascript" src="./assets/js/islab-maps.js"></script>
-    <script type="text/javascript" src="./assets/js/route.js"></script>
+    <script type="text/javascript" src="./assets/route.js"></script>
     <script type="text/javascript" src="./assets/geodata.js"></script>
     <script type="text/javascript" src="./assets/enterprise.js"></script>
     <script type="text/javascript" src="./assets/js/maps.js"></script>
@@ -96,8 +101,13 @@ Debug:  http://maps.com/?__debug=0
 
     // Active debug
     app.debug = true;
+    app.show_draw_line = true;
 
     app.default_routing_start = [604.75,431.875]; // [141.375,789.125];
+    app.direction_data = {
+        from: null,
+        to: null    
+    };
 
     if (QueryString && QueryString.long && QueryString.lat) {
         var long = parseFloat(QueryString.long);
@@ -107,6 +117,10 @@ Debug:  http://maps.com/?__debug=0
     if (QueryString && QueryString.__debug) {
         if (QueryString.__debug == '1') app.debug = true;
         else app.debug = false;
+    }
+    if (QueryString && QueryString.__draw) {
+        if (QueryString.__draw == '1') app.show_draw_line = true;
+        else app.show_draw_line = false;
     }
 
     app.vector_direction = null;
@@ -120,7 +134,7 @@ Debug:  http://maps.com/?__debug=0
     var path = [];
 
     // Search box typeahead
-    $("#place").typeahead({
+    $("#from_place").typeahead({
         source: app.enterprise.enterprise,
         autoSelect: true,
         displayText: function(item) {
@@ -128,6 +142,13 @@ Debug:  http://maps.com/?__debug=0
         },
         afterSelect: function(item) {
             if (!item) return;
+
+            app.direction_input.from = {
+                id: item.id,
+                geoloc: item.properties.gateway || [],
+                information: item.properties.information
+            };
+            
             app.getAndMoveTo(item);
         }
     });
@@ -238,50 +259,60 @@ Debug:  http://maps.com/?__debug=0
     app.direction_input = {
         from: {
             id: 'start_point',
-            geoloc: app.default_routing_start
+            geoloc: app.default_routing_start,
+            information: {
+                    "ID": 65,
+                    "TenDoanhNghiep": "Vị trí hiện tại",
+                    "GoiTat": "UVP R&D Co., Ltd",
+                    "QuocGia": "Việt - Mỹ",
+                    "DaiDienPhapLuat": "Bà Nguyễn Thị Kim Trâm - Giám đốc",
+                    "LinhVucHoatDong": "Vi điện tử-CNTT- viễn thông"
+            }
         },
         to: null
     };
+    document.getElementById('from_place').value = app.direction_input.from.id;
+
     var addDirectionInput = function(point) {
         if (!app.direction_input) app.direction_input = {};
         
         if (app.direction_input.from == null) app.direction_input.from = point;
         else if (app.direction_input.to == null) app.direction_input.to = point;
         else {
-            app.direction_input = {
-                from: point,
-                to: null
-            }
+            app.direction_input.to = point;
         }
 
         if (app.debug) document.getElementById('info').innerHTML = JSON.stringify(app.direction_input);
 
-        if (app.direction_input.from != null && app.direction_input.to != null) {
-            var direction = app.getDirection({from: app.direction_input.from.geoloc, to: app.direction_input.to.geoloc});
+        document.getElementById('from_place').value = app.direction_input.from && app.direction_input.from.information ? app.direction_input.from.information.TenDoanhNghiep : '';
+        document.getElementById('to_place').value = app.direction_input.to  && app.direction_input.to.information ? app.direction_input.to.information.TenDoanhNghiep : '';
 
-            console.log('  ~> ', JSON.stringify( [direction]))
+        // if (app.direction_input.from != null && app.direction_input.to != null) {
+        //     var direction = app.getDirection({from: app.direction_input.from.geoloc, to: app.direction_input.to.geoloc});
 
-            // Start draw direction
-            map.removeLayer(app.vector_direction); // Remove old 
-            var vectorSource = new ol.source.Vector();
-            vectorSource.addFeature(new ol.Feature(
-                new ol.geom.MultiLineString([ direction ])
-            ));
-            app.vector_direction = new ol.layer.Vector({
-                source: vectorSource,
-                style: new ol.style.Style({
-                    stroke: new ol.style.Stroke({
-                        color: '#679DF6',
-                        width: 6,
-                        lineCap: 'round'
-                    }),
-                    fill: new ol.style.Fill({
-                        color: '#679DF6'
-                    })
-                }) 
-            });
-            map.addLayer(app.vector_direction);
-        }
+        //     console.log('  ~> ', JSON.stringify( [direction]))
+
+        //     // Start draw direction
+        //     map.removeLayer(app.vector_direction); // Remove old 
+        //     var vectorSource = new ol.source.Vector();
+        //     vectorSource.addFeature(new ol.Feature(
+        //         new ol.geom.MultiLineString([ direction ])
+        //     ));
+        //     app.vector_direction = new ol.layer.Vector({
+        //         source: vectorSource,
+        //         style: new ol.style.Style({
+        //             stroke: new ol.style.Stroke({
+        //                 color: '#679DF6',
+        //                 width: 6,
+        //                 lineCap: 'round'
+        //             }),
+        //             fill: new ol.style.Fill({
+        //                 color: '#679DF6'
+        //             })
+        //         }) 
+        //     });
+        //     map.addLayer(app.vector_direction);
+        // }
     }
 
     // Current position 
@@ -305,19 +336,17 @@ Debug:  http://maps.com/?__debug=0
             return feature;
         });
 
-        var info = document.getElementById('place');
-        if (feature) info.value = feature.getId() + ': (' + feature.get('gateway') + ')';
+        // var info = document.getElementById('place');
+        // if (feature) info.value = feature.getId() + ': (' + feature.get('gateway') + ')';
 
-
-
-        if (feature && 1 == 3) {
+        if (feature) {
             var point = feature.getId() + ': (' + feature.get('gateway') + ')';
             info.value = point;
-            addDirectionInput({
-                id: feature.getId(),
-                geoloc: feature.get('gateway'),
-                information: feature.get('information')
-            });
+            // addDirectionInput({
+            //     id: feature.getId(),
+            //     geoloc: feature.get('gateway'),
+            //     information: feature.get('information')
+            // });
         } else {
             // info.value = '&nbsp;';
         }
@@ -377,7 +406,7 @@ Debug:  http://maps.com/?__debug=0
 
         var element = popup.getElement();
         var coordinate = evt.coordinate;
-        $(element).popover('destroy');
+        // $(element).popover('destroy');
 
         var feature = map.forEachFeatureAtPixel(evt.pixel, function(feature) {
             return feature;
@@ -386,25 +415,34 @@ Debug:  http://maps.com/?__debug=0
         if (feature) {
             var point = feature.getId() + ': (' + feature.get('gateway') + ')';
             info.value = point;
-            /*
+            
             addDirectionInput({
                 id: feature.getId(),
                 geoloc: feature.get('gateway'),
-                information: feature.get('information')
+                information: feature.get('data')
             });
-            */
 
             popup.setPosition(coordinate);
             $(element).popover({
               'placement': 'top',
               'animation': true,
               'html': true,
-              'content': '<div class="popup-button"><a href="#" class="btn btn-custom" id="view_info" onClick="modalView(\''+ feature.getId() +'\', event)">Thông tin</a>\
-                <a href="#" id="get_direction" class="btn btn-custom" onClick="getDirectionTo('+ feature.get('gateway') +', event)">Chỉ đường đến đây</a></div>'
+              'content': '<div class="popup-button"><a href="#" class="btn btn-custom" id="view_info" onClick=\'modalView("'+ feature.getId() +'", '+ JSON.stringify(feature.get('data')) +', event)\'>Thông tin</a>\
+                <a href="#" id="get_direction" class="btn btn-custom" onClick="addSearchPlace(\''+ feature.getId() +'\', '+ feature.get('gateway') +', event)">Chỉ đường đến đây</a></div>'
             });
             $(element).popover('show');
         }
     });
+
+    /*
+        Form change
+     */
+     $('#from_place').change(function(e) {
+        if (!$(this).val()) app.direction_input.from = null;
+     });
+     $('#to_place').change(function(e) {
+        if (!$(this).val()) app.direction_input.to = null;
+     });
 
     // ===========================
     // Debug tools
@@ -444,6 +482,7 @@ Debug:  http://maps.com/?__debug=0
     var draw; // global so we can remove it later
     var typeSelect = document.getElementById('type');
     function addInteraction() {
+        if (!typeSelect.value) return;
         draw = new ol.interaction.Draw({
             features: features,
             type: /** @type {ol.geom.GeometryType} */ (typeSelect.value)
@@ -482,6 +521,73 @@ Debug:  http://maps.com/?__debug=0
     };
 
      // addInteraction();
+     
+    if (app.show_draw_line) {
+        for (var i in window.app.route) {
+            var item = window.app.route[i];
+            var route = [];
+
+            router.push(item.start);
+            for (var i in item.points) router.push(item.points[i]);
+            router.push(item.next);
+
+            console.log(router)
+
+            var draw_line = null;
+            var vectorSource = new ol.source.Vector();
+            vectorSource.addFeature(new ol.Feature(
+                new ol.geom.MultiLineString([ router ])
+            ));
+
+            app.vector_direction = new ol.layer.Vector({
+                source: vectorSource,
+                style: new ol.style.Style({
+                    stroke: new ol.style.Stroke({
+                        color: '#F00',
+                        width: 1,
+                        lineCap: 'round'
+                    }),
+                    fill: new ol.style.Fill({
+                        color: '#FFF'
+                    })
+                }) 
+            });
+
+            map.addLayer(app.vector_direction);
+        }
+
+        // Draw gateway
+        $.get('./assets/data.geojson', function(data) {
+            try {
+                var data = JSON.parse(data);    
+                console.log(data)
+                var features = data.features;
+
+                for (var i in features) {
+                    var gateway = features[i].properties.gateway;
+                    if (!gateway) continue;
+
+                    var dot = document.createElement('div');
+                    dot.className = 'dotdot';
+
+                    // Current position 
+                    var current_position = new ol.Overlay({
+                        position: gateway,
+                        positioning: 'center-center',
+                        element: dot,
+                        stopEvent: false
+                    });
+                    map.addOverlay(current_position);
+
+                }
+            }
+            catch (e) {
+                console.log('data error')
+            }  
+
+        });
+    }
+
     </script>
 </body>
 
