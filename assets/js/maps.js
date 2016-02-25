@@ -522,6 +522,10 @@ window.getDirectionTo = app.getDirectionTo = function(long, lat, e ) {
 
 /* View information  */
 
+function closeAllModal () {
+    $('#modal').modal('hide');
+}
+
 window.modalView = app.modalView = function(id, data, e) {
     e.preventDefault();
     $('#popup').popover('hide');
