@@ -223,7 +223,9 @@ Draw mode:  http://maps.com/?__draw=1
 
     var map = new ol.Map({
         target: 'map',
-        interactions: ol.interaction.defaults() , // .extend([select]),
+        interactions: ol.interaction.defaults({
+            pinchRotate: false
+        }) , // .extend([select]),
         layers: [
             new ol.layer.Image({
                 source: new ol.source.ImageStatic({
@@ -402,7 +404,7 @@ Draw mode:  http://maps.com/?__draw=1
     /**
      * Click to building block
      */
-    map.on('click', function(evt) {
+    map.on('singleclick', function(evt) {
         // Debug
         document.getElementById('message').innerHTML = '(x, y) = ' + evt.coordinate.toString();
 
@@ -419,7 +421,7 @@ Draw mode:  http://maps.com/?__draw=1
         // Get postion at block
         displayFeatureInfo(evt.pixel);
 
-        var element = popup.getElement();
+        var element = popoverup.getElement();
         var coordinate = evt.coordinate;
         
         var feature = map.forEachFeatureAtPixel(evt.pixel, function(feature) {
