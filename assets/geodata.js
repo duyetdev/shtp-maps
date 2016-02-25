@@ -1,8 +1,5 @@
 window.app = window.app || {};
-window.app.enterprise_geodata = 
-
-
-{
+window.app.enterprise_geodata =  {
     "type": "FeatureCollection",
     "features": [
         {
@@ -50,7 +47,7 @@ window.app.enterprise_geodata =
             "id": "I3-9",
             "properties": {
                 "name": "COPAL-2",
-                "gateway": [ 442.6875,648.75 ],
+                "gateway": [ 442.6875, 648.75 ],
                 "data": {
                     "ID": 67,
                     "TenDoanhNghiep": "Công ty TNHH Sonion Việt Nam",
@@ -86,7 +83,7 @@ window.app.enterprise_geodata =
             "id": "I-10.1",
             "properties": {
                 "name": "I-10.1",
-                "gateway": [ 525.125,358.75 ],
+                "gateway": [ 525.125, 358.75 ],
                 "data": {
                     "ID": 18,
                     "TenDoanhNghiep": "Công ty TNHH CNS Amura Precision",
@@ -129,7 +126,7 @@ window.app.enterprise_geodata =
             "id": "I-10.2",
             "properties": {
                 "name": "I-10.2",
-                "gateway": [ 543.625,378.25 ],
+                "gateway": [ 543.625, 378.25 ],
                 "data": {
                     "ID": 24,
                     "TenDoanhNghiep": "Công ty TNHH Đầu tư nhà xưởng Lập Thành",
@@ -176,7 +173,7 @@ window.app.enterprise_geodata =
             "id": "I-10.6",
             "properties": {
                 "name": "I-10.6",
-                "gateway": [ 501.4375,416 ],
+                "gateway": [ 501.4375, 416 ],
                 "data": {
                     "ID": 8,
                     "TenDoanhNghiep": "Công ty Cổ phần Kỹ thuật công nghệ tự động Hải Nam",
@@ -219,7 +216,7 @@ window.app.enterprise_geodata =
             "id": "I1-N1",
             "properties": {
                 "name": "I1-N1 NIDEC-SANKYO",
-                "gateway": [ 267.4375,833.875],
+                "gateway": [ 267.4375, 833.875 ],
                 "data": {
                     "ID": 73,
                     "TenDoanhNghiep": "Công ty TNHH Nidec Sankyo Việt Nam",
@@ -251,13 +248,13 @@ window.app.enterprise_geodata =
                 ]
             }
         },
-        
+
         {
             "type": "Feature",
             "id": "NIDEC-VIETNAM",
             "properties": {
                 "name": "NIDEC-VIETNAM",
-                "gateway": [ 265.3125,743.5],
+                "gateway": [ 265.3125, 743.5 ],
                 "data": {
                     "ID": 75,
                     "TenDoanhNghiep": "Công ty TNHH Nidec Việt Nam Corporation",
@@ -344,7 +341,7 @@ window.app.enterprise_geodata =
             "id": "I-1d-2",
             "properties": {
                 "name": "I-1d-2 NIDEC-SEIMTTBU",
-                "gateway": [289.8125,815.375],
+                "gateway": [ 289.8125, 815.375 ],
                 "data": {
                     "ID": 74,
                     "TenDoanhNghiep": "Công ty TNHH Nidec Seimitsu Việt Nam",
@@ -385,7 +382,7 @@ window.app.enterprise_geodata =
             "id": "I1.3-N1",
             "properties": {
                 "name": "I1.3-N1",
-                "gateway": [290.1875,809.875],
+                "gateway": [ 290.1875, 809.875 ],
                 "data": {
                     "ID": 66,
                     "TenDoanhNghiep": "Công ty TNHH Nidec Servo Việt Nam",
@@ -407,7 +404,7 @@ window.app.enterprise_geodata =
             },
             "geometry": {
                 "type": "Polygon",
-                "coordinates": [[234.3125,798.875],[281.1875,819.25],[300.8125,796.875],[251.3125,775.375],[251.1875,778.75],[249.1875,785.75],[246.6875,789.375],[243.3125,793.875],[239.3125,797.75],[234.3125,798.875]]
+                "coordinates": [ [ [ 234.3125, 798.875 ], [ 281.1875, 819.25 ], [ 300.8125, 796.875 ], [ 251.3125, 775.375 ], [ 251.1875, 778.75 ], [ 249.1875, 785.75 ], [ 246.6875, 789.375 ], [ 243.3125, 793.875 ], [ 239.3125, 797.75 ], [ 234.3125, 798.875 ] ] ]
             }
         },
         {
@@ -415,7 +412,7 @@ window.app.enterprise_geodata =
             "id": "K02",
             "properties": {
                 "name": "K02",
-                "gateway": [434.3125,664.625],
+                "gateway": [ 434.3125, 664.625 ],
                 "data": {
                     "ID": 10,
                     "TenDoanhNghiep": "Công ty Cổ phần SX DV Công nghệ Bán dẫn Toàn cầu VN",
@@ -454,7 +451,7 @@ window.app.enterprise_geodata =
             "id": "K03",
             "properties": {
                 "name": "K03",
-                "gateway": [446.5625,673.875],
+                "gateway": [ 446.5625, 673.875 ],
                 "data": {
                     "ID": 26,
                     "TenDoanhNghiep": "Công ty TNHH Điện tử D.G.S",
@@ -492,7 +489,7 @@ window.app.enterprise_geodata =
             "id": "K04.1",
             "properties": {
                 "name": "K04.1",
-                "gateway": [456.6875,681.5],
+                "gateway": [ 456.6875, 681.5 ],
                 "data": {
                     "ID": 2,
                     "TenDoanhNghiep": "Công ty Cổ phần Thông Minh MK",
@@ -533,7 +530,7 @@ window.app.enterprise_geodata =
             "id": "K04.2",
             "properties": {
                 "name": "K04.2",
-                "gateway": [456.6875,681.5],
+                "gateway": [ 456.6875, 681.5 ],
                 "data": {
                     "ID": 12,
                     "TenDoanhNghiep": "Chi nhánh Công ty Cổ phần Tập đoàn MK",
@@ -612,7 +609,7 @@ window.app.enterprise_geodata =
             "id": "K06",
             "properties": {
                 "name": "K06",
-                "gateway": [474.0625,673.625],
+                "gateway": [ 474.0625, 673.625 ],
                 "data": {
                     "ID": 69,
                     "TenDoanhNghiep": "Cty TNHH MTV QSIC Việt Nam",
@@ -652,7 +649,7 @@ window.app.enterprise_geodata =
             "id": "I-3b-5",
             "properties": {
                 "name": "I-3b-5",
-                "gateway": [520.0625,688.25],
+                "gateway": [ 520.0625, 688.25 ],
                 "data": {
                     "ID": 55,
                     "TenDoanhNghiep": "Viện Vật liệu xậy dựng - Bộ Xây dựng",
@@ -690,7 +687,7 @@ window.app.enterprise_geodata =
             "id": "I-3b-4",
             "properties": {
                 "name": "I-3b-4",
-                "gateway": [520.5625,669.25],
+                "gateway": [ 520.5625, 669.25 ],
                 "data": {
                     "ID": 25,
                     "TenDoanhNghiep": "Công ty TNHH Đầu tư và phát triển Công nghệ thông minh",
@@ -729,7 +726,7 @@ window.app.enterprise_geodata =
             "id": "I-3b-3",
             "properties": {
                 "name": "I-3b-3",
-                "gateway": [545.8125,653.875],
+                "gateway": [ 545.8125, 653.875 ],
                 "data": {
                     "ID": 61,
                     "TenDoanhNghiep": "Trung tâm Thiết kế Chế tạo Thiết bị mới",
@@ -774,7 +771,7 @@ window.app.enterprise_geodata =
             "id": "I-3b-1.1",
             "properties": {
                 "name": "I-3b",
-                "gateway": [529.1875,663.25],
+                "gateway": [ 529.1875, 663.25 ],
                 "data": {
                     "ID": 32,
                     "TenDoanhNghiep": "Công ty TNHH Kỹ thuật Daikou Việt Nam",
@@ -819,7 +816,7 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "I-3b",
                 "gateway": [
-                   533.6875,662
+                   532.6875,661
                 ],
                 "data": {
                     "ID": 45,
@@ -861,7 +858,7 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "K08.2",
                 "gateway": [
-                    455.4375,675.125
+                    454.1875,676
                 ],
                 "data": {
                     "ID": 60,
@@ -901,7 +898,7 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "K08.3",
                 "gateway": [
-                    450.5625,671.375
+                    449.4375,672.625
                 ],
                 "data": {
                     "ID": 65,
@@ -942,7 +939,7 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "K09",
                 "gateway": [
-                    467.1875,668.125
+                   468.4375,669.375
                 ],
                 "data": {
                     "ID": 47,
@@ -985,7 +982,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "VIETCO",
                 "gateway": [
-                    493.9375,616.375
+                    491.9375,
+                    613.625
                 ],
                 "data": {
                     "ID": 22,
@@ -1028,7 +1026,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "HUDEN",
                 "gateway": [
-                    515.0625,623.375
+                    515.4375,
+                    622.125
                 ],
                 "data": {
                     "ID": 5,
@@ -1065,36 +1064,12 @@ window.app.enterprise_geodata =
         },
         {
             "type": "Feature",
-            "id": "K12",
-            "properties": {
-                "name": "K12",
-                "gateway": [
-                    513.875,
-                    636.4375
-                ]
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [ 517.875, 636.6875 ],
-                        [ 518.125, 633.4375 ],
-                        [ 521, 623.9375 ],
-                        [ 518.125, 623.4375 ],
-                        [ 512.25, 634.6875 ],
-                        [ 509.625, 635.3125 ],
-                        [ 517.875, 636.6875 ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
             "id": "PLAM KHOA",
             "properties": {
                 "name": "PLAM KHOA",
                 "gateway": [
-                   516.5625,611.125
+                    515.0625,
+                    610.625
                 ],
                 "data": {
                     "ID": 11,
@@ -1138,7 +1113,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "PLAM KHOA",
                 "gateway": [
-                    516.5625,611.125
+                    515.0625,
+                    610.625
                 ],
                 "data": {
                     "ID": 19,
@@ -1181,7 +1157,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "K13",
                 "gateway": [
-                    522.8125,596.875
+                    522.9375,
+                    594.5
                 ],
                 "data": {
                     "ID": 72,
@@ -1227,7 +1204,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "I4 - ALLIED",
                 "gateway": [
-                   584.5625,647.75
+                    583.9375,
+                    649.5
                 ],
                 "data": {
                     "ID": 71,
@@ -1274,7 +1252,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "tld",
                 "gateway": [
-                    290.4375,730.75
+                    291.8125,
+                    733.875
                 ],
                 "data": {
                     "ID": 44,
@@ -1325,7 +1304,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "hd",
                 "gateway": [
-                    324.9375,719.75
+                    327.6875,
+                    722
                 ],
                 "data": {
                     "ID": 46,
@@ -1373,7 +1353,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "C1-2 KHU-PHUC-HOP",
                 "gateway": [
-                   191.8125,759.25
+                    191.1875,
+                    756.125
                 ],
                 "data": {
                     "ID": 16,
@@ -1433,7 +1414,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "CMC",
                 "gateway": [
-                    220.9375,753.875
+                    219.9375,
+                    750.875
                 ],
                 "data": {
                     "ID": 1,
@@ -1474,7 +1456,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "K15",
                 "gateway": [
-                    351.0625,702
+                    353.6875,
+                    704.25
                 ],
                 "data": {
                     "ID": 20,
@@ -1513,7 +1496,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "PLAMSOON.1",
                 "gateway": [
-                    401.9375,666.625
+                    404.4375,
+                    669.125
                 ],
                 "data": {
                     "ID": 3,
@@ -1552,7 +1536,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "PLAMSOON.2",
                 "gateway": [
-                    401.9375,666.625
+                    404.4375,
+                    669.125
                 ],
                 "data": {
                     "ID": 7,
@@ -1593,7 +1578,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "PLAMSOON.3",
                 "gateway": [
-                    401.9375,666.625
+                    404.4375,
+                    669.125
                 ],
                 "data": {
                     "ID": 17,
@@ -1633,7 +1619,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "PLAMSOON.4",
                 "gateway": [
-                    401.9375,666.625
+                    404.4375,
+                    669.125
                 ],
                 "data": {
                     "ID": 36,
@@ -1676,7 +1663,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "PLAMSOON.5",
                 "gateway": [
-                    401.9375,666.625
+                    404.4375,
+                    669.125
                 ],
                 "data": {
                     "ID": 40,
@@ -1719,7 +1707,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "PLAMSOON.6",
                 "gateway": [
-                    401.9375,666.625
+                    404.4375,
+                    669.125
                 ],
                 "data": {
                     "ID": 41,
@@ -1762,7 +1751,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "PLAMSOON.7",
                 "gateway": [
-                    401.9375,666.625
+                    404.4375,
+                    669.125
                 ],
                 "data": {
                     "ID": 43,
@@ -1801,7 +1791,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "PLAMSOON.8",
                 "gateway": [
-                    401.9375,666.625
+                    404.4375,
+                    669.125
                 ],
                 "data": {
                     "ID": 50,
@@ -1841,7 +1832,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "PLAMSOON.9",
                 "gateway": [
-                   401.9375,666.625
+                    404.4375,
+                    669.125
                 ],
                 "data": {
                     "ID": 58,
@@ -1880,7 +1872,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "KOO",
                 "gateway": [
-                   396.0625,670.75
+                    396.0625,
+                    670.75
                 ],
                 "data": { "TenDoanhNghiep": "BQL Khu CNC" }
             },
@@ -1903,7 +1896,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "FPTBuilding",
                 "gateway": [
-                    360.6875,694.875
+                    363.5625,
+                    697.625
                 ],
                 "data": {
                     "ID": 39,
@@ -1953,7 +1947,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "T2-2",
                 "gateway": [
-                    377.1875,684
+                    379.8125,
+                    686.5
                 ],
                 "data": {
                     "ID": 49,
@@ -1997,7 +1992,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "K17",
                 "gateway": [
-                    437.8125,642.5
+                    439.8125,
+                    645.125
                 ],
                 "data": {
                     "ID": 64,
@@ -2035,14 +2031,15 @@ window.app.enterprise_geodata =
                 ]
             }
         },
-        
+
         {
             "type": "Feature",
             "id": "E2a-III.4",
             "properties": {
                 "name": "E2-NCDT",
                 "gateway": [
-                    635.1875,519.375
+                    632.5625,
+                    516.625
                 ],
                 "data": {
                     "ID": 27,
@@ -2099,7 +2096,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "E2-NCDT",
                 "gateway": [
-                   609.4375,537.375
+                    606.6875,
+                    534.625
                 ],
                 "data": {
                     "ID": 59,
@@ -2153,7 +2151,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "E2-NCDT",
                 "gateway": [
-                    582.9375,555.25
+                    577.6875,
+                    554.625
                 ],
                 "data": {
                     "ID": 21,
@@ -2203,7 +2202,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "E2b-1",
                 "gateway": [
-                   572.5625,549.375
+                    574.8125,
+                    552.25
                 ],
                 "data": {
                     "ID": 70,
@@ -2251,7 +2251,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "E2b-1",
                 "gateway": [
-                   617.0625,518.75
+                    619.9375,
+                    521.875
                 ],
                 "data": {
                     "ID": 62,
@@ -2299,8 +2300,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "E3",
                 "gateway": [
-                    622.25,
-                    459.375
+                    613.9375,
+                    450.75
                 ],
                 "data": {
                     "ID": 63,
@@ -2355,151 +2356,15 @@ window.app.enterprise_geodata =
                 ]
             }
         },
-        {
-            "type": "Feature",
-            "id": "E3A",
-            "properties": {
-                "name": "E3A",
-                "gateway": [
-                    568,
-                    466.875
-                ]
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [ 564.75, 466.625 ],
-                        [ 550.5, 463.625 ],
-                        [ 529.25, 461.375 ],
-                        [ 526, 464.375 ],
-                        [ 530.75, 476.125 ],
-                        [ 533.75, 489.625 ],
-                        [ 527, 497.875 ],
-                        [ 528.75, 504.875 ],
-                        [ 541, 515.375 ],
-                        [ 550, 515.375 ],
-                        [ 559.75, 511.375 ],
-                        [ 568.25, 502.625 ],
-                        [ 575.75, 499.625 ],
-                        [ 576.75, 494.875 ],
-                        [ 572, 483.875 ],
-                        [ 574.5, 477.125 ],
-                        [ 571, 469.625 ],
-                        [ 564.75, 466.625 ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "E4",
-            "properties": {
-                "name": "E4",
-                "gateway": [
-                    604.75,
-                    431.875
-                ]
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [ 643.25, 464.125 ],
-                        [ 690, 431.875 ],
-                        [ 612.5, 374.375 ],
-                        [ 608.75, 373.625 ],
-                        [ 569, 390.125 ],
-                        [ 567.75, 393.375 ],
-                        [ 603, 430.125 ],
-                        [ 630.25, 454.625 ],
-                        [ 643.25, 464.125 ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "E4A",
-            "properties": {
-                "name": "E4A",
-                "gateway": [
-                    703,
-                    441.6875
-                ]
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [ 689.875, 432.0625 ],
-                        [ 670.625, 444.9375 ],
-                        [ 698, 465.0625 ],
-                        [ 714.875, 453.1875 ],
-                        [ 715, 450.3125 ],
-                        [ 689.875, 432.0625 ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "T5",
-            "properties": {
-                "name": "T5",
-                "gateway": [
-                    651.375,
-                    470.9375
-                ]
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [ 670.625, 444.9375 ],
-                        [ 697.25, 465.0625 ],
-                        [ 678.25, 478.0625 ],
-                        [ 660.75, 478.3125 ],
-                        [ 643.125, 463.9375 ],
-                        [ 670.625, 444.9375 ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "KXL-NT",
-            "properties": {
-                "name": "KXL-NT",
-                "gateway": [
-                    780.75,
-                    534.875
-                ]
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [ 757.25, 551.125 ],
-                        [ 800.25, 522.875 ],
-                        [ 792, 516.375 ],
-                        [ 761.75, 528.125 ],
-                        [ 752.25, 528.875 ],
-                        [ 736.25, 528.625 ],
-                        [ 730.75, 530.125 ],
-                        [ 757.25, 551.125 ]
-                    ]
-                ]
-            }
-        },
+
         {
             "type": "Feature",
             "id": "I6,I7",
             "properties": {
                 "name": "I7",
                 "gateway": [
-                    862.75,
-                    376
+                    868.0625,
+                    382.125
                 ],
                 "data": {
                     "ID": 4,
@@ -2571,8 +2436,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "I8-1",
                 "gateway": [
-                    708.75,
-                    441.25
+                    726.1875,
+                    448.125
                 ],
                 "data": {
                     "ID": 31,
@@ -2620,8 +2485,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "I-8-2",
                 "gateway": [
-                    680,
-                    416.875
+                    689.8125,
+                    427.25
                 ],
                 "data": {
                     "ID": 9,
@@ -2663,40 +2528,12 @@ window.app.enterprise_geodata =
         },
         {
             "type": "Feature",
-            "id": "I8-3",
-            "properties": {
-                "name": "I8-3",
-                "gateway": [
-                    642.5,
-                    390.125
-                ]
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [ 617.25, 368.875 ],
-                        [ 617, 371.625 ],
-                        [ 663.5, 406.375 ],
-                        [ 719.25, 368.375 ],
-                        [ 709.75, 363.875 ],
-                        [ 679.75, 359.125 ],
-                        [ 656.75, 354.125 ],
-                        [ 647.5, 349.125 ],
-                        [ 643.5, 348.625 ],
-                        [ 617.25, 368.875 ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
             "id": "I-9",
             "properties": {
                 "name": "I-9",
                 "gateway": [
-                    542.25,
-                    363.25
+                    517.9375,
+                    345.875
                 ],
                 "data": {
                     "ID": 38,
@@ -2740,8 +2577,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "I-9-5",
                 "gateway": [
-                    506.875,
-                    349.515625
+                    557.5625,
+                    385
                 ],
                 "data": {
                     "ID": 33,
@@ -2785,8 +2622,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "I-9-8",
                 "gateway": [
-                    506.875,
-                    349.515625
+                    586.4375,
+                    315.5
                 ],
                 "data": {
                     "ID": 48,
@@ -2827,36 +2664,12 @@ window.app.enterprise_geodata =
         },
         {
             "type": "Feature",
-            "id": "T3B",
-            "properties": {
-                "name": "T3B",
-                "gateway": [
-                    506.875,
-                    349.515625
-                ]
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [ 504.9375, 351.890625 ],
-                        [ 509.34375, 347.015625 ],
-                        [ 518.625, 354.265625 ],
-                        [ 513.40625, 357.734375 ],
-                        [ 509.65625, 354.578125 ],
-                        [ 504.9375, 351.890625 ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
             "id": "T3A",
             "properties": {
                 "name": "T3A",
                 "gateway": [
-                    487.5,
-                    361.375
+                    499.8125,
+                    339.125
                 ],
                 "data": {
                     "ID": 56,
@@ -2905,8 +2718,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "HT-2-1",
                 "gateway": [
-                    407.625,
-                    282.125
+                    382.9375,
+                    268.75
                 ],
                 "data": {
                     "ID": 34,
@@ -2942,181 +2755,15 @@ window.app.enterprise_geodata =
                 ]
             }
         },
-        {
-            "type": "Feature",
-            "id": "HT-4",
-            "properties": {
-                "name": "HT-4",
-                "gateway": [
-                    421.5,
-                    223
-                ]
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [ 476.375, 277.75 ],
-                        [ 479.25, 277.875 ],
-                        [ 491.625, 266.25 ],
-                        [ 492.25, 263.75 ],
-                        [ 492, 259.875 ],
-                        [ 467.375, 234.875 ],
-                        [ 458, 215 ],
-                        [ 451.25, 208.25 ],
-                        [ 443.875, 204.5 ],
-                        [ 440.875, 205.125 ],
-                        [ 405.75, 238.625 ],
-                        [ 405.875, 241.125 ],
-                        [ 444.25, 260.875 ],
-                        [ 476.375, 277.75 ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "HT-3",
-            "properties": {
-                "name": "HT-3",
-                "gateway": [
-                    376.125,
-                    229.125
-                ]
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [ 337.125, 243.25 ],
-                        [ 372.5, 262.5 ],
-                        [ 375.875, 262.375 ],
-                        [ 396.375, 242 ],
-                        [ 396.25, 240.125 ],
-                        [ 358.375, 219.875 ],
-                        [ 337.125, 243.25 ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "HT-5",
-            "properties": {
-                "name": "HT-5",
-                "gateway": [
-                    379.625,
-                    226.625
-                ]
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [ 378.875, 198.6875 ],
-                        [ 361.25, 217.0625 ],
-                        [ 398.75, 236.6875 ],
-                        [ 401.625, 236.6875 ],
-                        [ 435.625, 204.4375 ],
-                        [ 434.5, 202.3125 ],
-                        [ 416.625, 203.1875 ],
-                        [ 396.625, 203.4375 ],
-                        [ 388, 201.6875 ],
-                        [ 378.875, 198.6875 ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "HT-1",
-            "properties": {
-                "name": "HT-1",
-                "gateway": [
-                    320.125,
-                    234.75
-                ]
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [ 335.125, 242.4375 ],
-                        [ 356.75, 219.5625 ],
-                        [ 318.875, 199.0625 ],
-                        [ 315.875, 206.8125 ],
-                        [ 310.625, 216.8125 ],
-                        [ 303.25, 225.6875 ],
-                        [ 321, 235.0625 ],
-                        [ 335.125, 242.4375 ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "HT-6",
-            "properties": {
-                "name": "HT-6",
-                "gateway": [
-                    351.625,
-                    183.25
-                ]
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [ 359.5, 216 ],
-                        [ 376.75, 197.25 ],
-                        [ 352, 183.125 ],
-                        [ 327, 174.75 ],
-                        [ 323.5, 175.25 ],
-                        [ 319.75, 183.625 ],
-                        [ 318.375, 194.5 ],
-                        [ 329, 200 ],
-                        [ 359.5, 216 ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "T6",
-            "properties": {
-                "name": "T6",
-                "gateway": [
-                    290.125,
-                    218.6875
-                ]
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [ 294.875, 221.15625 ],
-                        [ 299.125, 216.21875 ],
-                        [ 304.75, 206.21875 ],
-                        [ 306.75, 199.6875 ],
-                        [ 308, 188.9375 ],
-                        [ 310.125, 180.3125 ],
-                        [ 313.125, 173.3125 ],
-                        [ 312.5, 170.125 ],
-                        [ 303, 168.125 ],
-                        [ 284.375, 215.3125 ],
-                        [ 294.875, 221.15625 ]
-                    ]
-                ]
-            }
-        },
+
         {
             "type": "Feature",
             "id": "TB",
             "properties": {
                 "name": "BT",
                 "gateway": [
-                    266.5,
-                    205.25
+                    274.3125,
+                    211.125
                 ],
                 "data": {
                     "ID": 57,
@@ -3169,8 +2816,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "HC",
                 "gateway": [
-                    220.5,
-                    157.5
+                    227.4375,
+                    183.875
                 ],
                 "data": {
                     "ID": 35,
@@ -3207,37 +2854,15 @@ window.app.enterprise_geodata =
                 ]
             }
         },
-        {
-            "type": "Feature",
-            "id": "K3",
-            "properties": {
-                "name": "K3",
-                "gateway": [
-                    220.5,
-                    157.5
-                ]
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [ 174.375, 150.8125 ],
-                        [ 201.375, 152.9375 ],
-                        [ 208.875, 118.0625 ],
-                        [ 183, 108.0625 ],
-                        [ 174.375, 150.8125 ]
-                    ]
-                ]
-            }
-        },
+
         {
             "type": "Feature",
             "id": "Công ty TNHH MTV Nghiên cứu và Chế tạo khuôn mẫu độ chính xác cao Viedam",
             "properties": {
                 "name": "I4b",
                 "gateway": [
-                    220.5,
-                    157.5
+                    748.1875,
+                    552.625
                 ],
                 "data": {
                     "ID": 53,
@@ -3286,8 +2911,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "I4b",
                 "gateway": [
-                    220.5,
-                    157.5
+                    704.4375,
+                    557.125
                 ],
                 "data": {
                     "ID": 29,
@@ -3326,37 +2951,15 @@ window.app.enterprise_geodata =
                 ]
             }
         },
-        {
-            "type": "Feature",
-            "id": "I4b",
-            "properties": {
-                "name": "I4b",
-                "gateway": [
-                    220.5,
-                    157.5
-                ]
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [ 174.375, 150.8125 ],
-                        [ 201.375, 152.9375 ],
-                        [ 208.875, 118.0625 ],
-                        [ 183, 108.0625 ],
-                        [ 174.375, 150.8125 ]
-                    ]
-                ]
-            }
-        },
+
         {
             "type": "Feature",
             "id": "Công ty TNHH MTV Nhà máy United Healthcare",
             "properties": {
                 "name": "I4b",
                 "gateway": [
-                    220.5,
-                    157.5
+                    627.1875,
+                    598.125
                 ],
                 "data": {
                     "ID": 42,
@@ -3398,8 +3001,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "I4b",
                 "gateway": [
-                    220.5,
-                    157.5
+                    617.6875,
+                    603.75
                 ],
                 "data": {
                     "ID": 54,
@@ -3439,8 +3042,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "I4b",
                 "gateway": [
-                    220.5,
-                    157.5
+                    627.8125,
+                    637.125
                 ],
                 "data": {
                     "ID": 23,
@@ -3481,8 +3084,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "I4b",
                 "gateway": [
-                    220.5,
-                    157.5
+                    609.1875,
+                    623.125
                 ],
                 "data": {
                     "ID": 28,
@@ -3520,47 +3123,15 @@ window.app.enterprise_geodata =
                 ]
             }
         },
-        {
-            "type": "Feature",
-            "id": "T4",
-            "properties": {
-                "name": "T4",
-                "gateway": [
-                    184.5,
-                    251.25
-                ]
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [ 200.5, 187.625 ],
-                        [ 204.75, 186.625 ],
-                        [ 234.75, 198.375 ],
-                        [ 235, 201.625 ],
-                        [ 148, 286.375 ],
-                        [ 140.75, 287.375 ],
-                        [ 118.5, 277.375 ],
-                        [ 101, 266.625 ],
-                        [ 95.5, 262.375 ],
-                        [ 95.25, 257.625 ],
-                        [ 115.25, 238.375 ],
-                        [ 127.5, 228.375 ],
-                        [ 149.25, 217.125 ],
-                        [ 182.25, 200.625 ],
-                        [ 200.5, 187.625 ]
-                    ]
-                ]
-            }
-        },
+
         {
             "type": "Feature",
             "id": "I-11",
             "properties": {
                 "name": "SAMSUNG",
                 "gateway": [
-                    331.5,
-                    251.5
+                    367.9375,
+                    266.625
                 ],
                 "data": {
                     "ID": 37,
@@ -3610,8 +3181,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "I-14.1",
                 "gateway": [
-                    331.5,
-                    251.5
+                    263.1875,
+                    382.875
                 ],
                 "data": {
                     "ID": 14,
@@ -3646,36 +3217,12 @@ window.app.enterprise_geodata =
         },
         {
             "type": "Feature",
-            "id": "S4",
-            "properties": {
-                "name": "S4",
-                "gateway": [
-                    495.4375,
-                    483.1875
-                ]
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [ 505.125, 492.65625 ],
-                        [ 494.6875, 492.65625 ],
-                        [ 481.4375, 481.40625 ],
-                        [ 487.0625, 478.40625 ],
-                        [ 489.75, 478.65625 ],
-                        [ 502.625, 489.09375 ],
-                        [ 505.125, 492.65625 ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
             "id": "SHTP_Training",
             "properties": {
                 "name": "SHTP_Training",
                 "gateway": [
-                    86.0625,775.125
+                    86.0625,
+                    775.125
                 ],
                 "data": {
                     "ID": 77,
@@ -3707,8 +3254,8 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "Trường Đại học Công nghệ Thành Phố Hồ Chí Minh (Hutech)",
                 "gateway": [
-                    462.125,
-                    526.6875
+                    52.6875,
+                    763.5
                 ],
                 "data": {
                     "ID": 51,
@@ -3745,8 +3292,7 @@ window.app.enterprise_geodata =
             "properties": {
                 "name": "Trường Đại học Nguyễn Tất Thành",
                 "gateway": [
-                    462.125,
-                    526.6875
+
                 ],
                 "data": {
                     "ID": 52,

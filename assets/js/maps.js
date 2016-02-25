@@ -46,7 +46,7 @@ $(document).on('input', '.clearable', function(){
     $(this)[tog(this.offsetWidth-18 < e.clientX-this.getBoundingClientRect().left)]('onX');
 }).on('touchstart click', '.onX', function( ev ){
     ev.preventDefault();
-    $(this).removeClass('x onX').val('').change();
+    // $(this).removeClass('x onX').val('').change();
 });
 
 // ==========================
@@ -167,14 +167,14 @@ app.getDirection = function(input) {
                     is_change = true;
                     var new_current_path = JSON.parse(JSON.stringify(p));
 
-                    // console.log('getChildPathOf(',last_point, nexts[j] ,')', getChildPathOf(last_point, nexts[j]))
-                    // var child = getChildPathOf(last_point, nexts[j]);
-                    // if (child) {
-                    //     for (var jj in child) {
-                    //         new_current_path.push(child[jj]);
-                    //     }
-                    // }
-                    // console.log('After push: ', new_current_path)
+                    console.log('getChildPathOf(',last_point, nexts[j] ,')', getChildPathOf(last_point, nexts[j]))
+                    var child = getChildPathOf(last_point, nexts[j]);
+                    if (child) {
+                        for (var jj in child) {
+                            new_current_path.push(child[jj]);
+                        }
+                    }
+                    console.log('After push: ', new_current_path)
 
                     new_current_path.push(nexts[j]);
                     // console.error(' ~~~~~~~~~~~> ', new_current_path);
@@ -550,20 +550,9 @@ app.getGeoDataFromBlockID = function(id) {
  * Get postion and move to center 
  */
 app.getAndMoveTo = function(enterprise ) {
-    if (!enterprise || typeof enterprise.DiaChiTrongKhu == 'undefined') return false;
+    if (!enterprise) return false;
 
-    console.log('Step 1: ', enterprise)
-
-    var block_id = app.getBlockIdFromAddress(enterprise.DiaChiTrongKhu);
-    if(!block_id) return false;
-    console.log('Step 2: ', block_id)
-
-    var geodata = app.getGeoDataFromBlockID(block_id);
-    if (!geodata) return false;
-    console.log('Step 3: ', geodata);
-
-    var coordinates = geodata.geometry.coordinates;
-    var center = app.getCenterPointOfBlock(coordinates[0]);
+    var center = enterprise.properties.gateway;
     console.log('Step 4: ', center);
 
     function elastic(t) {
@@ -586,8 +575,8 @@ app.getAndMoveTo = function(enterprise ) {
       'placement': 'top',
       'animation': true,
       'html': true,
-      'content': '<div class="popup-button"><a href="#" class="btn btn-custom" id="view_info" onClick="modalView(\''+ block_id +'\', event)">Thông tin</a>\
-        <a href="#" id="get_direction" class="btn btn-custom" onClick="addSearchPlace(\''+ block_id +'\', '+ geodata.properties.gateway +', event)">Chỉ đường đến đây</a></div>'
+      'content': '<div class="popup-button"><a href="#" class="btn btn-custom" id="view_info" onClick="modalView(\''+ enterprise.id +'\', event)">Thông tin</a>\
+        <a href="#" id="get_direction" class="btn btn-custom" onClick="addSearchPlace(\''+ enterprise.id +'\', '+ enterprise.properties.gateway +', event)">Chỉ đường đến đây</a></div>'
     });
     $(element).popover('show');
 }
