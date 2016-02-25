@@ -490,23 +490,23 @@ window.modalView = app.modalView = function(id, data, e) {
     $('#popup').popover('hide');
     $('#modal').modal('show');
 
-    console.log('>>>>>>', data)
+    // console.log('>>>>>>', data)
 
-    // var enterprise = searchEnterprise(id);
-    if (data) {
-        $('.enterprise_nodata').hide();
-        $('.enterprise_info').show();
+    // // var enterprise = searchEnterprise(id);
+    // if (data) {
+    //     $('.enterprise_nodata').hide();
+    //     $('.enterprise_info').show();
 
-        $('#TenDoanhNghiep').html(data.TenDoanhNghiep || '');
-        $('#TenDuAnDauTu').html(data.TenDuAnDauTu || '');
-        $('#LinhVucHoatDong').html(data.LinhVucHoatDong || '');
-        $('#DiaChiTrongKhu').html(data.DiaChiTrongKhu || '');
-        $('#DienThoai').html(data.DienThoai || '');
-        $('#Website').html(data.Website || '');
-    } else {
-        $('.enterprise_nodata').show();
-        $('.enterprise_info').hide();
-    }
+    //     $('#TenDoanhNghiep').html(data.TenDoanhNghiep || '');
+    //     $('#TenDuAnDauTu').html(data.TenDuAnDauTu || '');
+    //     $('#LinhVucHoatDong').html(data.LinhVucHoatDong || '');
+    //     $('#DiaChiTrongKhu').html(data.DiaChiTrongKhu || '');
+    //     $('#DienThoai').html(data.DienThoai || '');
+    //     $('#Website').html(data.Website || '');
+    // } else {
+    //     $('.enterprise_nodata').show();
+    //     $('.enterprise_info').hide();
+    // }
 }
 
 /**

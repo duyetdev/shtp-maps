@@ -419,8 +419,7 @@ Draw mode:  http://maps.com/?__draw=1
 
         var element = popup.getElement();
         var coordinate = evt.coordinate;
-        // $(element).popover('destroy');
-
+        
         var feature = map.forEachFeatureAtPixel(evt.pixel, function(feature) {
             return feature;
         });
@@ -436,6 +435,23 @@ Draw mode:  http://maps.com/?__draw=1
             });
 
             popup.setPosition(coordinate);
+            // $(element).popover('destroy');
+
+            var data = feature.get('data');
+            if (data) {
+                $('.enterprise_nodata').hide();
+                $('.enterprise_info').show();
+
+                $('#TenDoanhNghiep').html(data.TenDoanhNghiep || '');
+                $('#TenDuAnDauTu').html(data.TenDuAnDauTu || '');
+                $('#LinhVucHoatDong').html(data.LinhVucHoatDong || '');
+                $('#DiaChiTrongKhu').html(data.DiaChiTrongKhu || '');
+                $('#DienThoai').html(data.DienThoai || '');
+                $('#Website').html(data.Website || '');
+            } else {
+                $('.enterprise_nodata').show();
+                $('.enterprise_info').hide();
+            }
             $(element).popover({
               'placement': 'top',
               'animation': true,
