@@ -97,6 +97,7 @@ app.RotateNorthControl = function(opt_options) {
         document.getElementById('to_place').value = app.direction_input.to  && app.direction_input.to.information ? app.direction_input.to.information.TenDoanhNghiep : '';
 
         view.setCenter(app.default_routing_start);
+        view.setZoom(2.5);
     };
 
     button.addEventListener('click', handleRotateNorth, false);
