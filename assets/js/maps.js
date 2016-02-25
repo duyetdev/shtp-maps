@@ -485,22 +485,22 @@ window.getDirectionTo = app.getDirectionTo = function(long, lat, e ) {
 
 /* View information  */
 
-window.modalView = app.modalView = function(id, e) {
+window.modalView = app.modalView = function(id, data, e) {
     e.preventDefault();
     $('#popup').popover('hide');
     $('#modal').modal('show');
 
-    var enterprise = searchEnterprise(id);
-    if (enterprise) {
+    // var enterprise = searchEnterprise(id);
+    if (data) {
         $('.enterprise_nodata').hide();
         $('.enterprise_info').show();
 
-        $('#TenDoanhNghiep').html(enterprise.TenDoanhNghiep || '');
-        $('#TenDuAnDauTu').html(enterprise.TenDuAnDauTu || '');
-        $('#LinhVucHoatDong').html(enterprise.LinhVucHoatDong || '');
-        $('#DiaChiTrongKhu').html(enterprise.DiaChiTrongKhu || '');
-        $('#DienThoai').html(enterprise.DienThoai || '');
-        $('#Website').html(enterprise.Website || '');
+        $('#TenDoanhNghiep').html(data.TenDoanhNghiep || '');
+        $('#TenDuAnDauTu').html(data.TenDuAnDauTu || '');
+        $('#LinhVucHoatDong').html(data.LinhVucHoatDong || '');
+        $('#DiaChiTrongKhu').html(data.DiaChiTrongKhu || '');
+        $('#DienThoai').html(data.DienThoai || '');
+        $('#Website').html(data.Website || '');
     } else {
         $('.enterprise_nodata').show();
         $('.enterprise_info').hide();

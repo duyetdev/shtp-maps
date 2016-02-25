@@ -92,7 +92,7 @@ Draw mode:  http://maps.com/?__draw=1
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="./assets/js/bootstrap3-typeahead.min.js"></script>
     <script type="text/javascript" src="./assets/js/islab-maps.js"></script>
-    <script type="text/javascript" src="./assets/js/route.js"></script>
+    <script type="text/javascript" src="./assets/route.js"></script>
     <script type="text/javascript" src="./assets/geodata.js"></script>
     <script type="text/javascript" src="./assets/enterprise.js"></script>
     <script type="text/javascript" src="./assets/js/maps.js"></script>
@@ -262,7 +262,7 @@ Draw mode:  http://maps.com/?__draw=1
             geoloc: app.default_routing_start,
             information: {
                     "ID": 65,
-                    "TenDoanhNghiep": "Start point",
+                    "TenDoanhNghiep": "Vị trí hiện tại",
                     "GoiTat": "UVP R&D Co., Ltd",
                     "QuocGia": "Việt - Mỹ",
                     "DaiDienPhapLuat": "Bà Nguyễn Thị Kim Trâm - Giám đốc",
@@ -427,7 +427,7 @@ Draw mode:  http://maps.com/?__draw=1
               'placement': 'top',
               'animation': true,
               'html': true,
-              'content': '<div class="popup-button"><a href="#" class="btn btn-custom" id="view_info" onClick="modalView(\''+ feature.getId() +'\', event)">Thông tin</a>\
+              'content': '<div class="popup-button"><a href="#" class="btn btn-custom" id="view_info" onClick=\'modalView("'+ feature.getId() +'", '+ JSON.stringify(feature.get('data')) +', event)\'>Thông tin</a>\
                 <a href="#" id="get_direction" class="btn btn-custom" onClick="addSearchPlace(\''+ feature.getId() +'\', '+ feature.get('gateway') +', event)">Chỉ đường đến đây</a></div>'
             });
             $(element).popover('show');
