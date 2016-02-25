@@ -476,7 +476,7 @@ app.arrayPointToRouterGeneratorTools = function(data, is_reverse) {
 
 /* Get direction to point */
 window.getDirectionTo = app.getDirectionTo = function(long, lat, e ) {
-    e.preventDefault();
+    if (e) e.preventDefault();
     $('#popup').popover('hide');
 
     if (!app.direction_input.from || !app.direction_input.to) {

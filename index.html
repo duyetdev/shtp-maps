@@ -162,7 +162,9 @@ Draw mode:  http://maps.com/?__draw=1
         source: app.enterprise_geodata.features,
         autoSelect: true,
         displayText: function(item) {
-          return typeof item !== 'undefined' && typeof item.properties != 'undefined' && typeof item.properties.data != 'undefined' && item.properties.data.TenDoanhNghiep || item;
+            if (typeof item !== 'undefined' && typeof item.properties != 'undefined' && typeof item.properties.data != 'undefined' && typeof item.properties.data.TenDoanhNghiep != 'undefined') return item.properties.data.TenDoanhNghiep;
+
+          return ''
         },
         afterSelect: function(item) {
             if (!item) return;
