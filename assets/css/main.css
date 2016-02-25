@@ -1,3 +1,12 @@
+
+.rotate-north {
+    top: 95px;
+    left: .5em;
+  }
+  .ol-touch .rotate-north {
+    top: 80px;
+  }
+
 .map {
     margin: 0;
 }

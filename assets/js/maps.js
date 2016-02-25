@@ -67,11 +67,36 @@ app.RotateNorthControl = function(opt_options) {
     var options = opt_options || {};
 
     var button = document.createElement('button');
-    button.innerHTML = 'N';
+    button.innerHTML = 'C';
 
     var this_ = this;
     var handleRotateNorth = function() {
-        this_.getMap().getView().setRotation(0);
+        var view = this_.getMap().getView();
+        function elastic(t) {
+          return Math.pow(2, -25 * t) * Math.sin((t - 0.075) * (2 * Math.PI) / 0.3) + 1;
+        }
+        var pan = ol.animation.pan({
+            duration: 2000,
+            easing: elastic,
+            source: /** @type {ol.Coordinate} */ (view.getCenter())
+        });
+        map.beforeRender(pan);
+
+        app.direction_input = {
+            from: {
+                id: 'start_point',
+                geoloc: app.default_routing_start,
+                information: {
+                        "TenDoanhNghiep": "Vị trí hiện tại"
+                }
+            },
+            to: null
+        };
+
+        document.getElementById('from_place').value = app.direction_input.from && app.direction_input.from.information ? app.direction_input.from.information.TenDoanhNghiep : '';
+        document.getElementById('to_place').value = app.direction_input.to  && app.direction_input.to.information ? app.direction_input.to.information.TenDoanhNghiep : '';
+
+        view.setCenter(app.default_routing_start);
     };
 
     button.addEventListener('click', handleRotateNorth, false);
@@ -558,12 +583,11 @@ app.getAndMoveTo = function(enterprise ) {
     function elastic(t) {
       return Math.pow(2, -25 * t) * Math.sin((t - 0.075) * (2 * Math.PI) / 0.3) + 1;
     }
-      var pan = ol.animation.pan({
+    var pan = ol.animation.pan({
         duration: 2000,
         easing: elastic,
         source: /** @type {ol.Coordinate} */ (view.getCenter())
-      });
-      map.beforeRender(pan);
+    });
     map.beforeRender(pan);
     
     view.setCenter(center);
