@@ -43,7 +43,7 @@ body {
 .tools input[type="text"] {
     width: 100%;
     border: 2px solid #DDD;
-    padding: 8px;
+    padding: 10px;
 }
 
 #search {}
