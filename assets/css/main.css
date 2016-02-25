@@ -7,6 +7,13 @@
     top: 8.2em;  
 }
 
+.rotate-north button, .rotate-north button:hover, .rotate-north button:focus, .rotate-north button:active {
+    background-image: url(../images/mylocation-sprite-cookieless-v2-1x.png);
+    background-size: 180px 18px;
+    background-position: 38px 2px;
+    background-color: #fff;
+}
+
 .map {
     margin: 0;
 }

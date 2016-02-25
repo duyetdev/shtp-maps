@@ -67,7 +67,7 @@ app.RotateNorthControl = function(opt_options) {
     var options = opt_options || {};
 
     var button = document.createElement('button');
-    button.innerHTML = 'C';
+    button.innerHTML = '';
 
     var this_ = this;
     var handleRotateNorth = function() {
