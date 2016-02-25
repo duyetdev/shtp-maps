@@ -13,7 +13,7 @@ Draw mode:  http://maps.com/?__draw=1
 <head>
     <meta charset=utf-8> <meta http-equiv=X-UA-Compatible content="IE=edge"> <meta name=viewport content="width=device-width,initial-scale=1">
     <title>IS-Map</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="./assets/css/ol.css" />
     <link rel="stylesheet" type="text/css" href="./assets/css/main.css" />
 </head>
@@ -97,6 +97,11 @@ Draw mode:  http://maps.com/?__draw=1
     <script type="text/javascript" src="./assets/enterprise.js"></script>
     <script type="text/javascript" src="./assets/js/maps.js"></script>
     <script type="text/javascript">
+
+    document.addEventListener('touchstart', function(event){
+        event.preventDefault();
+    });
+
     var app = window.app;
 
     // Active debug
@@ -224,7 +229,8 @@ Draw mode:  http://maps.com/?__draw=1
     var map = new ol.Map({
         target: 'map',
         interactions: ol.interaction.defaults({
-            pinchRotate: false
+            pinchRotate: false,
+            altShiftDragRotate: false
         }) , // .extend([select]),
         layers: [
             new ol.layer.Image({
@@ -404,7 +410,7 @@ Draw mode:  http://maps.com/?__draw=1
     /**
      * Click to building block
      */
-    map.on('singleclick', function(evt) {
+    map.on('click', function(evt) {
         // Debug
         document.getElementById('message').innerHTML = '(x, y) = ' + evt.coordinate.toString();
 
