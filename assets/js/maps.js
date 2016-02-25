@@ -523,8 +523,11 @@ window.getDirectionTo = app.getDirectionTo = function(long, lat, e ) {
 /* View information  */
 
 function closeAllModal () {
+    console.log('Close button');
     $('#modal').modal('hide');
 }
+
+$('.modal-open').on('click touchstart', closeAllModal);
 
 window.modalView = app.modalView = function(id, data, e) {
     e.preventDefault();
