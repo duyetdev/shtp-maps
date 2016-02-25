@@ -175,9 +175,47 @@ Draw mode:  http://maps.com/?__draw=1
                 information: item.properties.data
             };
             
+            markAPinTo(item);
             app.getAndMoveTo(item);
         }
     });
+
+    function markAPinTo(block) {
+        if (!block || !block.geometry || !block.geometry.coordinates) return false;
+        var coordinates = block.geometry.coordinates;
+
+        var center = [0 , 0];
+        var i;
+        for (i = 0; i < coordinates.length; i++) {
+            center[0] += coordinates[i][0];
+            center[1] += coordinates[i][1];
+        }
+        center[0] = center[0] / i;
+        center[1] = center[1] / i;
+
+        var startMarker = new ol.Feature({
+            type: 'icon',
+            geometry: new ol.geom.Point(center)
+        });
+
+        var iconStyle = new ol.style.Style({
+            image: new ol.style.Icon({
+                anchor: [0.5, 1],
+                src: 'assets/images/pin.png'
+            })
+        });
+
+        startMarker.setStyle(iconStyle);
+
+        var vectorLayer = new ol.layer.Vector({
+            source: new ol.source.Vector({
+              features: [startMarker]
+            }),
+            style: iconStyle
+          });
+
+        map.addLayer(vectorLayer);
+    }
 
     var projection = new ol.proj.Projection({
         code: 'xkcd-image',
@@ -500,7 +538,7 @@ Draw mode:  http://maps.com/?__draw=1
             }),
             stroke: new ol.style.Stroke({
                 color: '#ffcc33',
-                width: 2
+                width: 0
             }),
             image: new ol.style.Circle({
                 radius: 7,

@@ -493,8 +493,6 @@ window.getDirectionTo = app.getDirectionTo = function(long, lat, e ) {
 
     // console.log({from: app.default_routing_start, to: point});
 
-
-
     var direction = app.getDirection({from: app.direction_input.from.geoloc, to: app.direction_input.to.geoloc});
 
     // console.log('  ~> ', JSON.stringify( [direction]))
