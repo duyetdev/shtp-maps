@@ -760,19 +760,12 @@ window.app.route.push({"start":[310.875,786.5],"next":[297.125,734.625],"points"
 window.app.route.push({"start":[310.1875,787.6875],"next":[292.6875,811.75],"points":[[300.5625,802.4375]],"length":29.808414765706154}); 
 window.app.route.push({"start":[292.6875,811.75],"next":[310.1875,787.6875],"points":[[300.5625,802.4375]],"length":29.808414765706154}); /* reverse */
 window.app.route.push({"start":[292.28125,811.625],"next":[290.21875,810],"points":[],"length":2.6257439422000006}); 
-window.app.route.push({"start":[290.21875,810],"next":[292.28125,811.625],"points":[],"length":2.6257439422000006}); /* reverse */
 window.app.route.push({"start":[292.46875,811.8125],"next":[289.78125,815.125],"points":[],"length":4.265596382687889}); 
-window.app.route.push({"start":[289.78125,815.125],"next":[292.46875,811.8125],"points":[],"length":4.265596382687889}); /* reverse */
 window.app.route.push({"start":[289.46875,814.75],"next":[270.84375,835.75],"points":[[289.46875,814.75]],"length":28.069389466107026}); 
-window.app.route.push({"start":[270.84375,835.75],"next":[289.46875,814.75],"points":[[289.46875,814.75]],"length":28.069389466107026}); /* reverse */
 window.app.route.push({"start":[270.65625,835.5625],"next":[267.65625,834.0625],"points":[],"length":3.3541019662496847}); 
-window.app.route.push({"start":[267.65625,834.0625],"next":[270.65625,835.5625],"points":[],"length":3.3541019662496847}); /* reverse */
 window.app.route.push({"start":[296.40625,733.125],"next":[327.71875,722.3125],"points":[[314.34375,729.125]],"length":33.38810491767424}); 
-window.app.route.push({"start":[327.71875,722.3125],"next":[296.40625,733.125],"points":[[314.34375,729.125]],"length":33.38810491767424}); /* reverse */
 window.app.route.push({"start":[328.3125,721.5],"next":[353.1875,704.5],"points":[],"length":30.129149091867827}); 
-window.app.route.push({"start":[353.1875,704.5],"next":[328.3125,721.5],"points":[],"length":30.129149091867827}); /* reverse */
 window.app.route.push({"start":[353.8125,703.5],"next":[363.4375,697.25],"points":[],"length":11.476198194524178}); 
-window.app.route.push({"start":[363.4375,697.25],"next":[353.8125,703.5],"points":[],"length":11.476198194524178}); /* reverse */
 window.app.route.push({"start":[363.4375,697.25],"next":[379.5625,686.5],"points":[],"length":19.379838105618944}); 
 window.app.route.push({"start":[379.5625,686.5],"next":[363.4375,697.25],"points":[],"length":19.379838105618944}); /* reverse */
 window.app.route.push({"start":[379.8125,686],"next":[397.9375,673.125],"points":[],"length":22.23243688847446}); 
@@ -849,4 +842,4 @@ window.app.route.push({"start":[424.84375,655.46875],"next":[343.34375,715.25],"
 window.app.route.push({"start":[343.34375,715.25],"next":[424.84375,655.46875],"points":[[348.65625,711.3125],[379.53125,690.5],[395.15625,679.6875],[414.71875,666.3125],[427.03125,658]],"length":104.74772294707543}); /* reverse */
 window.app.route.push({"start":[343.34375,715],"next":[344.96875,716.8125],"points":[],"length":2.434292761768806}); 
 window.app.route.push({"start":[344.96875,716.8125],"next":[343.34375,715],"points":[],"length":2.434292761768806}); /* reverse */
-window.app.route.push({"start":[343.15625,715.09375],"next":[297.46875,735.15625],"points":[[329.40625,724.53125],[315.28125,730.15625]],"length":50.38197087084933});
+	window.app.route.push({"start":[343.15625,715.09375],"next":[297.46875,735.15625],"points":[[329.40625,724.53125],[315.28125,730.15625]],"length":50.38197087084933});

@@ -87,7 +87,7 @@ app.RotateNorthControl = function(opt_options) {
                 id: 'start_point',
                 geoloc: app.default_routing_start,
                 information: {
-                        "TenDoanhNghiep": "Vị trí hiện tại"
+                    "TenDoanhNghiep": "Vị trí hiện tại"
                 }
             },
             to: null
@@ -215,14 +215,11 @@ app.getDirection = function(input) {
         }
 
         for (var i in results) {
-            if (is_change)
-            {
+            if (is_change) {
                 if(i!=shortest_index) new_results.push(results[i])
-            }
-            else {
+            } else {
                 new_results.push(results[i])
             }
-
         }
 
         // console.log('2. Result >>>', results);
@@ -507,7 +504,7 @@ window.getDirectionTo = app.getDirectionTo = function(long, lat, e ) {
         source: vectorSource,
         style: new ol.style.Style({
             stroke: new ol.style.Stroke({
-                color: '#679DF6',
+                color: '#FF5722',
                 width: 6,
                 lineCap: 'round'
             }),
@@ -583,9 +580,63 @@ app.getGeoDataFromBlockID = function(id) {
 app.getAndMoveTo = function(enterprise ) {
     if (!enterprise) return false;
 
-    var center = enterprise.properties.gateway;
-    console.log('Step 4: ', center);
+    
+    // console.log('Step 4: ', center);
 
+    
+    // var element = popup.getElement();
+    // var coordinate = center;
+    // $(element).popover('destroy');
+    // popup.setPosition(coordinate);
+    // $(element).popover({
+    //   'placement': 'top',
+    //   'animation': true,
+    //   'html': true,
+    //   'content': '<div class="popup-button"><a href="#" class="btn btn-custom" id="view_info" onClick="modalView(\''+ enterprise.id +'\', event)">Thông tin</a>\
+    //     <a href="#" id="get_direction" class="btn btn-custom" onClick="addSearchPlace(\''+ enterprise.id +'\', '+ enterprise.properties.gateway +', event)">Chỉ đường đến đây</a></div>'
+    // });
+    // $(element).popover('show');
+}
+
+
+app.markAPinTo = function(block) {
+    if (!block || !block.geometry || !block.geometry.coordinates) return false;
+    var coordinates = block.geometry.coordinates[0];
+
+    // Get center 
+    /*
+        x1, the lowest x coordinate
+        y1, the lowest y coordinate
+        x2, the highest x coordinate
+        y2, the highest y coordinate
+        You now have the bounding rectangle, and can work out the center using:
+
+        center.x = x1 + ((x2 - x1) / 2);
+        center.y = y1 + ((y2 - y1) / 2);
+    */
+
+    var x1 = coordinates[0][0], y1 = coordinates[0][1], 
+        x2 = coordinates[0][0], y2 = coordinates[0][1];
+
+    for (i = 0; i < coordinates.length; i++) {
+        if (coordinates[i][0] < x1) x1 = coordinates[i][0];
+        if (coordinates[i][1] < y1) y1 = coordinates[i][1];
+
+        if (coordinates[i][0] > x2) x2 = coordinates[i][0];
+        if (coordinates[i][0] > y2) y2 = coordinates[i][0];
+    }
+    var center = [];
+    center[0] = x1 + ((x2 - x1) / 2);
+    center[1] = y1 + ((y2 - y1) / 2);
+
+    console.log(x1, y1);
+    console.log(x2, y2);
+    console.log(center);
+
+    // center = gateway;
+
+    // Move to center
+    var gateway = block.properties.gateway;
     function elastic(t) {
       return Math.pow(2, -25 * t) * Math.sin((t - 0.075) * (2 * Math.PI) / 0.3) + 1;
     }
@@ -595,20 +646,16 @@ app.getAndMoveTo = function(enterprise ) {
         source: /** @type {ol.Coordinate} */ (view.getCenter())
     });
     map.beforeRender(pan);
-    
     view.setCenter(center);
-    var element = popup.getElement();
-    var coordinate = center;
-    $(element).popover('destroy');
-    popup.setPosition(coordinate);
-    $(element).popover({
-      'placement': 'top',
-      'animation': true,
-      'html': true,
-      'content': '<div class="popup-button"><a href="#" class="btn btn-custom" id="view_info" onClick="modalView(\''+ enterprise.id +'\', event)">Thông tin</a>\
-        <a href="#" id="get_direction" class="btn btn-custom" onClick="addSearchPlace(\''+ enterprise.id +'\', '+ enterprise.properties.gateway +', event)">Chỉ đường đến đây</a></div>'
+
+    // Mark a pin to map
+    var location_pin = new ol.Overlay({
+        position: center,
+        positioning: 'center-center',
+        element: document.getElementById('location_pin'),
+        stopEvent: false
     });
-    $(element).popover('show');
+    map.addOverlay(location_pin);
 }
 
 function addSearchPlace(block_id, long, lat, e) {
