@@ -118,7 +118,7 @@ app.getDirection = function(input) {
     console.log('start search ...');
 
     var start_point_in_route = app.getGeoLoc(form_point);   
-    console.log('Start route from: ', form_point, ' => ', start_point_in_route);
+    // console.log('Start route from: ', form_point, ' => ', start_point_in_route);
 
     // Fix <to> point not near any route 
     var end_point_in_route = app.getGeoLoc(to_point);
@@ -137,7 +137,7 @@ app.getDirection = function(input) {
     var result_index = -1;
 
     while (true) {
-        console.info(' >>>>>>> loop ', loop_count++, '');
+        // console.info(' >>>>>>> loop ', loop_count++, '');
         var is_change = false;
         var new_results = [];
 
@@ -165,7 +165,7 @@ app.getDirection = function(input) {
                     is_change = true;
                     var new_current_path = JSON.parse(JSON.stringify(p));
                     new_current_path.push(nexts[j]);
-                    console.error(' ~~~~~~~~~~~> ', new_current_path);
+                    // console.error(' ~~~~~~~~~~~> ', new_current_path);
                     new_results.push(new_current_path);
                         
                 }
@@ -173,7 +173,7 @@ app.getDirection = function(input) {
         }
 
         if (new_results.length == 0 && !app.isNear(last_point, to_point)) {
-            console.log(' !! nexts', nexts, last_point);
+            // console.log(' !! nexts', nexts, last_point);
            is_change = true;
         }
 
@@ -188,7 +188,7 @@ app.getDirection = function(input) {
 
         }
 
-        console.log('2. Result >>>', results);
+        // console.log('2. Result >>>', results);
         results = new_results;
 
         if (!is_change) {
@@ -459,7 +459,7 @@ window.getDirectionTo = app.getDirectionTo = function(long, lat, e ) {
 
     var direction = app.getDirection({from: app.direction_input.from.geoloc, to: app.direction_input.to.geoloc});
 
-    console.log('  ~> ', JSON.stringify( [direction]))
+    // console.log('  ~> ', JSON.stringify( [direction]))
 
     // Start draw direction
     map.removeLayer(app.vector_direction); // Remove old 

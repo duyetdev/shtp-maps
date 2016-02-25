@@ -680,3 +680,37 @@ window.app.route.push({"start":[521.375,591.375],"next":[519.8125,596.3125],"poi
 window.app.route.push({"start":[519.8125,596.3125],"next":[521.375,591.375],"points":[],"length":5.178833121466649}); /* reverse */
 window.app.route.push({"start":[519.9375,596.1875],"next":[514.5625,609.5625],"points":[],"length":14.414619315125877}); 
 window.app.route.push({"start":[514.5625,609.5625],"next":[519.9375,596.1875],"points":[],"length":14.414619315125877}); /* reverse */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+window.app.route.push({"start":[603.5,433],"next":[669.25,489.5],"points":[[627.25,456.75]],"length":86.84696095001937}); 
+window.app.route.push({"start":[670.5,487.25],"next":[721.25,452.75],"points":[],"length":61.36621627573269}); 
+window.app.route.push({"start":[722,453.875],"next":[697.75,470.75],"points":[],"length":29.543664718514528}); 
+window.app.route.push({"start":[722.125,452.875],"next":[763.125,425],"points":[],"length":49.57837860398422}); 
+
+
+window.app.route.push({"start":[721.5,452.375],"next":[706.625,441.375],"points":[],"length":18.50042229247754}); 
+window.app.route.push({"start":[706.625,441.375],"next":[721.5,452.375],"points":[],"length":18.50042229247754}); /* reverse */
+window.app.route.push({"start":[706.5,440.875],"next":[676.625,418.5],"points":[],"length":37.325008372403616}); 
+window.app.route.push({"start":[676.625,418.5],"next":[706.5,440.875],"points":[],"length":37.325008372403616}); /* reverse */
+window.app.route.push({"start":[676.5,418.375],"next":[639.25,390.875],"points":[[676.375,418.375]],"length":46.32581844513147}); 
+window.app.route.push({"start":[639.25,390.875],"next":[676.5,418.375],"points":[[676.375,418.375]],"length":46.32581844513147}); /* reverse */
+window.app.route.push({"start":[639.375,390.875],"next":[612,370.75],"points":[],"length":33.97655441624415}); 
+window.app.route.push({"start":[612,370.75],"next":[639.375,390.875],"points":[],"length":33.97655441624415}); /* reverse */
+window.app.route.push({"start":[611.5,370.5],"next":[560.125,391],"points":[],"length":55.31401834074252}); 
+window.app.route.push({"start":[560.125,391],"next":[611.5,370.5],"points":[],"length":55.31401834074252}); /* reverse */
+window.app.route.push({"start":[560.125,390.875],"next":[604.375,431.625],"points":[],"length":60.15500810406395}); 
+
+window.app.route.push({"start":[764.125,426],"next":[746.875,437.75],"points":[],"length":20.871631464741803})
