@@ -97,7 +97,7 @@ Draw mode:  http://maps.com/?__draw=1
     <script type="text/javascript" src="./assets/js/maps.js"></script>
     <script type="text/javascript">
 
-    document.addEventListener('touchstart', function(event){
+    $('#map').on('touchstart', function(event){
         event.preventDefault();
     });
 
