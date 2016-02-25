@@ -32,7 +32,7 @@ Draw mode:  http://maps.com/?__draw=1
         
         <div class="tools">
         <div id="search">
-            <div>
+            <div style="margin-bottom: 5px">
                 <input type="text" name="" id="from_place" class="clearable" placeholder="Điểm đi">
             </div>
             <div>
@@ -42,7 +42,7 @@ Draw mode:  http://maps.com/?__draw=1
         </div>
         
     </div>
-    <div id="debug">
+    <div id="debug" style="display:none">
         <span id="message"></span> 
         <span id="pointer_pos"></span>
 
@@ -100,8 +100,8 @@ Draw mode:  http://maps.com/?__draw=1
     var app = window.app;
 
     // Active debug
-    app.debug = true;
-    app.show_draw_line = true;
+    app.debug = false;
+    app.show_draw_line = false;
 
     app.default_routing_start = [604.75,431.875]; // [141.375,789.125];
     app.direction_data = {
@@ -125,8 +125,8 @@ Draw mode:  http://maps.com/?__draw=1
 
     app.vector_direction = null;
 
-    if (!app.debug) {
-        document.getElementById('debug').style.display = 'none';
+    if (app.debug) {
+        document.getElementById('debug').style.display = 'block';
     }
 
     var extent = [0, 0, 1024, 968];
@@ -135,10 +135,10 @@ Draw mode:  http://maps.com/?__draw=1
 
     // Search box typeahead
     $("#from_place").typeahead({
-        source: app.enterprise.enterprise,
+        source: app.enterprise_geodata.features,
         autoSelect: true,
         displayText: function(item) {
-          return typeof item !== 'undefined' && typeof item.TenDoanhNghiep != 'undefined' && item.TenDoanhNghiep || item;
+          return typeof item !== 'undefined' && typeof item.properties != 'undefined' && typeof item.properties.data != 'undefined' && item.properties.data.TenDoanhNghiep || item;
         },
         afterSelect: function(item) {
             if (!item) return;
@@ -146,7 +146,25 @@ Draw mode:  http://maps.com/?__draw=1
             app.direction_input.from = {
                 id: item.id,
                 geoloc: item.properties.gateway || [],
-                information: item.properties.information
+                information: item.properties.data
+            };
+            
+            app.getAndMoveTo(item);
+        }
+    });
+    $("#to_place").typeahead({
+        source: app.enterprise_geodata.features,
+        autoSelect: true,
+        displayText: function(item) {
+          return typeof item !== 'undefined' && typeof item.properties != 'undefined' && typeof item.properties.data != 'undefined' && item.properties.data.TenDoanhNghiep || item;
+        },
+        afterSelect: function(item) {
+            if (!item) return;
+
+            app.direction_input.to = {
+                id: item.id,
+                geoloc: item.properties.gateway || [],
+                information: item.properties.data
             };
             
             app.getAndMoveTo(item);
@@ -261,17 +279,12 @@ Draw mode:  http://maps.com/?__draw=1
             id: 'start_point',
             geoloc: app.default_routing_start,
             information: {
-                    "ID": 65,
-                    "TenDoanhNghiep": "Vị trí hiện tại",
-                    "GoiTat": "UVP R&D Co., Ltd",
-                    "QuocGia": "Việt - Mỹ",
-                    "DaiDienPhapLuat": "Bà Nguyễn Thị Kim Trâm - Giám đốc",
-                    "LinhVucHoatDong": "Vi điện tử-CNTT- viễn thông"
+                    "TenDoanhNghiep": "Vị trí hiện tại"
             }
         },
         to: null
     };
-    document.getElementById('from_place').value = app.direction_input.from.id;
+    document.getElementById('from_place').value = app.direction_input.from.information.TenDoanhNghiep;
 
     var addDirectionInput = function(point) {
         if (!app.direction_input) app.direction_input = {};
@@ -531,7 +544,7 @@ Draw mode:  http://maps.com/?__draw=1
             for (var i in item.points) router.push(item.points[i]);
             router.push(item.next);
 
-            console.log(router)
+            // console.log(router)
 
             var draw_line = null;
             var vectorSource = new ol.source.Vector();

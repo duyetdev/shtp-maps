@@ -490,6 +490,8 @@ window.modalView = app.modalView = function(id, data, e) {
     $('#popup').popover('hide');
     $('#modal').modal('show');
 
+    console.log('>>>>>>', data)
+
     // var enterprise = searchEnterprise(id);
     if (data) {
         $('.enterprise_nodata').hide();
