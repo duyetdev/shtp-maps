@@ -156,7 +156,9 @@ app.getDirection = function(input) {
         }
 
         var p = results[shortest_index];
-        var last_point = p[p.length - 1]; console.info("last point: ", last_point);
+        var length = p ? p.length : 0;
+        console.info("last point: ", shortest_index, p, length);
+        var last_point = p[length - 1]; 
         var nexts = getNext(last_point); console.info('Next:::', nexts);
         
         if (!app.isNear(last_point, to_point) && nexts) {
@@ -164,10 +166,19 @@ app.getDirection = function(input) {
                 if (!isExists(p, nexts[j])) {
                     is_change = true;
                     var new_current_path = JSON.parse(JSON.stringify(p));
+
+                    // console.log('getChildPathOf(',last_point, nexts[j] ,')', getChildPathOf(last_point, nexts[j]))
+                    // var child = getChildPathOf(last_point, nexts[j]);
+                    // if (child) {
+                    //     for (var jj in child) {
+                    //         new_current_path.push(child[jj]);
+                    //     }
+                    // }
+                    // console.log('After push: ', new_current_path)
+
                     new_current_path.push(nexts[j]);
                     // console.error(' ~~~~~~~~~~~> ', new_current_path);
                     new_results.push(new_current_path);
-                        
                 }
             }
         }
@@ -298,7 +309,7 @@ app.getDirection = function(input) {
             if (route[i] && route[i + 1])
                 full = merge(full, [route[i]]);
                 full = merge(full, getChildPathOf(route[i], route[i + 1]));
-                console.log('getChildPathOf(route[i], route[i + 1])', getChildPathOf(route[i], route[i + 1]))
+                
                 full = merge(full, [route[i + 1]]);
         }
 
@@ -318,9 +329,9 @@ app.getDirection = function(input) {
     }
 
     function getChildPathOf(from, to) {
-        for (var i in this.route) {
-            if (this.isNear(this.route[i].start, from) && this.isNear(this.route[i].next, to)) {
-                return this.route[i].points;
+        for (var i in app.route) {
+            if (app.route[i] && app.isNear(app.route[i].start, from) && app.isNear(app.route[i].next, to)) {
+                return app.route[i].points;
             }
         }
 
