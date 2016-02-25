@@ -448,7 +448,7 @@ app.arrayPointToRouterGeneratorTools = function(data, is_reverse) {
     for (var i = data_length - 1; i >= 0; i--) {
         if (data[i]) t2_data.push(data[i]);
     }
-    app.arrayPointToRouterGeneratorTools(t2_data, true);   
+    // app.arrayPointToRouterGeneratorTools(t2_data, true);   
 }
 
 /**/
