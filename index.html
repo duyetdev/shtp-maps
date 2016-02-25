@@ -427,7 +427,7 @@ Draw mode:  http://maps.com/?__draw=1
         // Get postion at block
         displayFeatureInfo(evt.pixel);
 
-        var element = popoverup.getElement();
+        var element = popup.getElement();
         var coordinate = evt.coordinate;
         
         var feature = map.forEachFeatureAtPixel(evt.pixel, function(feature) {
