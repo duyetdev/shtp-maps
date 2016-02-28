@@ -7,7 +7,7 @@ window.app.enterprise_geodata =  {
             "id": "I-1d-1",
             "properties": {
                 "name": "I-1d-1 COPAL",
-                "gateway": [ 312.125, 787.75 ],
+                "gateway": [ 311.0625,787.125 ],
                 "data": {
                     "ID": 76,
                     "TenDoanhNghiep": "Công ty TNHH Nidec Copal Precision Việt Nam",
@@ -31,14 +31,7 @@ window.app.enterprise_geodata =  {
             "geometry": {
                 "type": "Polygon",
                 "coordinates": [
-                    [
-                        [ 301.5, 803.75 ],
-                        [ 341.75, 822.5 ],
-                        [ 369.5, 807.25 ],
-                        [ 325.25, 762 ],
-                        [ 313.75, 768.25 ],
-                        [ 313.75, 780 ]
-                    ]
+[[325.3125,762.625],[313.1875,768.375],[313.9375,773.625],[313.5625,778.875],[311.6875,786.625],[308.8125,793.5],[301.8125,803.5],[341.5625,822.75],[361.0625,812.75],[369.9375,807.25],[325.3125,762.625]]
                 ]
             }
         },
@@ -47,7 +40,7 @@ window.app.enterprise_geodata =  {
             "id": "I3-9",
             "properties": {
                 "name": "COPAL-2",
-                "gateway": [ 442.6875, 648.75 ],
+                "gateway": [  436.9375,654.375 ],
                 "data": {
                     "ID": 67,
                     "TenDoanhNghiep": "Công ty TNHH Sonion Việt Nam",
@@ -254,7 +247,7 @@ window.app.enterprise_geodata =  {
             "id": "NIDEC-VIETNAM",
             "properties": {
                 "name": "NIDEC-VIETNAM",
-                "gateway": [ 265.3125, 743.5 ],
+                "gateway": [ 265.59375,744.4375 ],
                 "data": {
                     "ID": 75,
                     "TenDoanhNghiep": "Công ty TNHH Nidec Việt Nam Corporation",
@@ -323,17 +316,7 @@ window.app.enterprise_geodata =  {
             },
             "geometry": {
                 "type": "Polygon",
-                "coordinates": [
-                    [
-                        [ 417.25, 667.625 ],
-                        [ 461.25, 699.625 ],
-                        [ 498.25, 675.875 ],
-                        [ 531.25, 700.875 ],
-                        [ 369.75, 807.625 ],
-                        [ 302, 739.125 ],
-                        [ 417.25, 667.625 ]
-                    ]
-                ]
+                "coordinates": [[[418.0625,668],[461.0625,699.625],[497.8125,675.5],[530.4375,701.375],[370.0625,807],[302.3125,738.75],[302.9375,736.875],[308.1875,736],[316.8125,733.625],[324.1875,730.625],[330.6875,727.25],[337.0625,723.25],[348.1875,715.25],[361.4375,706],[376.1875,696.5],[418.0625,668]]]
             }
         },
         {
@@ -404,7 +387,9 @@ window.app.enterprise_geodata =  {
             },
             "geometry": {
                 "type": "Polygon",
-                "coordinates": [ [ [ 234.3125, 798.875 ], [ 281.1875, 819.25 ], [ 300.8125, 796.875 ], [ 251.3125, 775.375 ], [ 251.1875, 778.75 ], [ 249.1875, 785.75 ], [ 246.6875, 789.375 ], [ 243.3125, 793.875 ], [ 239.3125, 797.75 ], [ 234.3125, 798.875 ] ] ]
+                "coordinates": [ 
+                [[274.1875,785.125],[306.0625,787.875],[306.9375,784.875],[308.0625,779.875],[308.6875,774.875],[308.4375,769.25],[307.5625,764.75],[251.6875,775.5],[250.5625,781],[249.1875,785.125],[245.9375,789.25],[239.8125,796.5],[237.0625,798.375],[234.0625,799],[280.9375,818.875],[296.4375,802.75],[298.5625,800.125],[300.6875,797.125],[274.1875,785.125]]
+                ]
             }
         },
         {
@@ -412,7 +397,7 @@ window.app.enterprise_geodata =  {
             "id": "K02",
             "properties": {
                 "name": "K02",
-                "gateway": [ 434.3125, 664.625 ],
+                "gateway": [ 438.78125,669.125 ],
                 "data": {
                     "ID": 10,
                     "TenDoanhNghiep": "Công ty Cổ phần SX DV Công nghệ Bán dẫn Toàn cầu VN",
@@ -451,7 +436,7 @@ window.app.enterprise_geodata =  {
             "id": "K03",
             "properties": {
                 "name": "K03",
-                "gateway": [ 446.5625, 673.875 ],
+                "gateway": [ 446.265625,674.46875 ],
                 "data": {
                     "ID": 26,
                     "TenDoanhNghiep": "Công ty TNHH Điện tử D.G.S",
@@ -474,13 +459,7 @@ window.app.enterprise_geodata =  {
             "geometry": {
                 "type": "Polygon",
                 "coordinates": [
-                    [
-                        [ 443.75, 686.625 ],
-                        [ 452.5, 679.625 ],
-                        [ 441.75, 671.125 ],
-                        [ 432.25, 677.875 ],
-                        [ 443.75, 686.625 ]
-                    ]
+                    [[431.640625,677.84375],[440.515625,670.46875],[452.390625,679.34375],[443.203125,686.28125],[431.640625,677.84375]]
                 ]
             }
         },
@@ -489,7 +468,7 @@ window.app.enterprise_geodata =  {
             "id": "K04.1",
             "properties": {
                 "name": "K04.1",
-                "gateway": [ 456.6875, 681.5 ],
+                "gateway": [ 456.265625,681.875 ],
                 "data": {
                     "ID": 2,
                     "TenDoanhNghiep": "Công ty Cổ phần Thông Minh MK",
@@ -530,7 +509,7 @@ window.app.enterprise_geodata =  {
             "id": "K04.2",
             "properties": {
                 "name": "K04.2",
-                "gateway": [ 456.6875, 681.5 ],
+                "gateway": [ 456.265625,681.875 ],
                 "data": {
                     "ID": 12,
                     "TenDoanhNghiep": "Chi nhánh Công ty Cổ phần Tập đoàn MK",
@@ -569,10 +548,7 @@ window.app.enterprise_geodata =  {
             "id": "K05",
             "properties": {
                 "name": "K05",
-                "gateway": [
-                    463,
-                    682.125
-                ],
+                "gateway": [465.328125,680.609375],
                 "data": {
                     "ID": 13,
                     "TenDoanhNghiep": "Công ty Cổ phần Vi mạch Điện tử Việt Vmicro",
@@ -609,7 +585,7 @@ window.app.enterprise_geodata =  {
             "id": "K06",
             "properties": {
                 "name": "K06",
-                "gateway": [ 474.0625, 673.625 ],
+                "gateway": [ 495.203125,675.40625 ],
                 "data": {
                     "ID": 69,
                     "TenDoanhNghiep": "Cty TNHH MTV QSIC Việt Nam",
@@ -649,7 +625,7 @@ window.app.enterprise_geodata =  {
             "id": "I-3b-5",
             "properties": {
                 "name": "I-3b-5",
-                "gateway": [ 520.0625, 688.25 ],
+                "gateway": [520.359375,688 ],
                 "data": {
                     "ID": 55,
                     "TenDoanhNghiep": "Viện Vật liệu xậy dựng - Bộ Xây dựng",
@@ -687,7 +663,7 @@ window.app.enterprise_geodata =  {
             "id": "I-3b-4",
             "properties": {
                 "name": "I-3b-4",
-                "gateway": [ 520.5625, 669.25 ],
+                "gateway": [ 511.2890625,681.0703125 ],
                 "data": {
                     "ID": 25,
                     "TenDoanhNghiep": "Công ty TNHH Đầu tư và phát triển Công nghệ thông minh",
@@ -726,7 +702,7 @@ window.app.enterprise_geodata =  {
             "id": "I-3b-3",
             "properties": {
                 "name": "I-3b-3",
-                "gateway": [ 545.8125, 653.875 ],
+                "gateway": [ 547.59375,653.4375 ],
                 "data": {
                     "ID": 61,
                     "TenDoanhNghiep": "Trung tâm Thiết kế Chế tạo Thiết bị mới",
@@ -766,12 +742,44 @@ window.app.enterprise_geodata =  {
                 ]
             }
         },
+        
+        {
+            "type": "Feature",
+            "id": "I-3b-1.2",
+            "properties": {
+                "name": "I-3b",
+                "gateway": [533.8203125,660.984375],
+                "data": {
+                    "ID": 45,
+                    "TenDoanhNghiep": "Công ty TNHH TLD Hi-Tech",
+                    "GoiTat": "Phước Thành TLD",
+                    "QuocGia": "Việt Nam",
+                    "DaiDienPhapLuat": "Bà Phạm Thị Thanh Hằng",
+                    "LinhVucHoatDong": "Dịch vụ thương mại",
+                    "TenDuAnDauTu": "Nhà xưởng xây dựng sẵn​​​",
+                    "MucTieuQuyMoDuAn": [
+
+                    ],
+                    "DiaChiTrongKhu": "Lô I-3b-1 (nhà xưởng 1), Đường N6​​",
+                    "DienThoai": "",
+                    "Fax": "",
+                    "Website": "",
+                    "TaiLieuDinhKem": ""
+                }
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [[537.53125,665.9375],[542.15625,662.5625],[535.90625,659.8125],[532.15625,662.625],[537.53125,665.9375]]
+                ]
+            }
+        },
         {
             "type": "Feature",
             "id": "I-3b-1.1",
             "properties": {
                 "name": "I-3b",
-                "gateway": [ 529.1875, 663.25 ],
+                "gateway": [ 529.796875,664.09375 ],
                 "data": {
                     "ID": 32,
                     "TenDoanhNghiep": "Công ty TNHH Kỹ thuật Daikou Việt Nam",
@@ -797,58 +805,7 @@ window.app.enterprise_geodata =  {
             "geometry": {
                 "type": "Polygon",
                 "coordinates": [
-                    [
-                        [ 523.5625, 668.75 ],
-                        [ 535.8125, 659.75 ],
-                        [ 539.0625, 660.875 ],
-                        [ 542.0625, 661.875 ],
-                        [ 544.0625, 662.875 ],
-                        [ 530.4375, 671.75 ],
-                        [ 529.1875, 672.875 ],
-                        [ 523.5625, 668.75 ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "I-3b-1.2",
-            "properties": {
-                "name": "I-3b",
-                "gateway": [
-                   532.6875,661
-                ],
-                "data": {
-                    "ID": 45,
-                    "TenDoanhNghiep": "Công ty TNHH TLD Hi-Tech",
-                    "GoiTat": "Phước Thành TLD",
-                    "QuocGia": "Việt Nam",
-                    "DaiDienPhapLuat": "Bà Phạm Thị Thanh Hằng",
-                    "LinhVucHoatDong": "Dịch vụ thương mại",
-                    "TenDuAnDauTu": "Nhà xưởng xây dựng sẵn​​​",
-                    "MucTieuQuyMoDuAn": [
-
-                    ],
-                    "DiaChiTrongKhu": "Lô I-3b-1 (nhà xưởng 1), Đường N6​​",
-                    "DienThoai": "",
-                    "Fax": "",
-                    "Website": "",
-                    "TaiLieuDinhKem": ""
-                }
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [ 523.5625, 668.75 ],
-                        [ 535.8125, 659.75 ],
-                        [ 539.0625, 660.875 ],
-                        [ 542.0625, 661.875 ],
-                        [ 544.0625, 662.875 ],
-                        [ 530.4375, 671.75 ],
-                        [ 529.1875, 672.875 ],
-                        [ 523.5625, 668.75 ]
-                    ]
+                    [[523.59375,668.75],[529.21875,672.75],[537.46875,665.9375],[531.96875,662.5625],[523.59375,668.75]]
                 ]
             }
         },
@@ -857,12 +814,10 @@ window.app.enterprise_geodata =  {
             "id": "K08.2",
             "properties": {
                 "name": "K08.2",
-                "gateway": [
-                    454.1875,676
-                ],
+                "gateway": [451.671875,673.53125],
                 "data": {
                     "ID": 60,
-                    "TenDoanhNghiep": "Trung tâm Nghiên cứu và Triển khai Khu Công nghệ cao Trường sau đại học khoa họp tổng hợp về con người, Đại học Tsukuba",
+                    "TenDoanhNghiep": "Trung tâm Nghiên cứu và Triển khai Khu Công nghệ cao",
                     "GoiTat": "",
                     "QuocGia": "Việt - Nhật",
                     "DaiDienPhapLuat": "",
@@ -881,14 +836,7 @@ window.app.enterprise_geodata =  {
             "geometry": {
                 "type": "Polygon",
                 "coordinates": [
-                    [
-                        [ 449, 671.375 ],
-                        [ 455, 676.125 ],
-                        [ 457.25, 676.625 ],
-                        [ 467, 669.875 ],
-                        [ 458.75, 664.625 ],
-                        [ 449, 671.375 ]
-                    ]
+                    [[448.421875,670.71875],[455.453125,676.21875],[457.046875,676.25],[466.921875,669.46875],[458.609375,663.59375],[448.421875,670.71875]]
                 ]
             }
         },
@@ -897,9 +845,7 @@ window.app.enterprise_geodata =  {
             "id": "K08.3",
             "properties": {
                 "name": "K08.3",
-                "gateway": [
-                    449.4375,672.625
-                ],
+                "gateway": [451.671875,673.53125],
                 "data": {
                     "ID": 65,
                     "TenDoanhNghiep": "Công ty TNHH NC&TK Quang Lượng Tử Việt Mỹ",
@@ -922,14 +868,7 @@ window.app.enterprise_geodata =  {
             "geometry": {
                 "type": "Polygon",
                 "coordinates": [
-                    [
-                        [ 449, 671.375 ],
-                        [ 455, 676.125 ],
-                        [ 457.25, 676.625 ],
-                        [ 467, 669.875 ],
-                        [ 458.75, 664.625 ],
-                        [ 449, 671.375 ]
-                    ]
+                    [[448.421875,670.71875],[455.453125,676.21875],[457.046875,676.25],[466.921875,669.46875],[458.609375,663.59375],[448.421875,670.71875]]
                 ]
             }
         },
@@ -938,9 +877,7 @@ window.app.enterprise_geodata =  {
             "id": "K09",
             "properties": {
                 "name": "K09",
-                "gateway": [
-                   468.4375,669.375
-                ],
+                "gateway": [473.0625,665.4375],
                 "data": {
                     "ID": 47,
                     "TenDoanhNghiep": "Công ty TNHH MTV Seen Miền Nam",
@@ -964,16 +901,7 @@ window.app.enterprise_geodata =  {
             },
             "geometry": {
                 "type": "Polygon",
-                "coordinates": [
-                    [
-                        [ 459.75, 663.875 ],
-                        [ 472, 654.375 ],
-                        [ 472.75, 659.125 ],
-                        [ 476.25, 662.375 ],
-                        [ 467.5, 669.625 ],
-                        [ 459.75, 663.875 ]
-                    ]
-                ]
+                "coordinates": [[[472.28125,654.4375],[459.15625,663.5],[467.09375,669.4375],[476.53125,663],[475.59375,662.0625],[474.65625,661.25],[473.78125,660.25],[473.28125,658.875],[472.53125,657.3125],[472.28125,654.4375]]]
             }
         },
         {
@@ -981,10 +909,7 @@ window.app.enterprise_geodata =  {
             "id": "VIETCO",
             "properties": {
                 "name": "VIETCO",
-                "gateway": [
-                    491.9375,
-                    613.625
-                ],
+                "gateway": [495.109375,614.46875],
                 "data": {
                     "ID": 22,
                     "TenDoanhNghiep": "Công ty TNHH Công nghệ sinh học Dược Na No Gen",
@@ -1025,10 +950,7 @@ window.app.enterprise_geodata =  {
             "id": "CTBIO",
             "properties": {
                 "name": "HUDEN",
-                "gateway": [
-                    515.4375,
-                    622.125
-                ],
+                "gateway": [510.1875,621.5625],
                 "data": {
                     "ID": 5,
                     "TenDoanhNghiep": "Công ty Cổ phần CTCBIO Việt Nam",
@@ -1064,13 +986,10 @@ window.app.enterprise_geodata =  {
         },
         {
             "type": "Feature",
-            "id": "PLAM KHOA",
+            "id": "PLAM KHOA.1",
             "properties": {
                 "name": "PLAM KHOA",
-                "gateway": [
-                    515.0625,
-                    610.625
-                ],
+                "gateway": [518.015625,605.296875],
                 "data": {
                     "ID": 11,
                     "TenDoanhNghiep": "Chi nhánh CNSH Công ty TNHH DV&TM Nam Khoa",
@@ -1093,29 +1012,16 @@ window.app.enterprise_geodata =  {
             "geometry": {
                 "type": "Polygon",
                 "coordinates": [
-                    [
-                        [ 522, 620.4375 ],
-                        [ 514.875, 619.0625 ],
-                        [ 513.375, 616.9375 ],
-                        [ 519.25, 603.0625 ],
-                        [ 523.625, 604.5625 ],
-                        [ 528.125, 605.4375 ],
-                        [ 530.25, 605.9375 ],
-                        [ 525.375, 613.8125 ],
-                        [ 522, 620.4375 ]
-                    ]
+                    [[517.34375,607.5625],[527.28125,610.4375],[529.78125,606],[519.09375,603.125],[517.34375,607.5625]]
                 ]
             }
         },
         {
             "type": "Feature",
-            "id": "PLAM KHOA",
+            "id": "PLAM KHOA.2",
             "properties": {
                 "name": "PLAM KHOA",
-                "gateway": [
-                    515.0625,
-                    610.625
-                ],
+                "gateway": [ 515.296875,612.03125],
                 "data": {
                     "ID": 19,
                     "TenDoanhNghiep": "Công ty TNHH CNSH Bioland Nam Khoa",
@@ -1137,17 +1043,8 @@ window.app.enterprise_geodata =  {
             "geometry": {
                 "type": "Polygon",
                 "coordinates": [
-                    [
-                        [ 522, 620.4375 ],
-                        [ 514.875, 619.0625 ],
-                        [ 513.375, 616.9375 ],
-                        [ 519.25, 603.0625 ],
-                        [ 523.625, 604.5625 ],
-                        [ 528.125, 605.4375 ],
-                        [ 530.25, 605.9375 ],
-                        [ 525.375, 613.8125 ],
-                        [ 522, 620.4375 ]
-                    ]
+[[527.09375,610.5625],[522.09375,620.5],[514.96875,618.9375],[513.21875,617.375],[517.09375,607.75],[527.09375,610.5625]]
+
                 ]
             }
         },
@@ -1156,10 +1053,7 @@ window.app.enterprise_geodata =  {
             "id": "K13",
             "properties": {
                 "name": "K13",
-                "gateway": [
-                    522.9375,
-                    594.5
-                ],
+                "gateway": [520.734375,598.5],
                 "data": {
                     "ID": 72,
                     "TenDoanhNghiep": "Công ty TNHH Thế giới GEN",
@@ -1251,10 +1145,7 @@ window.app.enterprise_geodata =  {
             "id": "tld",
             "properties": {
                 "name": "tld",
-                "gateway": [
-                    291.8125,
-                    733.875
-                ],
+                "gateway": [302.15625,729.3125],
                 "data": {
                     "ID": 44,
                     "TenDoanhNghiep": "Công ty TNHH Thương mại Đầu tư TLD",
@@ -1303,10 +1194,7 @@ window.app.enterprise_geodata =  {
             "id": "hdbank",
             "properties": {
                 "name": "hd",
-                "gateway": [
-                    327.6875,
-                    722
-                ],
+                "gateway": [329.28125,717.9375],
                 "data": {
                     "ID": 46,
                     "TenDoanhNghiep": "Ngân hàng TMCP Phát triển Thành phố Hồ Chí Minh",
@@ -1352,10 +1240,7 @@ window.app.enterprise_geodata =  {
             "id": "C1-2",
             "properties": {
                 "name": "C1-2 KHU-PHUC-HOP",
-                "gateway": [
-                    191.1875,
-                    756.125
-                ],
+                "gateway": [191.1875,758.625],
                 "data": {
                     "ID": 16,
                     "TenDoanhNghiep": "Công ty TNHH Ascendas Saigon Bund",
@@ -1413,10 +1298,7 @@ window.app.enterprise_geodata =  {
             "id": "CMC",
             "properties": {
                 "name": "CMC",
-                "gateway": [
-                    219.9375,
-                    750.875
-                ],
+                "gateway": [222.40625,752.5625],
                 "data": {
                     "ID": 1,
                     "TenDoanhNghiep": "Công ty Cổ phần Tập đoàn Công nghệ CMC",
@@ -1455,10 +1337,7 @@ window.app.enterprise_geodata =  {
             "id": "T2-1-2",
             "properties": {
                 "name": "K15",
-                "gateway": [
-                    353.6875,
-                    704.25
-                ],
+                "gateway": [562.828125,660.75],
                 "data": {
                     "ID": 20,
                     "TenDoanhNghiep": "Công ty TNHH công nghệ Fawookidi",
@@ -1470,7 +1349,7 @@ window.app.enterprise_geodata =  {
                     "MucTieuQuyMoDuAn": [
                         "Ứng dụng công nghệ tiên tiến của Hàn Quốc để nghiên cứu, sản xuất và kinh doanh đèn LED hiệu suất cao, thân thiện với môi trường. Sản phẩm được ứng dụng trong chiếu sáng hộ gia đình và khối văn phòng, khu mua sắm, siêu thị; đèn đường và đèn bảo an trong chiếu sáng công cộng, đèn pha cho các nhà máy xí nghiệp, đèn dẫn dụ cá phục vụ ngành ngư nghiệp, đèn chống cháy nổ, đèn đường hầm, v.v…thay thế hàng nhập khẩu, giảm giá thành sản phẩm"
                     ],
-                    "DiaChiTrongKhu": "Lô T2-1-2 Đường D1",
+                    "DiaChiTrongKhu": "Lô I-3B-4-A, Đường N6, Khu Công Nghệ Cao",
                     "DienThoai": "37252269",
                     "Fax": "37360666",
                     "Website": "http://www.fawookidi.com.vn",
@@ -1480,13 +1359,7 @@ window.app.enterprise_geodata =  {
             "geometry": {
                 "type": "Polygon",
                 "coordinates": [
-                    [
-                        [ 335.875, 694.65625 ],
-                        [ 348.6875, 704.53125 ],
-                        [ 357.0625, 698.84375 ],
-                        [ 344.6875, 689.15625 ],
-                        [ 335.875, 694.65625 ]
-                    ]
+                    [[552.546875,655.3125],[566.796875,662.625],[576.390625,651.9375],[558.453125,648.84375],[552.546875,655.3125]]
                 ]
             }
         },
@@ -1495,10 +1368,7 @@ window.app.enterprise_geodata =  {
             "id": "PLAMSOON.1",
             "properties": {
                 "name": "PLAMSOON.1",
-                "gateway": [
-                    404.4375,
-                    669.125
-                ],
+                "gateway": [406.46875,665],
                 "data": {
                     "ID": 3,
                     "TenDoanhNghiep": "Công ty Cổ phần Bán dẫn Việt Nam",
@@ -1535,10 +1405,7 @@ window.app.enterprise_geodata =  {
             "id": "PLAMSOON.2",
             "properties": {
                 "name": "PLAMSOON.2",
-                "gateway": [
-                    404.4375,
-                    669.125
-                ],
+                "gateway": [406.46875,665],
                 "data": {
                     "ID": 7,
                     "TenDoanhNghiep": "Công ty cồ phần hệ thống công nghệ Ánh Lam",
@@ -1577,10 +1444,7 @@ window.app.enterprise_geodata =  {
             "id": "PLAMSOON.3",
             "properties": {
                 "name": "PLAMSOON.3",
-                "gateway": [
-                    404.4375,
-                    669.125
-                ],
+                "gateway": [406.46875,665],
                 "data": {
                     "ID": 17,
                     "TenDoanhNghiep": "Công ty TNHH Chíp sáng và Ashmanov",
@@ -1618,10 +1482,7 @@ window.app.enterprise_geodata =  {
             "id": "PLAMSOON.4",
             "properties": {
                 "name": "PLAMSOON.4",
-                "gateway": [
-                    404.4375,
-                    669.125
-                ],
+                "gateway": [406.46875,665],
                 "data": {
                     "ID": 36,
                     "TenDoanhNghiep": "Công ty TNHH MTV Dịch vụ Quy trình Phần mềm FPT",
@@ -1662,10 +1523,7 @@ window.app.enterprise_geodata =  {
             "id": "PLAMSOON.5",
             "properties": {
                 "name": "PLAMSOON.5",
-                "gateway": [
-                    404.4375,
-                    669.125
-                ],
+                "gateway": [406.46875,665],
                 "data": {
                     "ID": 40,
                     "TenDoanhNghiep": "Công ty TNHH MTV Micro Precision Calibration Việt Nam",
@@ -1706,10 +1564,7 @@ window.app.enterprise_geodata =  {
             "id": "PLAMSOON.6",
             "properties": {
                 "name": "PLAMSOON.6",
-                "gateway": [
-                    404.4375,
-                    669.125
-                ],
+                "gateway": [406.46875,665],
                 "data": {
                     "ID": 41,
                     "TenDoanhNghiep": "Công ty TNHH MTV Microchip Technology (Việt Nam)",
@@ -1750,10 +1605,7 @@ window.app.enterprise_geodata =  {
             "id": "PLAMSOON.7",
             "properties": {
                 "name": "PLAMSOON.7",
-                "gateway": [
-                    404.4375,
-                    669.125
-                ],
+                "gateway": [406.46875,665],
                 "data": {
                     "ID": 43,
                     "TenDoanhNghiep": "Công ty TNHH Thương mại - Dịch vụ Công nghệ cao",
@@ -1790,10 +1642,7 @@ window.app.enterprise_geodata =  {
             "id": "PLAMSOON.8",
             "properties": {
                 "name": "PLAMSOON.8",
-                "gateway": [
-                    404.4375,
-                    669.125
-                ],
+                "gateway": [406.46875,665],
                 "data": {
                     "ID": 50,
                     "TenDoanhNghiep": "Công ty TNHH Rockwell Automation Việt Nam",
@@ -1831,10 +1680,7 @@ window.app.enterprise_geodata =  {
             "id": "PLAMSOON.9",
             "properties": {
                 "name": "PLAMSOON.9",
-                "gateway": [
-                    404.4375,
-                    669.125
-                ],
+                "gateway": [406.46875,665],
                 "data": {
                     "ID": 58,
                     "TenDoanhNghiep": "Công ty TNHH Sacom - Chíp sáng",
@@ -1871,11 +1717,19 @@ window.app.enterprise_geodata =  {
             "id": "KOO",
             "properties": {
                 "name": "KOO",
-                "gateway": [
-                    396.0625,
-                    670.75
-                ],
-                "data": { "TenDoanhNghiep": "BQL Khu CNC" }
+                "gateway": [397.234375,671.1875],
+                "data": { "TenDoanhNghiep": "Ban Quản Lý Khu Công Nghệ Cao",
+                            "GoiTat":"BQL KCNC",
+                            "QuocGia": "Việt Nam",
+                            "DaiDienPhapLuat":"",
+                            "LinhVucHoatDong":"",
+                            "TenDuAnDauTu":"",
+                            "DiaChiTrongKhu":"Đường D1, Khu Công Nghệ Cao",
+                            "DienThoai":"08.37360293",
+                            "Fax":"08.37360292",
+                            "Website":"http://www.shtp.hochiminhcity.gov.vn/Pages/default.aspx",
+                            "TaiLieuDinhKem":""
+                        }
             },
             "geometry": {
                 "type": "Polygon",
@@ -1895,10 +1749,7 @@ window.app.enterprise_geodata =  {
             "id": "FPTBuilding",
             "properties": {
                 "name": "FPTBuilding",
-                "gateway": [
-                    363.5625,
-                    697.625
-                ],
+                "gateway": [384.5625,679.875],
                 "data": {
                     "ID": 39,
                     "TenDoanhNghiep": "Công ty TNHH MTV Giải pháp công nghệ FPT",
@@ -1928,17 +1779,7 @@ window.app.enterprise_geodata =  {
             },
             "geometry": {
                 "type": "Polygon",
-                "coordinates": [
-
-                    [
-                        [ 344.90625, 689.375 ],
-                        [ 357.09375, 698.6875 ],
-                        [ 373.46875, 687.5625 ],
-                        [ 347.28125, 687.5 ],
-                        [ 345.34375, 688.75 ],
-                        [ 344.90625, 689.375 ]
-                    ]
-                ]
+                "coordinates": [[[357.0625,698.5],[394.4375,673.375],[384.0625,665.75],[345.1875,689.375],[357.0625,698.5]]]
             }
         },
         {
@@ -1946,10 +1787,7 @@ window.app.enterprise_geodata =  {
             "id": "FPTSoft",
             "properties": {
                 "name": "T2-2",
-                "gateway": [
-                    379.8125,
-                    686.5
-                ],
+                "gateway": [384.5625,679.875],
                 "data": {
                     "ID": 49,
                     "TenDoanhNghiep": "Công ty TNHH Phần mềm FPT Hồ Chí Minh",
@@ -1972,18 +1810,7 @@ window.app.enterprise_geodata =  {
             },
             "geometry": {
                 "type": "Polygon",
-                "coordinates": [
-
-                    [
-                        [ 347.46875, 687.4375 ],
-                        [ 371.4375, 672.625 ],
-                        [ 383.78125, 665.1875 ],
-                        [ 394.28125, 672.875 ],
-                        [ 393.84375, 673.8125 ],
-                        [ 373.78125, 687.5625 ],
-                        [ 347.46875, 687.4375 ]
-                    ]
-                ]
+                "coordinates": [[[357.0625,698.5],[394.4375,673.375],[384.0625,665.75],[345.1875,689.375],[357.0625,698.5]]]
             }
         },
         {
@@ -1991,10 +1818,7 @@ window.app.enterprise_geodata =  {
             "id": "T2-6",
             "properties": {
                 "name": "K17",
-                "gateway": [
-                    439.8125,
-                    645.125
-                ],
+                "gateway": [440.1875,641.75],
                 "data": {
                     "ID": 64,
                     "TenDoanhNghiep": "Trung tâm công nghệ và quản lý môi trường",
