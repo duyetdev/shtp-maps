@@ -632,11 +632,6 @@ app.markAPinTo = function(block) {
     var center = [];
     center[0] = x1 + ((x2 - x1) / 2);
     center[1] = y1 + ((y2 - y1) / 2);
-
-    console.log(x1, y1);
-    console.log(x2, y2);
-    console.log(center);
-
     // center = gateway;
 
     // Move to center
@@ -651,6 +646,7 @@ app.markAPinTo = function(block) {
     });
     map.beforeRender(pan);
     view.setCenter(center);
+    view.setZoom(4);
 
     // Mark a pin to map
     var location_pin = new ol.Overlay({
