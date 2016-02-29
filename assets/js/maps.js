@@ -252,7 +252,7 @@ app.getDirection = function(input) {
     // getRoute([form_point], form_point);
     var result = results[result_index];
     // var result = getFullPath(result);
-    // result.push(to_point);
+    result.push(to_point);
     console.info(' Last result : =================> ', result);
 
     // TODO: Fix here
@@ -404,7 +404,7 @@ app.distance = function(a, b) {
 }
 
 app.isNear = function(a, b, distance) {
-    distance = distance || 10.0;
+    distance = 5.0;
     return this.distance(a, b) < distance;
 }
 
@@ -504,7 +504,7 @@ window.getDirectionTo = app.getDirectionTo = function(long, lat, e ) {
         source: vectorSource,
         style: new ol.style.Style({
             stroke: new ol.style.Stroke({
-                color: '#FF5722',
+                color: '#4285F4',
                 width: 6,
                 lineCap: 'round'
             }),
