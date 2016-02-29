@@ -619,11 +619,15 @@ app.markAPinTo = function(block) {
         x2 = coordinates[0][0], y2 = coordinates[0][1];
 
     for (i = 0; i < coordinates.length; i++) {
-        if (coordinates[i][0] < x1) x1 = coordinates[i][0];
-        if (coordinates[i][1] < y1) y1 = coordinates[i][1];
+        if (coordinates[i][0] * coordinates[i][1] < x1 * y1) {
+            x1 = coordinates[i][0];
+            y1 = coordinates[i][1];
+        }
 
-        if (coordinates[i][0] > x2) x2 = coordinates[i][0];
-        if (coordinates[i][0] > y2) y2 = coordinates[i][0];
+        if (coordinates[i][0] * coordinates[i][1] > x2 * y2) {
+            x2 = coordinates[i][0];
+            y2 = coordinates[i][1];
+        }
     }
     var center = [];
     center[0] = x1 + ((x2 - x1) / 2);
