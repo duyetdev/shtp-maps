@@ -163,14 +163,12 @@ app.getDirection = function(input) {
     var result_index = -1;
 
     while (true) {
-        // console.info(' >>>>>>> loop ', loop_count++, '');
         var is_change = false;
         var new_results = [];
 
 
         var shortest_index = 0;
         var shortest_l = getLengthOfRoute(results[0]);
-        // console.log("results here", JSON.stringify(results));
         for (var i in results) {
             var p = results[i];
             var length = getLengthOfRoute(p); // int 
@@ -183,9 +181,14 @@ app.getDirection = function(input) {
 
         var p = results[shortest_index];
         var length = p ? p.length : 0;
-        console.info("last point: ", shortest_index, p, length);
-        var last_point = p[length - 1]; 
-        var nexts = getNext(last_point); console.info('Next:::', nexts);
+        var last_point = null; 
+        try {
+            last_point = p[length - 1]
+        } catch (e) {
+            return false;
+        }
+
+        var nexts = getNext(last_point);
         
         if (!app.isNear(last_point, to_point) && nexts) {
             for (var j in nexts) { 
@@ -203,14 +206,12 @@ app.getDirection = function(input) {
                     console.log('After push: ', new_current_path)
 
                     new_current_path.push(nexts[j]);
-                    // console.error(' ~~~~~~~~~~~> ', new_current_path);
                     new_results.push(new_current_path);
                 }
             }
         }
 
         if (new_results.length == 0 && !app.isNear(last_point, to_point)) {
-            // console.log(' !! nexts', nexts, last_point);
            is_change = true;
         }
 
@@ -486,16 +487,22 @@ window.getDirectionTo = app.getDirectionTo = function(long, lat, e ) {
     // if (!app.default_routing_start || !long || !lat) return false;
     // var point = [];
     // point.push(long); 
-    // point.push(lat);
+    // poin;
 
     // console.log({from: app.default_routing_start, to: point});
 
-    var direction = app.getDirection({from: app.direction_input.from.geoloc, to: app.direction_input.to.geoloc});
+    map.removeLayer(app.vector_direction); // Remove old 
 
-    // console.log('  ~> ', JSON.stringify( [direction]))
+    // Get direction
+    var direction = app.getDirection({from: app.direction_input.from.geoloc, to: app.direction_input.to.geoloc});
+    if (!direction) return swal({
+        title: "Không tìm thấy",
+        text: "",
+        type: "warning",
+        timer: 3000
+    })
 
     // Start draw direction
-    map.removeLayer(app.vector_direction); // Remove old 
     var vectorSource = new ol.source.Vector();
     vectorSource.addFeature(new ol.Feature(
         new ol.geom.MultiLineString([ direction ])
@@ -513,6 +520,7 @@ window.getDirectionTo = app.getDirectionTo = function(long, lat, e ) {
             })
         }) 
     });
+
     map.addLayer(app.vector_direction);
 }
 
