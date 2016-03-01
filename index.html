@@ -239,6 +239,9 @@ Draw mode:  http://maps.com/?__draw=1
         view: view
     });
 
+    var ex = map.getLayers().item(1).getSource();
+    console.log('exxxxxxxx', ex);
+
     map.addControl(new app.RotateNorthControl())
     map.addControl(new ol.control.FullScreen())
     map.addControl(new ol.control.ZoomToExtent({
@@ -304,21 +307,6 @@ Draw mode:  http://maps.com/?__draw=1
         var feature = map.forEachFeatureAtPixel(pixel, function(feature) {
             return feature;
         });
-
-        // var info = document.getElementById('place');
-        // if (feature) info.value = feature.getId() + ': (' + feature.get('gateway') + ')';
-
-        // if (feature) {
-        //     var point = feature.getId() + ': (' + feature.get('gateway') + ')';
-        //     info.value = point;
-        //     // addDirectionInput({
-        //     //     id: feature.getId(),
-        //     //     geoloc: feature.get('gateway'),
-        //     //     information: feature.get('information')
-        //     // });
-        // } else {
-        //     // info.value = '&nbsp;';
-        // }
 
         if (feature !== highlight) {
             if (highlight) {

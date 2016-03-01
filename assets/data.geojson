@@ -75,7 +75,7 @@
             "id": "I-10.1",
             "properties": {
                 "name": "I-10.1",
-                "gateway": [ 525.125, 358.75 ],
+                "gateway": [ 524.4375,359.75 ],
                 "data": {
                     "ID": 18,
                     "TenDoanhNghiep": "Công ty TNHH CNS Amura Precision",
@@ -118,7 +118,7 @@
             "id": "I-10.2",
             "properties": {
                 "name": "I-10.2",
-                "gateway": [ 543.625, 378.25 ],
+                "gateway": [ 542.96875,379.0625 ],
                 "data": {
                     "ID": 24,
                     "TenDoanhNghiep": "Công ty TNHH Đầu tư nhà xưởng Lập Thành",
@@ -1096,10 +1096,7 @@
             "id": "I4",
             "properties": {
                 "name": "I4 - ALLIED",
-                "gateway": [
-                    583.9375,
-                    649.5
-                ],
+                "gateway": [574.3125,647.25],
                 "data": {
                     "ID": 71,
                     "TenDoanhNghiep": "Công ty TNHH Sài Gòn Allied Tecnologies",
@@ -1860,10 +1857,7 @@
             "id": "E2a-III.4",
             "properties": {
                 "name": "E2-NCDT",
-                "gateway": [
-                    632.5625,
-                    516.625
-                ],
+                "gateway": [634.53125,518.8125],
                 "data": {
                     "ID": 27,
                     "TenDoanhNghiep": "Công ty TNHH Eurofins Sắc Ký Hải Đăng",
@@ -1918,10 +1912,7 @@
             "id": "E2a-II",
             "properties": {
                 "name": "E2-NCDT",
-                "gateway": [
-                    606.6875,
-                    534.625
-                ],
+                "gateway": [ 608.40625,536.625],
                 "data": {
                     "ID": 59,
                     "TenDoanhNghiep": "Trung tâm công nghệ phần mềm TP.HCM",
@@ -1973,10 +1964,7 @@
             "id": "E2a-II.3",
             "properties": {
                 "name": "E2-NCDT",
-                "gateway": [
-                    577.6875,
-                    554.625
-                ],
+                "gateway": [ 579.0625,556.875],
                 "data": {
                     "ID": 21,
                     "TenDoanhNghiep": "Công ty TNHH Công nghệ HPT",
@@ -2024,10 +2012,7 @@
             "id": "Viện Dầu khí Việt Nam",
             "properties": {
                 "name": "E2b-1",
-                "gateway": [
-                    574.8125,
-                    552.25
-                ],
+                "gateway": [573.09375,550.5],
                 "data": {
                     "ID": 70,
                     "TenDoanhNghiep": "Viện Dầu khí Việt Nam",
@@ -2073,10 +2058,7 @@
             "id": "HUTECH",
             "properties": {
                 "name": "E2b-1",
-                "gateway": [
-                    619.9375,
-                    521.875
-                ],
+                "gateway": [ 618.21875,519.625],
                 "data": {
                     "ID": 62,
                     "TenDoanhNghiep": "Viện Công nghệ cao HUTECH - Trường Đại học Kỹ thuật Công nghệ TP.HCM",
@@ -2122,10 +2104,7 @@
             "id": "DH-NTT",
             "properties": {
                 "name": "E3",
-                "gateway": [
-                    613.9375,
-                    450.75
-                ],
+                "gateway": [613.3125,451.75],
                 "data": {
                     "ID": 63,
                     "TenDoanhNghiep": "Viện Kỹ thuật Công nghệ cao NTT-Đại học Nguyễn Tất Thành-Chi nhánh Khu Công nghệ cao TP.HCM",
@@ -2182,9 +2161,9 @@
 
         {
             "type": "Feature",
-            "id": "I6,I7",
+            "id": "I6",
             "properties": {
-                "name": "I7",
+                "name": "I6",
                 "gateway": [
                     868.0625,
                     382.125
@@ -2211,6 +2190,56 @@
             "geometry": {
                 "type": "Polygon",
                 "coordinates": [
+                    
+                    [
+                        [ 854.1849916733491, 484.72169850337826 ],
+                        [ 877.5195154525052, 470.5795628796473 ],
+                        [ 933.3809511662424, 384.3125355748885 ],
+                        [ 932.5, 380.875 ],
+                        [ 897.25, 380.875 ],
+                        [ 857.5, 386.125 ],
+                        [ 832.25, 393.625 ],
+                        [ 796, 403.5 ],
+                        [ 803, 415.5 ],
+                        [ 827, 434.5 ],
+                        [ 836, 449.5 ],
+                        [ 839, 472.5 ],
+                        [ 854.1849916733491, 484.72169850337826 ]
+                    ]
+                ]
+            }
+        },
+		{
+            "type": "Feature",
+            "id": "I7",
+            "properties": {
+                "name": "I7",
+                "gateway": [
+                    867.65625,378.046875
+                ],
+                "data": {
+                    "ID": 4,
+                    "TenDoanhNghiep": "Công ty Cổ phần Công Viên Sài Gòn Silicon",
+                    "GoiTat": "Sài Gòn Silicon",
+                    "QuocGia": "Việt Nam",
+                    "DaiDienPhapLuat": "Nguyễn Minh Hiếu",
+                    "LinhVucHoatDong": "Dịch vụ thương mại",
+                    "TenDuAnDauTu": "Xây dựng và Phát triển Khu Công viên Sài Gòn Silicon",
+                    "MucTieuQuyMoDuAn": [
+                        "Quy tụ chuyên gia, nhà khoa học, doanh nghiệp Việt Kiều về đầu tư sản xuất lĩnh vực công nghệ cao và công nghiệp hỗ trợ công nghệ cao",
+                        "Thu hút và tiếp cận 11 doanh nghiệp ngành vi mạch bán dẫn của Việt Kiều tại Silicon Valley về đầu tư tại Saigon Silicon City - Khu Công nghệ cao."
+                    ],
+                    "DiaChiTrongKhu": "Lô I6, Lô I7, Đường D1",
+                    "DienThoai": "",
+                    "Fax": "",
+                    "Website": "",
+                    "TaiLieuDinhKem": ""
+                }
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    
                     [
                         [ 937.25, 373.625 ],
                         [ 940.25, 372.625 ],
@@ -2234,21 +2263,6 @@
                         [ 860, 377.375 ],
                         [ 904.75, 372.625 ],
                         [ 937.25, 373.625 ]
-                    ],
-                    [
-                        [ 854.1849916733491, 484.72169850337826 ],
-                        [ 877.5195154525052, 470.5795628796473 ],
-                        [ 933.3809511662424, 384.3125355748885 ],
-                        [ 932.5, 380.875 ],
-                        [ 897.25, 380.875 ],
-                        [ 857.5, 386.125 ],
-                        [ 832.25, 393.625 ],
-                        [ 796, 403.5 ],
-                        [ 803, 415.5 ],
-                        [ 827, 434.5 ],
-                        [ 836, 449.5 ],
-                        [ 839, 472.5 ],
-                        [ 854.1849916733491, 484.72169850337826 ]
                     ]
                 ]
             }
@@ -2258,10 +2272,7 @@
             "id": "I8-1",
             "properties": {
                 "name": "I8-1",
-                "gateway": [
-                    726.1875,
-                    448.125
-                ],
+                "gateway": [710.3125,442.125],
                 "data": {
                     "ID": 31,
                     "TenDoanhNghiep": "Công ty TNHH Jabil Việt Nam",
@@ -2307,10 +2318,7 @@
             "id": "I-8-2",
             "properties": {
                 "name": "I-8-2",
-                "gateway": [
-                    689.8125,
-                    427.25
-                ],
+                "gateway": [679.40625,418.75],
                 "data": {
                     "ID": 9,
                     "TenDoanhNghiep": "Công ty Cổ phần Sanofi Việt Nam",
@@ -2354,10 +2362,7 @@
             "id": "I-9",
             "properties": {
                 "name": "I-9",
-                "gateway": [
-                    517.9375,
-                    345.875
-                ],
+                "gateway": [519.4375,344],
                 "data": {
                     "ID": 38,
                     "TenDoanhNghiep": "Công ty TNHH MTV Emotiv Việt Nam",
@@ -2399,10 +2404,7 @@
             "id": "I-9-5",
             "properties": {
                 "name": "I-9-5",
-                "gateway": [
-                    557.5625,
-                    385
-                ],
+                "gateway": [559.59375,383.625],
                 "data": {
                     "ID": 33,
                     "TenDoanhNghiep": "Công ty TNHH Mekophar",
@@ -2444,10 +2446,7 @@
             "id": "I-9-8",
             "properties": {
                 "name": "I-9-8",
-                "gateway": [
-                    586.4375,
-                    315.5
-                ],
+                "gateway": [595.515625,316.8125],
                 "data": {
                     "ID": 48,
                     "TenDoanhNghiep": "Công ty TNHH MTV Nhà máy Công nghệ sinh học và Thiết bị y tế Hoàng Nguyên",
@@ -2490,10 +2489,7 @@
             "id": "T3A",
             "properties": {
                 "name": "T3A",
-                "gateway": [
-                    499.8125,
-                    339.125
-                ],
+                "gateway": [495.8125,338.125],
                 "data": {
                     "ID": 56,
                     "TenDoanhNghiep": "Tập đoàn Viễn thông Quân đội (Viettel)",
@@ -2584,10 +2580,7 @@
             "id": "TB",
             "properties": {
                 "name": "BT",
-                "gateway": [
-                    274.3125,
-                    211.125
-                ],
+                "gateway": [274.65625,210.5625],
                 "data": {
                     "ID": 57,
                     "TenDoanhNghiep": "Công ty TNHH MTV Transimex Hi Tech Park Logistics",
@@ -2638,10 +2631,7 @@
             "id": "HC",
             "properties": {
                 "name": "HC",
-                "gateway": [
-                    227.4375,
-                    183.875
-                ],
+                "gateway": [227.4375,183.25],
                 "data": {
                     "ID": 35,
                     "TenDoanhNghiep": "Công ty TNHH MTV Dịch vụ Phân phối Ryobi (Việt Nam)",
@@ -2683,10 +2673,7 @@
             "id": "Công ty TNHH MTV Nghiên cứu và Chế tạo khuôn mẫu độ chính xác cao Viedam",
             "properties": {
                 "name": "I4b",
-                "gateway": [
-                    748.1875,
-                    552.625
-                ],
+                "gateway": [ 741.78125,550.875],
                 "data": {
                     "ID": 53,
                     "TenDoanhNghiep": "Công ty TNHH MTV Nghiên cứu và Chế tạo khuôn mẫu độ chính xác cao Viedam",
@@ -2733,10 +2720,7 @@
             "id": "Công ty TNHH Hai TV Năng lượng Bảo Sơn",
             "properties": {
                 "name": "I4b",
-                "gateway": [
-                    704.4375,
-                    557.125
-                ],
+                "gateway": [704.5390625,557.3125],
                 "data": {
                     "ID": 29,
                     "TenDoanhNghiep": "Công ty TNHH Hai TV Năng lượng Bảo Sơn",
@@ -2780,10 +2764,7 @@
             "id": "Công ty TNHH MTV Nhà máy United Healthcare",
             "properties": {
                 "name": "I4b",
-                "gateway": [
-                    627.1875,
-                    598.125
-                ],
+                "gateway": [624.359375,600.84375],
                 "data": {
                     "ID": 42,
                     "TenDoanhNghiep": "Công ty TNHH MTV Nhà máy United Healthcare",
@@ -2823,10 +2804,7 @@
             "id": "Công ty TNHH MTV RKW Lotus Châu Á",
             "properties": {
                 "name": "I4b",
-                "gateway": [
-                    617.6875,
-                    603.75
-                ],
+                "gateway": [615.640625,606.40625],
                 "data": {
                     "ID": 54,
                     "TenDoanhNghiep": "Công ty TNHH MTV RKW Lotus Châu Á",
@@ -2864,10 +2842,7 @@
             "id": "Công ty TNHH Datalogic Việt Nam",
             "properties": {
                 "name": "I4b",
-                "gateway": [
-                    627.8125,
-                    637.125
-                ],
+                "gateway": [610.109375,622.375],
                 "data": {
                     "ID": 23,
                     "TenDoanhNghiep": "Công ty TNHH Datalogic Việt Nam",
@@ -2952,10 +2927,7 @@
             "id": "I-11",
             "properties": {
                 "name": "SAMSUNG",
-                "gateway": [
-                    367.9375,
-                    266.625
-                ],
+                "gateway": [367.15625,267.4375],
                 "data": {
                     "ID": 37,
                     "TenDoanhNghiep": "Công ty TNHH MTV Điện tử Samsung CE Complex",
@@ -3044,8 +3016,7 @@
             "properties": {
                 "name": "SHTP_Training",
                 "gateway": [
-                    86.0625,
-                    775.125
+                    115.90625,752.203125
                 ],
                 "data": {
                     "ID": 77,
