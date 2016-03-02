@@ -31,10 +31,16 @@ Draw mode:  http://maps.com/?__draw=1
         <div class="tools">
             <div id="search">
                 <div style="margin-bottom: 5px">
-                    <input type="text" name="" id="from_place" class="clearable onX x" placeholder="Điểm đi">
+                    <div class="input-wrap">
+                        <input type="text" name="" id="from_place" class="clearable onX x" placeholder="Điểm đi">
+                        <button class="micro" id="for_from">&nbsp;</button>
+                    </div>
                 </div>
                 <div>
-                    <input type="text" name="" id="to_place" class="clearable onX x" placeholder="Điểm đến">
+                    <div class="input-wrap">
+                        <input type="text" name="" id="to_place" class="clearable onX x" placeholder="Điểm đến">
+                        <button class="micro" id="for_to">&nbsp;</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -416,6 +422,99 @@ Draw mode:  http://maps.com/?__draw=1
     $('#to_place').change(function(e) {
         if (!$(this).val()) app.direction_input.to = null;
     });
+
+    // Draw gateway
+    $.get('./assets/data.geojson', function(data) {
+        try {
+            var data = JSON.parse(data);
+            console.log(data)
+            var features = data.features;
+
+            for (var i in features) {
+                var coordinates = features[i].geometry.coordinates[0];
+                var center = app.getCenterFromCoordinate(coordinates);
+
+                var pin = document.createElement('span').className('enterprise_pin');
+
+                var location_pin = new ol.Overlay({
+                    position: center,
+                    positioning: 'center-center',
+                    element: pin,
+                    stopEvent: false
+                });
+                map.addOverlay(location_pin);
+            }
+        } catch (e) {
+            console.log('data error')
+        }
+
+    });
+
+    var first_char = /\S/;
+    function capitalize(s) {
+        return s.replace(first_char, function(m) { return m.toUpperCase(); });
+    }
+
+    // Voice search 
+    if (!('webkitSpeechRecognition' in window)) {
+        // Hide micro
+    } else {
+        var recognizing = false;
+        var recognition = new webkitSpeechRecognition();
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        recognition.lang = 'vi';
+
+        recognition.onerror = function(e) { recognizing = false; }
+        
+
+
+        $('.micro').on('click', function(e) {
+            if (recognizing) {
+                recognition.stop();
+                return;
+            }
+            var that = this;
+            $(that).parent().find('input').val('');
+
+            final_transcript = '';
+            recognition.start();
+
+            recognition.onstart = function() {
+                recognizing = true;
+                $(that).css('backgroundImage', 'url(assets/images/501cyan.png)');
+                $(that).parent().find('input').val('...');
+            }
+            recognition.onend = function() {
+                recognizing = false;
+                $(that).css('backgroundImage', 'url(assets/images/501black.png)');
+            }
+
+            recognition.onresult = function(event) {
+                var interim_transcript = '';
+                for (var i = event.resultIndex; i < event.results.length; ++i) {
+                  if (event.results[i].isFinal) {
+                    final_transcript += event.results[i][0].transcript;
+                  } else {
+                    interim_transcript += event.results[i][0].transcript;
+                  }
+                }
+                final_transcript = capitalize(final_transcript);
+                $(that).parent().find('input').val(interim_transcript + '...');
+                
+                if (final_transcript) {
+                    recognition.stop();
+                    $(that).parent().find('input').val(final_transcript);
+                    var box = $(that).parent().find('input').trigger('keyup');
+                }
+
+            }
+            recognition.onsoundend = recognition.onspeechend = function() {
+                recognition.stop();
+            }
+        });
+        
+    }
 
     // ===========================
     // Debug tools

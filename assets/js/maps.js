@@ -623,27 +623,9 @@ app.markAPinTo = function(block) {
         center.y = y1 + ((y2 - y1) / 2);
     */
 
-    var x1 = coordinates[0][0], y1 = coordinates[0][1], 
-        x2 = coordinates[0][0], y2 = coordinates[0][1];
-
-    for (i = 0; i < coordinates.length; i++) {
-        if (coordinates[i][0] * coordinates[i][1] < x1 * y1) {
-            x1 = coordinates[i][0];
-            y1 = coordinates[i][1];
-        }
-
-        if (coordinates[i][0] * coordinates[i][1] > x2 * y2) {
-            x2 = coordinates[i][0];
-            y2 = coordinates[i][1];
-        }
-    }
-    var center = [];
-    center[0] = x1 + ((x2 - x1) / 2);
-    center[1] = y1 + ((y2 - y1) / 2);
-    // center = gateway;
+    var center = app.getCenterFromCoordinate(coordinates);
 
     // Move to center
-    var gateway = block.properties.gateway;
     function elastic(t) {
       return Math.pow(2, -25 * t) * Math.sin((t - 0.075) * (2 * Math.PI) / 0.3) + 1;
     }
@@ -664,6 +646,28 @@ app.markAPinTo = function(block) {
         stopEvent: false
     });
     map.addOverlay(location_pin);
+}
+
+app.getCenterFromCoordinate = function(coordinates) {
+    var x1 = coordinates[0][0], y1 = coordinates[0][1], 
+        x2 = coordinates[0][0], y2 = coordinates[0][1];
+
+    for (i = 0; i < coordinates.length; i++) {
+        if (coordinates[i][0] * coordinates[i][1] < x1 * y1) {
+            x1 = coordinates[i][0];
+            y1 = coordinates[i][1];
+        }
+
+        if (coordinates[i][0] * coordinates[i][1] > x2 * y2) {
+            x2 = coordinates[i][0];
+            y2 = coordinates[i][1];
+        }
+    }
+    var center = [];
+    center[0] = x1 + ((x2 - x1) / 2);
+    center[1] = y1 + ((y2 - y1) / 2);
+
+    return center;
 }
 
 function addSearchPlace(block_id, long, lat, e) {
