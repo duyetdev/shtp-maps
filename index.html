@@ -355,20 +355,24 @@ Draw mode:  http://maps.com/?__draw=1
         document.getElementById('message').innerHTML = '(x, y) = ' + evt.coordinate.toString();
 
         // Gateway position 
-        map.removeOverlay(gateway_position);
-        gateway_position = new ol.Overlay({
-            position: evt.coordinate,
-            positioning: 'center-center',
-            element: document.getElementById('gateway_position'),
-            stopEvent: false
-        });
-        map.addOverlay(gateway_position);
+        // map.removeOverlay(gateway_position);
+        // gateway_position = new ol.Overlay({
+        //     position: evt.coordinate,
+        //     positioning: 'center-center',
+        //     element: document.getElementById('gateway_position'),
+        //     stopEvent: false
+        // });
+        // map.addOverlay(gateway_position);
 
         // Get postion at block
         displayFeatureInfo(evt.pixel);
 
         var element = popup.getElement();
         var coordinate = evt.coordinate;
+
+        // HACK: move popup up some pixel
+        coordinate[1] = coordinate[1] + 10;
+
 
         var feature = map.forEachFeatureAtPixel(evt.pixel, function(feature) {
             return feature;
